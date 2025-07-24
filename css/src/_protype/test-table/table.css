@@ -1,0 +1,28 @@
+:root {
+  --table-border: 1px solid silver;
+  --table_color_bg_th: yellow;
+  --table_color_bg_col: orange;
+}
+/* <table class="table-border"> */
+.table-border td,
+.table-border th {
+  border: var(--table-border)
+}
+/* <table class="table-scrollable"> */
+.table-scrollable {
+  display: inline-block;
+  overflow-x: auto;
+  margin: var(--margin-section);
+  vertical-align: bottom;
+}
+/* <table class="table-fluid"> */
+/* incompatible with scrollable */
+.table-fluid {
+  min-width: 100%;
+}
+.table-bg-th th {
+  background-color: var(--table_color_bg_th);
+}
+.table-bg-col col:nth-child(even) {
+  background-color: var(--table_color_bg_col);
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="content-type" content="text/html" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>demo-lorem</title>
+  <link rel="stylesheet" type="text/css" href="../../../style/base/base.default.css" />
+</head>
+<body>
+  <main>
+    <h1>demo Lorem</h1>
+    <section>
+      <h3>Word</h3>
+      <pre id="output_word">OUTPUT_WORD</pre>
+      <hr />
+    </section>
+    <section>
+      <h3>Sentence</h3>
+      <pre id="output_sentence">OUTPUT_SENTENCE</pre>
+    </section>
+    <section>
+      <h3>Markup</h3>
+      <pre id="output_markup">OUTPUT_MARKUP</pre>
+    </section>
+  </main>
+  <script type="text/javascript" src="lorem.js"></script>
+  <script type="text/javascript">
+  	output_word.innerHTML = lorem.word( 10 );
+    output_sentence.innerHTML = lorem.sentence( 5 );
+    output_markup.innerHTML = lorem.markup( 5 );
+  </script>
+</body>
+</html>

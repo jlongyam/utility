@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>title</title>
+  <style>
+    *,*:before,*:after {
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+    }
+    body  {
+      line-height: 2;
+      font-size: 22px;
+      font-family: monospace;
+    }
+    .relative {
+      height: 100%;
+    }
+    .sub {
+      padding-left: 20px;
+    }
+    .sub > div:first-child {
+      display: none;
+    } 
+    .sub,
+    .chk-toggle,
+    .rad-toggle {
+      display: none;
+    }
+    .chk-toggle:checked + .sub,
+    .rad-toggle:checked ~ .sub{
+      display: block;
+    }
+    div > label:first-child {
+      display: block;
+    }
+    .rad-toggle + label {
+      display: none;
+    }
+    /* mobile */
+    @media screen and (max-width: 768px) {
+      .rad-toggle + label {
+        display: inline;
+      }
+      div > label:first-child {
+        display: none;
+      }
+      .relative {
+        position: relative;
+      }
+      .parent, .sub {
+      /* mobile */
+      position: absolute;
+      background-color: white; /* prevent transparent */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      }
+      .sub > div:first-child {
+        display: block;
+      } 
+    }
+  </style>
+</head>
+
+<body>
+<div class="relative">
+  <div class="parent">
+    <div><h4>head line</h4></div>
+    <div>first line</div>
+    <div>second line</div>
+    <div>
+      <label for="rad_toggle_1"><b>third line *</b></label>
+      <input id="rad_toggle_1" name="rad_1" type="radio" class="rad-toggle">
+      <label for="chk_toggle_1"><b>third line •</b></label>
+      <input id="chk_toggle_1" class="chk-toggle" type="checkbox">
+      <div class="sub">
+        <div><h3><label for="chk_toggle_1">• third line</label></h3></div>
+        <div>first sub</div>
+        <div>second sub</div>
+        <div>third sub</div>
+        <div>forth sub</div>
+      </div>
+    </div>
+    <div>
+      <label for="rad_toggle_2"><b>third line *</b></label>
+      <input id="rad_toggle_2" name="rad_1" type="radio" class="rad-toggle">
+      <label for="chk_toggle_2"><b>forth line •</b></label>
+      <input id="chk_toggle_2" class="chk-toggle" type="checkbox">
+      <div class="sub">
+        <div><h3><label for="chk_toggle_2">• forth line</label></h3></div>
+        <div>first sub</div>
+        <div>second sub</div>
+          <label for="chk_toggle_2_1"><b>third sub •</b></label>
+          <input id="chk_toggle_2_1" class="chk-toggle" type="checkbox">
+          <div class="sub">
+            <div><h3><label for="chk_toggle_2_1">• third sub</label></h3></div>
+            <div>first deep</div>
+            <div>second deep</div>
+            <div>third deep</div>
+            <div>forth deep</div>
+          </div>
+        <div>forth sub</div>
+      </div>
+    </div>
+    <div>fifth line</div>
+  </div>
+</div>
+</body>
+
+</html>

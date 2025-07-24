@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>test: table simple</title>
+  <link rel="stylesheet" href="../../native-style.css">
+  <script src="../../../lib/loader.min.js"></script>
+  <script src="init.js"></script>
+</head>
+
+<body>
+  <table>
+    <caption>Caption</caption>
+    <colgroup>
+      <col>
+      <col>
+    </colgroup>
+  </table>
+  <script defer>
+    let
+      tb_N = 20,
+      tb = document.currentScript.previousElementSibling,
+      tb_head = tb.createTHead(),
+      tb_foot = tb.createTFoot(),
+      tb_body = tb.createTBody(),
+      tb_head_row = tb_head.insertRow(),
+      tb_foot_row = tb_foot.insertRow()
+      ;
+      for( let i = 1; i <= tb_N; i++ ) {
+        let
+          th_head = createElement('th', { textContent: 'thead'+i}),
+          th_foot = createElement('th', { textContent: 'tfoot'+i})
+          ;
+        tb_head_row.appendChild(th_head)
+        tb_foot_row.appendChild(th_foot)
+        let tb_body_row = undefined
+        if( i <= 5 ) tb_body_row = tb_body.insertRow()
+        if( i > 5 ) continue
+        for( let n = 1; n <= tb_N; n++) {
+          let td_body = tb_body_row.insertCell()
+          td_body.textContent = 'tbody'+n+'_'+i
+        }
+      }        
+  </script>
+  <script src="config.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <title></title>
+  <script>String.prototype.stripInitial=function(){var t=this.match(/^\s*(?=[^\s]+)/gm).reduce((function(t,e){return Math.min(t,e.length)}),1/0),e=new RegExp("^\\s{"+t+"}","mg");return t>0?this.replace(e,""):this};let result={createWorkSpace:()=>{let t=Object.assign(document.createElement("div"),{classList:"result-area"});return document.currentScript.parentElement.appendChild(t),t.appendChild(document.currentScript),t},showSource:t=>{t.classList.add("result-script"),null===t.getAttribute("src")?t.innerHTML=t.innerHTML.stripInitial().trim():t.setAttribute("data-result-source",t.getAttribute("src"))},html:(t,e)=>{let r=Object.assign(document.createElement("div"),{innerHTML:t,classList:"result-demo"});if(document.currentScript.parentElement.classList.contains("result-area"))document.currentScript.parentElement.appendChild(r);else{result.createWorkSpace().appendChild(r)}return null!==document.currentScript.getAttribute("data-source-show")&&result.showSource(document.currentScript),e&&e.call(),{then:t=>{t&&t.call()}}},js:(t,e)=>{let r=Object.assign(document.createElement("pre"),{textContent:t,classList:"result-log"});if(document.currentScript.parentElement.classList.contains("result-area"))document.currentScript.parentElement.appendChild(r);else{result.createWorkSpace().appendChild(r)}return null!==document.currentScript.getAttribute("data-source-show")&&result.showSource(document.currentScript),e&&e.call(),{then:t=>{t&&t.call()}}},css:(t,e)=>{let r=Object.assign(document.createElement("style"),{textContent:t});return document.head.appendChild(r),null!==document.currentScript.getAttribute("data-source-show")&&result.showSource(document.currentScript),e&&e.call(),{then:t=>{t&&t.call()}}}};</script>
+  <style>body,html{height:100%}*,::after,::before{box-sizing:border-box}html{font:16px/24px monospace;--font-regular:system-ui,-apple-system,"Segoe UI","Roboto","Ubuntu","Cantarell","Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";--font-code:ui-monospace,'Cascadia Code','Source Code Pro',Menlo,Consolas,'DejaVu Sans Mono',monospace}body{margin:0;padding:5%;font-family:var(--font-regular)}.result-area{font-family:inherit;padding:2.5%;line-height:2em}.result-log,.result-script{font:1em var(--font-code);padding:1em;background-color:#000;color:silver;margin:0 0 1em;border-top:1em solid gray;position:relative;overflow:auto}.result-script[data-result-source]::before{content:'//<script src="' attr(data-result-source) '">';color:gray}.result-demo{margin:0 0 1em}.result-script{display:block;background-color:#fff9c8;color:#000;white-space:pre}</style>
+  <script src="cssProperty.js"></script>
+  <script src="selector.js"></script>
+  <link href="initial.css" rel="stylesheet">
+<style>
+figure {
+  border: 1px dashed silver;
+  margin: var(--margin-section); /* stack, repetitive, vertical */
+  padding: 0;
+  /*&:last-of-type {
+    margin-bottom: 0;
+  }*/
+}
+a { vertical-align: baseline; } /*remove*/
+</style>
+<style>
+#next {
+  /* base 12,24,36,48 */
+  --n_base: 5000px; /* maximum screen width*/
+  --n_increase: calc(var(--n_base) - 100vw);
+  --height: calc(var(--n_increase)/97);
+  /* laptop: 36px, mobile: 48*/
+  /*height: calc((var(--n_base) - 100vw)/97 );*/
+  height: var(--height);
+}
+</style>
+</head>
+<body>
+<figure>
+<pre>
+target:
+  desktop: <samp>36px</samp>
+  mobile: <samp>48px</samp>
+</pre>
+</figure>
+<style>
+/* desktop */
+.media,
+.auto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: yellow;
+  white-space: break-spaces;
+}
+.media {
+  height: 36px;
+}
+@media screen and (max-width: 768px) {
+  /* mobile */
+  .media {
+    height: 48px;
+  }
+}
+</style>
+<figure>
+  <div class="media">resposive <code>height</code> by media</div>
+</figure>
+<script>
+  result.js(cssProperty.get( 'height', $('.media') ))
+</script>
+<hr>
+<div class="auto">resposive <code>height</code> <strong>auto</strong></div>
+<p><strong>require</strong> <code>width</code> for <code>calc</code> later.</p>
+<script data-source-show>
+  result.css(`
+    .auto { width: var(--base_vwpx); }
+  `)
+  result.js(cssProperty.get( 'width', $('.auto') ))
+</script>
+<figure>
+<pre>
+desktop: <samp>921.625px</samp>,
+mobile: <samp>337.5px</samp>
+</pre>
+</figure>
+<style>
+:root {
+  --base_width: 3000px;
+  --base_vwpx: calc(100vw * 1px);
+  --increase: calc( calc(100vw * 1px) - 3000px );
+}
+</style>
+<p><strong>Increase</strong>:</p>
+<script data-source-show>
+  result.js(`
+    mobile  : ${parseInt(3000 - 337.5)}px
+    desktop : ${parseInt(3000 - 921.625)}px
+  `)
+</script>
+<h3>Try</h3>
+<script data-source-show>
+  result.html(`<div id="try" class="auto">TRY</div>`)
+  result.css(`
+    #try {
+      width: var(--base_vwpx);
+      /*height: calc(var(--increase) / 3);*/
+    }
+  `)
+  result.js(cssProperty.get('--increase'))
+  result.js(cssProperty.get( 'height', $('#try') ))
+  // by js
+</script>
+<script data-source-show>
+  let _base_width = 3000+'px'
+  let _base_vwpx = cssProperty.get( 'width', $('#try') )
+  let _base_increase = parseInt(_base_width) - parseInt(_base_vwpx)
+  result.js('base width : ' +parseInt(_base_width))
+  result.js('vw to px   : ' +parseInt(_base_vwpx))
+  result.js('increase   : ' +_base_increase)
+  let _auto_height = _base_increase / 56.5
+  $('#try').style.height = _auto_height + 'px'
+  result.js('#try height: ' +cssProperty.get( 'height', $('#try') ) )
+  result.js(`desktop: 36px, mobile: 48px`)
+</script>
+<script data-source-show>
+let str = ''
+for(let i = 1; i <= 5; i++ ){
+  str += 12 * i + '\n'
+}
+result.js(str)
+</script>
+
+<div id="next" class="auto">NEXT</div>
+<script>
+  result.js(cssProperty.get('height', $('#next')))
+  result.js(cssProperty.get('--increase'))
+</script>
+<p><b>credit</b> <a href="https://css-tricks.com/a-complete-guide-to-calc-in-css/">css-trick</a></p>
+<pre>see also
+https://developer.mozilla.org/en-US/docs/Web/CSS/calc-constant
+</body>
+</html>

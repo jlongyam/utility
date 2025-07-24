@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- device-screen Copyright (c) 2023 jlongyam MIT License -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Device screen simulator</title>
+  <style>
+    *,*:before,*:after {
+      box-sizing: border-box;
+    }
+    :root {
+      --content: "";
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      
+    }
+    iframe {
+      border: none;
+      width: 100%;
+      height: 100%;
+    }
+    .hide {
+      display: none;
+    }
+    .section {
+      margin-bottom: 1em;
+    }
+    .section.wide {
+      align-self: flex-start;
+    }
+    .device-container {
+      display: inline-flex;
+      flex-direction: column;
+    }
+    .device-spec {
+      font-family: monospace;
+      padding: .5em;
+    }
+    .device {
+      background-color: #ccc;
+      border-radius: 10px;
+      border-top: 20px solid black;
+      border-bottom: 40px solid black;
+      border-left: 10px solid black;
+      border-right: 10px solid black;
+      display: inline-flex;
+      flex-direction: column;
+    }
+    .device-bar {
+      background-color: #9E9E9E;
+      padding: 20px;
+      position: relative;
+    }
+    .device-bar::before {
+      position: absolute;
+      content: var(--content);
+      background-color: white;
+      left: 5px;
+      top: 5px;
+      bottom: 5px;
+      right: 50px;
+      border-radius: 5px;
+      z-index: 5;
+      font-family: monospace;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      padding-left: 10px;
+      overflow: hidden;
+      white-space: pre;
+    }
+    .xx-small { width: 320px; height: 568px;}
+    .x-small { width: 360px; height: 640px;}
+    .small { width: 412px; height: 732px;}
+    .medium { width: 600px; height: 960px;}
+    .large {width: 1024px; height: 1366px;}
+    .x-large {width: 1280px; height: 850px;}
+    .xx-large {width: 1920px; height: 1080px;}
+  </style>
+</head>
+<body>
+  <div class="section">
+    <div class="device-container">
+      <div class="device-spec"><b>iPhone </b>5: <b>320</b>x568px: xx-small</div>
+      <div class='device xx-small'>
+        <div class="device-bar"></div>
+        <iframe src="tree-adaptive.html"></iframe>
+      </div>
+    </div>
+    <div class="device-container">
+      <div class="device-spec"><b>Samsung Galaxy S7</b>: <b>360</b>x640px: x-small</div>
+      <div class='device x-small'>
+        <div class="device-bar hide"></div>
+        <iframe src="tree-adaptive.html"></iframe>
+      </div>
+    </div>
+    <div class="device-container">
+      <div class="device-spec"><b>Nexus 6P</b>: <b>412</b>x732px: small</div>
+      <div class='device small'>
+        <div class="device-bar hide"></div>
+        <iframe src="tree-adaptive.html"></iframe>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="device-container">
+      <div class="device-spec"><b>Nexus 7</b>: <b>600</b>x960px: medium</div>
+      <div class='device medium'>
+        <div class="device-bar"></div>
+        <iframe src="tree-adaptive.html"></iframe>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="device-container">
+      <div class="device-spec"><b>iPad Pro</b>: <b>1024</b>x1366px: large</div>
+      <div class='device large'>
+        <div class="device-bar hide"></div>
+        <iframe src="tree-adaptive.html"></iframe>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="device-container">
+      <div class="device-spec"><b>Chromebook Pixel</b>: <b>1280</b>x850px: x-large</div>
+      <div class='device x-large'>
+        <div class="device-bar hide"></div>
+        <iframe src="tree-adaptive.html"></iframe>
+      </div>
+    </div>
+  </div>
+  <div class="section wide hide">
+    <div class="device-container">
+      <div class="device-spec"><b>TV Full HD</b>: <b>1920</b>x1080px: xx-large</div>
+      <div class='device xx-large'>
+        <div class="device-bar hide"></div>
+        <iframe src="tree-adaptive.html"></iframe>
+      </div>
+    </div>
+  </div>
+  <script>
+    let config_screen = {
+      'xx-small': {
+        name: 'iPhone 5',
+        width: 320,
+        height: 568
+      },
+      'x-small': {
+        name: 'Samsung Galaxy S7',
+        width: 360,
+        height: 640
+      },
+      'small': {
+        name: 'Nexus 6P',
+        width: 412,
+        height: 732
+      },
+      'medium': {
+        name: 'Nexus 7',
+        width: 600,
+        height: 960
+      },
+      'large': {
+        name: 'iPad Pro',
+        width: 1024,
+        height: 1366
+      },
+      'x-large': {
+        name: 'Chromebook Pixel',
+        width: 1280,
+        height: 850
+      },
+      'xx-large': {
+        name: 'TV Full HD',
+        width: 1920,
+        height: 1080
+      }
+    }
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', e=> {
+      var ifr = document.querySelectorAll('iframe')
+      if (location.search.length != 0) {
+        ifr.forEach((el) => {
+          _url = location.search.split('=')[1]
+          el.src = _url
+          el.parentElement.firstElementChild.style = '--content:"' + _url + '"'
+        })
+      }
+    })
+  </script>
+</body>
+</html>

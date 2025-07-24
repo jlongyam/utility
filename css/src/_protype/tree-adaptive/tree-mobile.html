@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>title</title>
+  <style>
+    *,*:before,*:after {
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+    }
+    body  {
+      line-height: 2;
+      font-size: 22px;
+      font-family: monospace;
+    }
+    .relative {
+      position: relative;
+      height: 100%;
+    }
+    .parent, .sub {
+      position: absolute;
+      background-color: white; /* prevent transparent */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .sub, .chk-toggle {
+      display: none;
+    }
+    .chk-toggle:checked + .sub {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+<div class="relative">
+  <div class="parent">
+    <div><h3>head line</h3></div>
+    <div>first line</div>
+    <div>second line</div>
+    <div>
+      <label for="chk_toggle_1"><b>third line •</b></label>
+      <input id="chk_toggle_1" class="chk-toggle" type="checkbox">
+      <div class="sub">
+        <div><h3><label for="chk_toggle_1">• third line</label></h3></div>
+        <div>first sub</div>
+        <div>second sub</div>
+        <div>third sub</div>
+        <div>forth sub</div>
+      </div>
+    </div>
+    <div>
+      <label for="chk_toggle_2"><b>forth line •</b></label>
+      <input id="chk_toggle_2" class="chk-toggle" type="checkbox">
+      <div class="sub">
+        <div><h3><label for="chk_toggle_2">• forth line</label></h3></div>
+        <div>first sub</div>
+        <div>second sub</div>
+          <label for="chk_toggle_3"><b>third sub •</b></label>
+          <input id="chk_toggle_3" class="chk-toggle" type="checkbox">
+          <div class="sub">
+            <div><h3><label for="chk_toggle_3">• third sub</label></h3></div>
+            <div>first deep</div>
+            <div>second deep</div>
+            <div>third deep</div>
+            <div>forth deep</div>
+          </div>
+        <div>forth sub</div>
+      </div>
+    </div>
+    <div>fifth line</div>
+  </div>
+</div>
+</body>
+
+</html>

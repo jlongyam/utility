@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <title>test: table</title>
+  <link rel="stylesheet" href="../../lib/config-box.min.css">
+  <link rel="stylesheet" href="../demo.css">
+  <link id="link_reset_destyle" rel="stylesheet" href="../../lib/reset/destyle.css">
+  <link id="link_reset_acab" rel="stylesheet" href="../../lib/reset/acab.css">
+  <link id="link_sanitize" rel="stylesheet" href="../../lib/sanitize/sanitize.css">
+  <link id="link_sanitize_typography" rel="stylesheet" href="../../lib/sanitize/typography.css">
+  <link id="link_sanitize_motion" rel="stylesheet" href="../../lib/sanitize/reduce-motion.css">
+  <link id="link_sanitize_form" rel="stylesheet" href="../../lib/sanitize/forms.css">
+  <link id="link_sanitize_asset" rel="stylesheet" href="../../lib/sanitize/assets.css">
+  <link id="link_sanitize_page" rel="stylesheet" href="../../lib/sanitize/page.css" disabled>
+  <link id="link_document" rel="stylesheet" href="../document.css">
+  <link id="link_table" rel="stylesheet" href="../table.css">
+  <link id="link_class_table" rel="stylesheet" href="../class/table.css">
+  <script src="../../lib/forEach.min.js"></script>
+  <script src="../../lib/toUpperFirst.min.js"></script>
+  <script src="../../lib/createElement.min.js"></script>
+  <script src="../../lib/random-lib.min.js"></script>
+  <script src="../../lib/selector.min.js"></script>
+  <script src="../../lib/config-box.min.js"></script>
+</head>
+
+<body>
+  <div class="demo-title">caption</div>
+  <div class="demo-example">
+    <table>
+      <caption>
+        Dinosaurs in the Jurassic period
+      </caption>
+      <tr>
+        <td>&nbsp;</td>
+        <td>Knocky</td>
+        <td>Flor</td>
+        <td>Ella</td>
+        <td>Juan</td>
+      </tr>
+      <tr>
+        <td>Breed</td>
+        <td>Jack Russell</td>
+        <td>Poodle</td>
+        <td>Streetdog</td>
+        <td>Cocker Spaniel</td>
+      </tr>
+      <tr>
+        <td>Age</td>
+        <td>16</td>
+        <td>9</td>
+        <td>10</td>
+        <td>5</td>
+      </tr>
+      <tr>
+        <td>Owner</td>
+        <td>Mother-in-law</td>
+        <td>Me</td>
+        <td>Me</td>
+        <td>Sister-in-law</td>
+      </tr>
+      <tr>
+        <td>Eating Habits</td>
+        <td>Eats everyone's leftovers</td>
+        <td>Nibbles at food</td>
+        <td>Hearty eater</td>
+        <td>Will eat till he explodes</td>
+      </tr>
+    </table>
+  </div>
+  <div class="demo-title">dynamic</div>
+  <div class="demo-example">
+    <table>
+      <tr>
+        <th>Animals</th>
+      </tr>
+      <tr>
+        <th>Hippopotamus</th>
+      </tr>
+      <tr>
+        <th>Horse</th>
+        <td>Mare</td>
+      </tr>
+      <tr>
+        <td>Stallion</td>
+      </tr>
+      <tr>
+        <th>Crocodile</th>
+      </tr>
+      <tr>
+        <th>Chicken</th>
+        <td>Hen</td>
+      </tr>
+      <tr>
+        <td>Rooster</td>
+      </tr>
+    </table>
+  </div>
+  <div class="demo-title">colgroup and col</div>
+  <div class="demo-example">
+    <table>
+      <colgroup>
+        <col>
+        <col>
+      </colgroup>
+      <tr>
+        <th>Data 1</th>
+        <th>Data 2</th>
+      </tr>
+      <tr>
+        <td>Calcutta</td>
+        <td>Orange</td>
+      </tr>
+      <tr>
+        <td>Robots</td>
+        <td>Jazz</td>
+      </tr>
+    </table>
+  </div>
+  <div class="demo-title">nesting</div>
+  <div class="demo-example">
+    <table>
+      <tr>
+        <th>title1</th>
+        <th>title2</th>
+        <th>title3</th>
+      </tr>
+      <tr>
+        <td>
+          <table>
+            <tr>
+              <td>cell1</td>
+              <td>cell2</td>
+              <td>cell3</td>
+            </tr>
+          </table>
+        </td>
+        <td>cell2</td>
+        <td>cell3</td>
+      </tr>
+      <tr>
+        <td>cell4</td>
+        <td>cell5</td>
+        <td>cell6</td>
+      </tr>
+    </table>
+  </div>
+  <div class="demo-title">scope</div>
+  <div class="demo-example">
+    <table>
+      <caption>
+        Council budget (in £) 2018
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col">Items</th>
+          <th scope="col">Expenditure</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Donuts</th>
+          <td>3,000</td>
+        </tr>
+        <tr>
+          <th scope="row">Stationery</th>
+          <td>18,000</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="demo-title">thead+tbody+tfoot</div>
+  <div class="demo-example">
+    <table>
+      <thead>
+        <tr>
+          <th>Items</th>
+          <th scope="col">Expenditure</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th scope="row">Totals</th>
+          <td>21,000</td>
+        </tr>
+      </tfoot>
+      <tbody>
+        <tr>
+          <th scope="row">Donuts</th>
+          <td>3,000</td>
+        </tr>
+        <tr>
+          <th scope="row">Stationery</th>
+          <td>18,000</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="demo-title">scrollable</div>
+  <div class="demo-example">
+    <table>
+      <caption>Caption</caption>
+      <colgroup>
+        <col>
+        <col>
+      </colgroup>
+    </table>
+    <script>
+      let
+        tb_N = 20,
+        tb = document.currentScript.previousElementSibling,
+        tb_head = tb.createTHead(),
+        tb_foot = tb.createTFoot(),
+        tb_body = tb.createTBody(),
+        tb_head_row = tb_head.insertRow(),
+        tb_foot_row = tb_foot.insertRow()
+        ;
+        for( let i = 1; i <= tb_N; i++ ) {
+          let
+            th_head = createElement('th', { textContent: 'thead'+i}),
+            th_foot = createElement('th', { textContent: 'tfoot'+i})
+            ;
+          tb_head_row.appendChild(th_head)
+          tb_foot_row.appendChild(th_foot)
+          let tb_body_row = undefined
+          if( i <= 5 ) tb_body_row = tb_body.insertRow()
+          if( i > 5 ) continue
+          for( let n = 1; n <= tb_N; n++) {
+            let td_body = tb_body_row.insertCell()
+            td_body.textContent = 'tbody'+n+'_'+i
+          }
+        }        
+    </script>
+  </div>
+
+  <script>
+    let config_box = new ConfigBox('Config CSS:')
+    config_box.start()
+    config_box.createText('class-less:')
+    let config_choose = new ConfigChoose(config_box.body)
+    config_choose.create({
+      'reset_destyle': true,
+      'reset_acab': true,
+      'sanitize': true,
+      'sanitize_typography': true,
+      'sanitize_motion': true,
+      'sanitize_form': true,
+      'sanitize_asset': true,
+      'sanitize_page': false,
+      'document': true,
+      'table': true,
+      'class_table': true
+    }, (item, active) => {
+      $('#link_' + item).toggleAttribute('disabled')
+    })
+    config_box.createText('classes:')
+    config_choose.create({ 'table.border': false, 'table.scrollable': false, 'table.fluid': false }, (item, active) => {
+      let
+        items = item.split('.'),
+        item_link = items[0],
+        item_class = items[1]
+        ;
+      $$(item_link).forEach(el => {
+        el.classList.toggle(item_class)
+      })
+    })
+    config_box.setPosition({ left: 'auto', top: '3em', right: '3em' })
+  </script>
+</body>
+
+</html>

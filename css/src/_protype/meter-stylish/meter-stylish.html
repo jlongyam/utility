@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title></title>
+  <link rel="stylesheet" href="./meter-stylish.css">
+</head>
+<body>
+  <h1>OSX-style Disk Usage <xmp>..using html5 <meter></xmp></h1>
+
+    <p>
+      Macintosh HD <span class="free-space">64.54 GB free out of 120.47 GB</span></p>
+    
+    <meter value="55.93" min="0" max="120.47" title="GB">
+      <div class="meter-gauge">
+        <span style="width: 46.42%;">Disk Usage - 55.93GB out of 120GB</span>
+      </div>
+    </meter>  
+      
+    <ul class="swatch">
+      <li class="swatch__elem">Audio <span class="used-space">670.5 MB</span></li>
+      <li class="swatch__elem">Movies <span class="used-space">10.1 GB</span></li>
+      <li class="swatch__elem">Photos <span class="used-space">25.19 GB</span></li>
+      <li class="swatch__elem">Apps <span class="used-space">19.31 GB</span></li>
+      <li class="swatch__elem">Other <span class="used-space">660.5 MB</span></li>
+    </ul>
+</body>
+</html>

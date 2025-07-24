@@ -1,0 +1,12 @@
+:root {
+  --box_padding: 2.5%;
+  --box_margin: .5em;
+  --box_border: 1px solid silver;
+}
+.box {
+  padding: var(--box_padding);
+  border: var(--box_border);
+}
+.box:not(:last-child) {
+  margin-bottom: var(--box_margin);
+}

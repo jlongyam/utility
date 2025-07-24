@@ -1,0 +1,9 @@
+/* require visibility.css */
+#notification_clipboard {
+  position: fixed;
+  left: 40%;
+  top: 10%;
+  background-color: rgb(255 235 59 / 95%);
+  padding: .5em;
+  border-radius: 5px;
+}

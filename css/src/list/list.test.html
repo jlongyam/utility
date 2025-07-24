@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>test: list</title>
+  <link rel="stylesheet" href="../../lib/native-style.css">
+  <link rel="stylesheet" href="../box/box.css">
+<script src="../../lib/forEach.js"></script>
+  <script src="../../lib/result-hilight.min.js"></script>
+  <script src="../../lib/createElement.js"></script>
+
+  <style>
+    .list-container {
+      padding: 1em;
+      border: 1px solid silver;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: 1em;
+      line-height: 1.5em;
+    }
+
+    .list-group {
+      margin: 0;
+      padding: 0;
+    }
+
+    .list-item {
+      list-style: none;
+      display: block;
+    }
+
+    .list-line:hover {
+      background-color: silver;
+    }
+
+    .list-item>.list-group>.list-item>.list-line {
+      padding-left: 1em;
+    }
+
+    .list-item_top,
+    .list-item_center,
+    .list-item_bottom {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .list-item_top_middle,
+    .list-item_center_middle,
+    .list-item_bottom_middle {
+      flex-grow: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <div id="box" class="box"></div> -->
+  <div class="list-container">
+    <ul class="list-group">
+      <li class="list-item">
+        <div class="list-line">
+          <div class="list-item_top">
+            <span class="list-item_top_start">L</span>
+            <span class="list-item_top_middle">list 1 top</span>
+            <span class="list-item_top_end">R</span>
+          </div>
+          <div class="list-item_center">
+            <span class="list-item_center_start">L</span>
+            <span class="list-item_center_middle">list 1</span>
+            <span class="list-item_center_end">R</span>
+          </div>
+          <div class="list-item_bottom">
+            <span class="list-item_bottom_start">L</span>
+            <span class="list-item_bottom_middle">list 1 bottom</span>
+            <span class="list-item_bottom_end">R</span>
+          </div>
+        </div>
+      </li>
+      <li class="list-item">
+        <div class="list-line list-line_group">
+          <div class="list-item_top">
+            <span class="list-item_top_start">L</span>
+            <span class="list-item_top_middle">list 2 top</span>
+            <span class="list-item_top_end">R</span>
+          </div>
+          <div class="list-item_center">
+            <span class="list-item_center_start">L</span>
+            <span class="list-item_center_middle">list 2</span>
+            <span class="list-item_center_end">R</span>
+          </div>
+          <div class="list-item_bottom">
+            <span class="list-item_bottom_start">L</span>
+            <span class="list-item_bottom_middle">list 2 bottom</span>
+            <span class="list-item_bottom_end">R</span>
+          </div>
+        </div>
+        <ul class="list-group">
+          <li class="list-item">
+            <div class="list-line">
+              <div class="list-item_top">
+                <span class="list-item_top_start">L</span>
+                <span class="list-item_top_middle">list 2 1 top</span>
+                <span class="list-item_top_end">R</span>
+              </div>
+              <div class="list-item_center">
+                <span class="list-item_center_start">L</span>
+                <span class="list-item_center_middle">list 2 1</span>
+                <span class="list-item_center_end">R</span>
+              </div>
+              <div class="list-item_bottom">
+                <span class="list-item_bottom_start">L</span>
+                <span class="list-item_bottom_middle">list 2 1 bottom</span>
+                <span class="list-item_bottom_end">R</span>
+              </div>
+            </div>
+          </li>
+          <li class="list-item">
+            <div class="list-line">
+              <div class="list-item_top">
+                <span class="list-item_top_start">L</span>
+                <span class="list-item_top_middle">list 2 2 top</span>
+                <span class="list-item_top_end">R</span>
+              </div>
+              <div class="list-item_center">
+                <span class="list-item_center_start">L</span>
+                <span class="list-item_center_middle">list 2 2</span>
+                <span class="list-item_center_end">R</span>
+              </div>
+              <div class="list-item_bottom">
+                <span class="list-item_bottom_start">L</span>
+                <span class="list-item_bottom_middle">list 2 2 bottom</span>
+                <span class="list-item_bottom_end">R</span>
+              </div>
+            </div>
+          </li>
+          <li class="list-item">
+            <div class="list-line">
+              <div class="list-item_top">
+                <span class="list-item_top_start">L</span>
+                <span class="list-item_top_middle">list 2 3 top</span>
+                <span class="list-item_top_end">R</span>
+              </div>
+              <div class="list-item_center">
+                <span class="list-item_center_start">L</span>
+                <span class="list-item_center_middle">list 2 3</span>
+                <span class="list-item_center_end">R</span>
+              </div>
+              <div class="list-item_bottom">
+                <span class="list-item_bottom_start">L</span>
+                <span class="list-item_bottom_middle">list 2 3 bottom</span>
+                <span class="list-item_bottom_end">R</span>
+              </div>
+            </div>
+          </li>
+          <li class="list-item">
+            <div class="list-line">
+              <div class="list-item_top">
+                <span class="list-item_top_start">L</span>
+                <span class="list-item_top_middle">list 2 4 top</span>
+                <span class="list-item_top_end">R</span>
+              </div>
+              <div class="list-item_center">
+                <span class="list-item_center_start">L</span>
+                <span class="list-item_center_middle">list 2 4</span>
+                <span class="list-item_center_end">R</span>
+              </div>
+              <div class="list-item_bottom">
+                <span class="list-item_bottom_start">L</span>
+                <span class="list-item_bottom_middle">list 2 4 bottom</span>
+                <span class="list-item_bottom_end">R</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li class="list-item">
+        <div class="list-line">
+          <div class="list-item_top">
+            <span class="list-item_top_start">L</span>
+            <span class="list-item_top_middle">list 3 top</span>
+            <span class="list-item_top_end">R</span>
+          </div>
+          <div class="list-item_center">
+            <span class="list-item_center_start">L</span>
+            <span class="list-item_center_middle">list 3</span>
+            <span class="list-item_center_end">R</span>
+          </div>
+          <div class="list-item_bottom">
+            <span class="list-item_bottom_start">L</span>
+            <span class="list-item_bottom_middle">list 3 bottom</span>
+            <span class="list-item_bottom_end">R</span>
+          </div>
+        </div>
+      </li>
+      <li class="list-item">
+        <div class="list-line">
+          <div class="list-item_top">
+            <span class="list-item_top_start">L</span>
+            <span class="list-item_top_middle">list 4 top</span>
+            <span class="list-item_top_end">R</span>
+          </div>
+          <div class="list-item_center">
+            <span class="list-item_center_start">L</span>
+            <span class="list-item_center_middle">list 4</span>
+            <span class="list-item_center_end">R</span>
+          </div>
+          <div class="list-item_bottom">
+            <span class="list-item_bottom_start">L</span>
+            <span class="list-item_bottom_middle">list 4 bottom</span>
+            <span class="list-item_bottom_end">R</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <ul class="list-group">
+      <li class="list-item">
+        <div class="list-line">
+          <div class="list-item_top">
+            <span class="list-item_top_start">L</span>
+            <span class="list-item_top_middle">list A top</span>
+            <span class="list-item_top_end">R</span>
+          </div>
+          <div class="list-item_center">
+            <span class="list-item_center_start">L</span>
+            <span class="list-item_center_middle">list A</span>
+            <span class="list-item_center_end">R</span>
+          </div>
+          <div class="list-item_bottom">
+            <span class="list-item_bottom_start">L</span>
+            <span class="list-item_bottom_middle">list A bottom</span>
+            <span class="list-item_bottom_end">R</span>
+          </div>
+        </div>
+      </li>
+      <li class="list-item">
+        <div class="list-line list-line_group">
+          <div class="list-item_top">
+            <span class="list-item_top_start">L</span>
+            <span class="list-item_top_middle">list B top</span>
+            <span class="list-item_top_end">R</span>
+          </div>
+          <div class="list-item_center">
+            <span class="list-item_center_start">L</span>
+            <span class="list-item_center_middle">list B</span>
+            <span class="list-item_center_end">R</span>
+          </div>
+          <div class="list-item_bottom">
+            <span class="list-item_bottom_start">L</span>
+            <span class="list-item_bottom_middle">list B bottom</span>
+            <span class="list-item_bottom_end">R</span>
+          </div>
+        </div>
+        <ul class="list-group">
+          <li class="list-item">
+            <div class="list-line">
+              <div class="list-item_top">
+                <span class="list-item_top_start">L</span>
+                <span class="list-item_top_middle">list B 1 top</span>
+                <span class="list-item_top_end">R</span>
+              </div>
+              <div class="list-item_center">
+                <span class="list-item_center_start">L</span>
+                <span class="list-item_center_middle">list B 1</span>
+                <span class="list-item_center_end">R</span>
+              </div>
+              <div class="list-item_bottom">
+                <span class="list-item_bottom_start">L</span>
+                <span class="list-item_bottom_middle">list B bottom</span>
+                <span class="list-item_bottom_end">R</span>
+              </div>
+            </div>
+          </li>
+          <li class="list-item">
+            <div class="list-line">
+              <div class="list-item_top">
+                <span class="list-item_top_start">L</span>
+                <span class="list-item_top_middle">list B 2 top</span>
+                <span class="list-item_top_end">R</span>
+              </div>
+              <div class="list-item_center">
+                <span class="list-item_center_start">L</span>
+                <span class="list-item_center_middle">list B 2</span>
+                <span class="list-item_center_end">R</span>
+              </div>
+              <div class="list-item_bottom">
+                <span class="list-item_bottom_start">L</span>
+                <span class="list-item_bottom_middle">list B 2 bottom</span>
+                <span class="list-item_bottom_end">R</span>
+              </div>
+            </div>
+          </li>
+          <li class="list-item">
+            <div class="list-line">
+              <div class="list-item_top">
+                <span class="list-item_top_start">L</span>
+                <span class="list-item_top_middle">list B 3 top</span>
+                <span class="list-item_top_end">R</span>
+              </div>
+              <div class="list-item_center">
+                <span class="list-item_center_start">L</span>
+                <span class="list-item_center_middle">list B 3</span>
+                <span class="list-item_center_end">R</span>
+              </div>
+              <div class="list-item_bottom">
+                <span class="list-item_bottom_start">L</span>
+                <span class="list-item_bottom_middle">list B 3 bottom</span>
+                <span class="list-item_bottom_end">R</span>
+              </div>
+            </div>
+          </li>
+          <li class="list-item">
+            <div class="list-line">
+              <div class="list-item_top">
+                <span class="list-item_top_start">L</span>
+                <span class="list-item_top_middle">list B 4 top</span>
+                <span class="list-item_top_end">R</span>
+              </div>
+              <div class="list-item_center">
+                <span class="list-item_center_start">L</span>
+                <span class="list-item_center_middle">list B 4</span>
+                <span class="list-item_center_end">R</span>
+              </div>
+              <div class="list-item_bottom">
+                <span class="list-item_bottom_start">L</span>
+                <span class="list-item_bottom_middle">list B 4 bottom</span>
+                <span class="list-item_bottom_end">R</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li class="list-item">
+        <div class="list-line">
+          <div class="list-item_top">
+            <span class="list-item_top_start">L</span>
+            <span class="list-item_top_middle">list C top</span>
+            <span class="list-item_top_end">R</span>
+          </div>
+          <div class="list-item_center">
+            <span class="list-item_center_start">L</span>
+            <span class="list-item_center_middle">list C</span>
+            <span class="list-item_center_end">R</span>
+          </div>
+          <div class="list-item_bottom">
+            <span class="list-item_bottom_start">L</span>
+            <span class="list-item_bottom_middle">list C bottom</span>
+            <span class="list-item_bottom_end">R</span>
+          </div>
+        </div>
+      </li>
+      <li class="list-item">
+        <div class="list-line">
+          <div class="list-item_top">
+            <span class="list-item_top_start">L</span>
+            <span class="list-item_top_middle">list D top</span>
+            <span class="list-item_top_end">R</span>
+          </div>
+          <div class="list-item_center">
+            <span class="list-item_center_start">L</span>
+            <span class="list-item_center_middle">list D</span>
+            <span class="list-item_center_end">R</span>
+          </div>
+          <div class="list-item_bottom">
+            <span class="list-item_bottom_start">L</span>
+            <span class="list-item_bottom_middle">list D bottom</span>
+            <span class="list-item_bottom_end">R</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <script>
+    // const list = {}
+    // list.data = [{
+    //   content: [
+    //     {
+    //       content: [
+    //         { start: 'L', middle: 'list 1 top', end: 'R' },
+    //         { start: 'L', middle: 'list 1', end: 'R' },
+    //         { start: 'L', middle: 'list 1 bottom', end: 'R' },
+    //       ]
+    //     },
+    //     {
+    //       content: [
+    //         { start: 'L', middle: 'list 2 top', end: 'R' },
+    //         { start: 'L', middle: 'list 2', end: 'R' },
+    //         { start: 'L', middle: 'list 2 bottom', end: 'R' },
+    //       ],
+    //       subcontent: [
+    //         {
+    //           content: [
+    //             { start: 'L', middle: 'list 2 1 top', end: 'R' },
+    //             { start: 'L', middle: 'list 2 1', end: 'R' },
+    //             { start: 'L', middle: 'list 2 1 bottom', end: 'R' },
+    //           ]
+    //         },
+    //         {
+    //           content: [
+    //             { start: 'L', middle: 'list 2 2 top', end: 'R' },
+    //             { start: 'L', middle: 'list 2 2', end: 'R' },
+    //             { start: 'L', middle: 'list 2 2 bottom', end: 'R' },
+    //           ]
+    //         },
+    //         {
+    //           content: [
+    //             { start: 'L', middle: 'list 2 3 top', end: 'R' },
+    //             { start: 'L', middle: 'list 2 3', end: 'R' },
+    //             { start: 'L', middle: 'list 2 3 bottom', end: 'R' },
+    //           ]
+    //         },
+    //         {
+    //           content: [
+    //             { start: 'L', middle: 'list 2 4 top', end: 'R' },
+    //             { start: 'L', middle: 'list 2 4', end: 'R' },
+    //             { start: 'L', middle: 'list 2 4 bottom', end: 'R' },
+    //           ]
+    //         }
+    //       ]
+    //     },
+    //     {
+    //       content: [
+    //         { start: 'L', middle: 'list 3 top', end: 'R' },
+    //         { start: 'L', middle: 'list 3', end: 'R' },
+    //         { start: 'L', middle: 'list 3 bottom', end: 'R' },
+    //       ]
+    //     },
+    //     {
+    //       content: [
+    //         { start: 'L', middle: 'list 4 top', end: 'R' },
+    //         { start: 'L', middle: 'list 4', end: 'R' },
+    //         { start: 'L', middle: 'list 4 bottom', end: 'R' },
+    //       ]
+    //     }
+    //   ]
+    // }, {
+    //   content: [
+    //     {
+    //       content: [
+    //         { start: 'L', middle: 'list A top', end: 'R' },
+    //         { start: 'L', middle: 'list A', end: 'R' },
+    //         { start: 'L', middle: 'list A bottom', end: 'R' },
+    //       ]
+    //     },
+    //     {
+    //       content: [
+    //         { start: 'L', middle: 'list B top', end: 'R' },
+    //         { start: 'L', middle: 'list B', end: 'R' },
+    //         { start: 'L', middle: 'list B bottom', end: 'R' },
+    //       ], subcontent: [
+    //         {
+    //           content: [
+    //             { start: 'L', middle: 'list B 1 top', end: 'R' },
+    //             { start: 'L', middle: 'list B 1', end: 'R' },
+    //             { start: 'L', middle: 'list B 1 bottom', end: 'R' },
+    //           ]
+    //         },
+    //         {
+    //           content: [
+    //             { start: 'L', middle: 'list B 2 top', end: 'R' },
+    //             { start: 'L', middle: 'list B 2', end: 'R' },
+    //             { start: 'L', middle: 'list B 2 bottom', end: 'R' },
+    //           ]
+    //         },
+    //         {
+    //           content: [
+    //             { start: 'L', middle: 'list B 3 top', end: 'R' },
+    //             { start: 'L', middle: 'list B 3', end: 'R' },
+    //             { start: 'L', middle: 'list B 3 bottom', end: 'R' },
+    //           ]
+    //         },
+    //         {
+    //           content: [
+    //             { start: 'L', middle: 'list B 4 top', end: 'R' },
+    //             { start: 'L', middle: 'list B 4', end: 'R' },
+    //             { start: 'L', middle: 'list B 4 bottom', end: 'R' },
+    //           ]
+    //         }
+    //       ]
+    //     },
+    //     {
+    //       content: [
+    //         { start: 'L', middle: 'list C top', end: 'R' },
+    //         { start: 'L', middle: 'list C', end: 'R' },
+    //         { start: 'L', middle: 'list C bottom', end: 'R' },
+    //       ]
+    //     },
+    //     {
+    //       content: [
+    //         { start: 'L', middle: 'list D top', end: 'R' },
+    //         { start: 'L', middle: 'list D', end: 'R' },
+    //         { start: 'L', middle: 'list D bottom', end: 'R' },
+    //       ]
+    //     }
+    //   ]
+    // }]
+    // list.component = (() => {
+    //   let arr = []
+    //   const listLine = (arr) => {
+    //     listItem = []
+    //     arr.forEach( (line, i) => {
+    //       let v_class = ['top','center','bottom']
+    //       v_class.forEach( (i_class, n) => {
+    //         let h_class = Object.keys(arr[i])[n]
+    //         let n_node = line[h_class]
+    //         listItem.push('div', { class: 'list-item_'+i_class }, [
+    //           ['span', { class: 'list-item_'+i_class+'_'+h_class }, n_node ]
+    //         ])
+    //       })
+    //     })
+    //     return [ 'div', { class: 'list-line' }, listItem ]
+    //   }
+    //   console.dir(arr)
+    //   arr.push(listLine(list.data[0].content[0].content))
+    //   return arr
+    // })()
+
+    // list.view = createElement(['h3', { id: 'h3' }, 'New Element'])
+    // let box = document.getElementById('box')
+
+  </script>
+  <script data-source-show>
+    // result.js(JSON.stringify(list.data[0].content[0].content,0,2))
+    // result.js(JSON.stringify(list.component,0,2))
+    // console.log(createElement([['h3', { id: 'h3' }, 'New Element']]))
+  </script>
+  <script data-source-show>
+    result.html(`<div class="box" id="box1"></div>`, () => {
+        box1.prepend(createElement(['h3', { id: 'h3' }, ['span', 'Foo']]))
+      })
+      result.js(box1.innerHTML)
+  </script>
+</body>
+
+</html>

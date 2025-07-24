@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>test: notification clipboard</title>
+  <link rel="stylesheet" href="../../../lib/native-style.css">
+  <link rel="stylesheet" href="../../../lib/visibility.css">
+  <link rel="stylesheet" href="./notification.clipboard.css">
+  <script src="../../../lib/clipboard.min.js"></script>
+  <script src="../notification.js"></script>
+  <script src="./notification.clipboard.js"></script>
+</head>
+<body>
+  <h1>Test notification clipboard</h1>
+  <main>
+    <button onclick="notification.clipboard(this.textContent)">COPY ME</button>
+  </main>
+  <span id="notification_clipboard">NOTIFICATION</span>
+</body>
+</html>

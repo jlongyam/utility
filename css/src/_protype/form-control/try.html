@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+<style>
+/* Demo */
+#accents, #custom {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  gap: 1rem;
+}
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2.5%;
+}
+/*#accents > div, #custom > div, #controls {
+  display: grid;
+  gap: 0.5rem;
+}*/
+/* Require */
+*,*:before, *:after {
+  box-sizing: border-box;
+}
+body {
+  line-height: 1.5;
+}
+/* Setting an accent colour */
+:root{
+  accent-color : #696;
+}
+#accents input {
+  -webkit-appearance: revert;
+  appearance: revert;
+}
+/* Creating the boxes */
+input:where([type="checkbox"], [type="radio"]){
+  -webkit-appearance : none;
+  appearance         : none;
+  width              : 22px;
+  height             : 22px;
+  margin             : calc(0.75em - 11px) 0.25rem 0 0;
+  vertical-align     : top;
+  border             : 2px solid #ddd;
+  border-radius      : 4px;
+  background         : #fff no-repeat center center;
+}
+
+input[type="radio"]{
+  border-radius : 50%;
+}
+/* Active and focused states */
+input:where([type="checkbox"], [type="radio"]):where(:active:not(:disabled), :focus){
+  border-color : #696;
+  outline      : none;
+}
+/* Disabled state */
+input:where([type="checkbox"], [type="radio"]):disabled{
+  background : #eee;
+}
+/* Checked state */
+input[type="checkbox"]:checked{
+  background-image : url('checkbox.svg');
+}
+input[type="radio"]:checked{
+  background-image : url('radio.svg');
+}
+/* Sharing styling with other input controls */
+input,
+textarea,
+select{
+  border        : 2px solid #ddd;
+  border-radius : 4px;
+  background    : #fff no-repeat center center;
+  color         : #000;
+}
+
+:is(input, textarea, select):where(:active:not(:disabled), :focus){
+  border-color : #696;
+  outline      : none;
+}
+
+:is(input, textarea, select):disabled{
+  background : #eee;
+  color      : #000;
+}
+
+input:where([type="checkbox"], [type="radio"]){
+  -webkit-appearance : none;
+  appearance         : none;
+  width              : 22px;
+  height             : 22px;
+  margin             : calc(0.75em - 11px) 0.25rem 0 0;
+  vertical-align     : top;
+}
+
+input[type="radio"]{
+  border-radius : 50%;
+}
+
+
+</style>
+</head>
+<body>
+<form id="accents">
+        <div>
+          Checkboxes:
+          <label><input type="checkbox" checked=""> Checked</label>
+          <label><input type="checkbox"> Unchecked</label>
+          <label><input type="checkbox" disabled=""> Disabled</label>
+        </div>
+        <div>
+          Radio buttons:
+          <label><input type="radio" name="accent-radio" checked=""> Checked</label>
+          <label><input type="radio" name="accent-radio"> Unchecked</label>
+          <label><input type="radio" name="accent-radio" disabled=""> Disabled</label>
+        </div>
+      </form>
+<form id="custom">
+        <div>
+          Checkboxes:
+          <label><input type="checkbox" checked=""> Checked</label>
+          <label><input type="checkbox"> Unchecked</label>
+          <label><input type="checkbox" disabled=""> Disabled</label>
+        </div>
+        <div>
+          Radio buttons:
+          <label><input type="radio" name="custom-radio" checked=""> Checked</label>
+          <label><input type="radio" name="custom-radio"> Unchecked</label>
+          <label><input type="radio" name="custom-radio" disabled=""> Disabled</label>
+        </div>
+      </form>
+<form>
+        <div id="controls">
+          <input type="text" value="Single line text field">
+          <textarea rows="2">Multiple line text field</textarea>
+          <select>
+            <option>Select</option>
+            <option>Option</option>
+          </select>
+          <label><input type="checkbox" checked=""> Checkbox</label>
+          <label><input type="radio" checked=""> Radio button</label>
+        </div>
+      </form>
+</body>
+</html>

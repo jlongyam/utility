@@ -1,0 +1,28 @@
+:root {
+  --scrollbar_color-bg			: silver;
+  --scrollbar_color-fg			: gray;
+  --scrollbar_color-fg_hover	: #616161;
+  --scrollbar_color-fg_active	: #424242;
+}
+/* == Moz == */
+* { 
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar_color-fg) var(--scrollbar_color-bg);
+  }
+/* == Webkit == */
+*::-webkit-scrollbar {
+  width: 8px; /* no alternative to thin on firefox */
+  }
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar_color-bg);
+  }
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar_color-fg);
+  border-radius:0;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar_color-fg_hover);
+	}
+  *::-webkit-scrollbar-thumb:active {
+	background-color: var(--scrollbar_color-fg_active);
+	}

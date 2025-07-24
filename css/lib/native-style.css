@@ -1,0 +1,75 @@
+/* == global */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  vertical-align: inherit;
+  background-repeat: no-repeat;
+}
+
+/* == root */
+:root {
+  --margin_block: 1em 0;
+  --padding_block: 1em;
+}
+
+html {
+  /* fix layout */
+  height: 100%;
+  /* fix background-color on android webview */
+  background-color: white;
+  color: black;
+}
+
+body {
+  height: fit-content;
+  font: normal 400 1em/1.5em 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin: 0;
+  padding: 5%;
+  /* handle icon-font & emoji */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* == block */
+hr {
+  margin: var(--margin_block);
+}
+pre {
+  font: 1em/1.5 Consolas, monospace;
+  margin: var(--margin_block);
+}
+section {
+  margin: var(--margin_block);
+}
+p {
+  margin: var(--margin_block);
+}
+figure {
+  margin: var(--margin_block);
+}
+
+/* == table */
+table {
+  max-width: 100%;
+  margin: var(--margin-block);
+}
+td, th { 
+  padding: .25em;
+}
+tbody th {
+  text-align: left;
+}
+caption {
+  font-style: italic;
+  padding: .25em;
+  /*
+  text-align:;
+	caption-side:;
+  */
+}
+
+/* ==  */
+
+details {}
+summary {}

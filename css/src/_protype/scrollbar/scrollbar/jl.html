@@ -1,0 +1,45 @@
+<!doctype html>
+<html class="JL">
+<style>
+.JL {
+	--scrollbar_color-bg		: silver;
+	--scrollbar_color-fg		: gray;
+	--scrollbar_color-fg_hover	: #616161; /* +50*/
+	--scrollbar_color-fg_active	: #424242;/* +100 */
+}
+/* Works on Firefox */
+.JL {
+  
+  scrollbar-width: thin;
+  /* fail! scrollbar-width: 15px;*/
+  scrollbar-color: var(--scrollbar_color-fg) var(--scrollbar_color-bg);
+  }
+
+/* Works on Chrome, Edge, and Safari */
+.JL::-webkit-scrollbar {
+  width: 8px; /* no alternative to thin on firefox */
+}
+
+.JL::-webkit-scrollbar-track {
+  background: var(--scrollbar_color-bg);
+}
+
+.JL::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar_color-fg);
+  border-radius:0;
+  /*border: 0 solid var(--scrollbar_color-bg);*/
+}
+	.JL::-webkit-scrollbar-thumb:hover {
+		background-color: var(--scrollbar_color-fg_hover);
+	}
+	.JL::-webkit-scrollbar-thumb:active {
+		background-color: var(--scrollbar_color-fg_active);
+	}
+
+</style>
+<body>
+<script src="lorem/lorem.min.js"></script>
+<script>
+document.body.innerHTML =  lorem.sentence( 500 );
+</script>
+</body>
