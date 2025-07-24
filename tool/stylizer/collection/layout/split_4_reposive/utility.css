@@ -1,0 +1,48 @@
+﻿:root {
+  --font-serif: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  --font-code: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+}
+*,*:before,*:after{box-sizing:border-box}
+.ccL{height:100%}
+.dhD{overflow:hidden}
+.hpb{margin:0}
+.OoK{font-family:var(--font-serif)}
+.WKN{display:flex}
+.deU{flex-direction:row}
+.ohG{border-right:1px solid gray}
+.Dgh{width:50%}
+.nwc{flex-direction:column}
+.rDI{font-size:1em}
+.mLP{font-family:var(--font-code)}
+.sKz{width:100%}
+.nIT{display:block}
+.Gzs{padding:1em}
+.gxf{border-top:1px solid gray}
+.zTF{outline:0}
+.RyF{resize:none}
+.khm{border:0}
+.PWI{overflow:auto}
+@media screen and (max-width:320px){
+.ozn{flex-direction:column}
+.KIj{border-bottom:1px solid gray}
+.dra{border-right:0}
+.NuB{width:100%}
+}
+@media screen and (min-width:321px) and (max-width:375px){
+.TVm{flex-direction:column}
+.GwL{border-bottom:1px solid gray}
+.FoZ{border-right:0}
+.Ytm{width:100%}
+}
+@media screen and (min-width:376px) and (max-width:425px){
+.Kjj{flex-direction:column}
+.dYk{border-bottom:1px solid gray}
+.Dhd{border-right:0}
+.AYE{width:100%}
+}
+@media screen and (min-width:426px) and (max-width:768px){
+.nBi{flex-direction:column}
+.MFX{border-bottom:1px solid gray}
+.HOw{border-right:0}
+.fKn{width:100%}
+}

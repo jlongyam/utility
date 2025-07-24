@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>test: CSSUtility-config</title>
+  <link rel="stylesheet" href="../../lib/config-box.css">
+  <script src="../../lib/typeOf.min.js"></script>
+  <script src="../../lib/forEach.min.js"></script>
+  <script src="../../lib/createElement.min.js"></script>
+  <script src="../../lib/createFragment.min.js"></script>
+  <script src="../../lib/logs.min.js"></script>
+  <script src="../../lib/filesaver.min.js"></script>
+  <script src="../../lib/config-box.js"></script>
+  <script src="../css-utility.js"></script>
+  <script src="utility_config.js"></script>
+  <style>
+    :root {
+      --color: green
+    }
+
+    .external_class {
+      color: red;
+    }
+
+    .external_class2 {
+      color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Test CSSUtility-config</h1>
+  <div id="root">
+    <h2>Visual</h2>
+    <hgroup>
+      <h3 class="external_class2 $media-xx-small:before:content:'media-xx-small' external_class $color:black"></h3>
+      <h3 class="external_class $media-x-small:before:content:'media-x-small' $color:black"></h3>
+      <h3 class="external_class2 $media-small:before:content:'media-small' external_class $color:black"></h3>
+      <h3 class="external_class $media-medium:before:content:'media-medium' external_class2 $color:black"></h3>
+      <h3 class="external_class $media-large:before:content:'media-large' $color:black"></h3>
+      <h3 class="external_class $media-x-large:before:content:'media-x-large' $color:black"></h3>
+      <h3 class="$media-xx-large:before:content:'media-xx-large' external_class $color:black"></h3>
+    </hgroup>
+    <div
+      class="external_class2 $border:1px $border-color:silver $before:content:'Content_Before' $before:display:block $before:background-color:black $before:color:silver $before:padding:.5em">
+      <div class="$background-color:whitesmoke">
+        <div class="$padding:1em external_class $color:black">Example element within <span
+            class="font-wight:bold color:green external_class $color:black">data-utility 1</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="$background-color:black $color:silver">
+        <div class="$padding:1em"><span class="$media-xx-small:color:blue">media-xx-small</span> should <b>blue</b>
+        </div>
+        <div class="$padding:1em"><span class="$media-x-small:color:blue">media-x-small</span> should <b>blue</b></div>
+        <div class="$padding:1em"><span class="$media-small:color:blue">media-small</span> should <b>blue</b></div>
+        <div class="$padding:1em"><span class="$media-medium:color:blue">media-medium</span> should <b>blue</b></div>
+        <div class="$padding:1em"><span class="$media-large:color:blue">media-large</span> should <b>blue</b></div>
+        <div class="$padding:1em"><span class="$media-x-large:color:blue">media-x-large</span> should <b>blue</b></div>
+        <div class="$padding:1em"><span class="$media-xx-large:color:blue">media-xx-large</span> should <b>blue</b>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="$background-color:silver">
+        <div class="$cursor:pointer $color:black $padding:1em $hover:background-color:blue $hover:color:silver">Hover to
+          <span class="external_class $font-weight:bold">me!</span>
+        </div>
+        <div class="$padding:calc(1*3em) $background-color:#cddc39 external_class2">Calc test: should
+          <code>$padding:calc(1*3em)</code>
+        </div>
+        <div class="$padding:1em $background-color:var(--color)">test <code>$background-color:var(--color)</code> it
+          should: <b>green</b></div>
+        <div class="$padding:1em $border-left:5px_solid_red external_class2 external_class">Space in underscore in class
+          replace by space: <code>$border-left:<b>5px_solid_red</b></code>
+          <div>
+          </div>
+        </div>
+        <div
+          class="external_class2 $media-x-large:hover:before:color:red $border:1px $border-color:silver $before:content:'HOVER_ME_!' $before:display:block $before:background-color:black $before:color:silver $before:padding:.5em external_class">
+          declaration 5 state: <code>$media-x-large:hover:before:color:red</code> <b>It's work!</b></div>
+      </div>
+    </div>
+  </div>
+  <h2>Logs</h2>
+  <script>
+    logs([
+      'utility_config:',
+      JSON.stringify(utility_config, 0, 2)
+    ])
+    const classy = new CSSUtility()
+    let config_control = new ConfigBox('Control')
+    let config_report = new ConfigBox('Report')
+    config_control.start()
+    config_control.fixed()
+    config_control.createAction('Start', (e) => {
+      classy.data_classes = utility_config.classes
+      classy.data_alias = utility_config.alias
+      classy.start()
+      config_report.start()
+      config_report.fixed()
+      config_report.title = 'utility.innerHTML'
+      config_report.createText(utility.innerHTML)
+      e.target.parentElement.remove()
+      config_control.createAction('uglify', (e) => {
+        classy.uglify()
+        config_report.start()
+        config_report.fixed()
+        config_report.title = 'utility.innerHTML'
+        config_report.createText(utility.innerHTML)
+        e.target.parentElement.remove()
+        config_control.createAction('Comparison', (e) => {
+          config_report.start()
+          config_report.fixed()
+          config_report.title = 'DATA comparison'
+          config_report.createText('classy.data_alias')
+          config_report.createText(JSON.stringify(classy.data_alias))
+          config_report.createText('utility.alias')
+          config_report.createText(JSON.stringify(utility_config.alias))
+          e.target.parentElement.remove()
+          config_control.createAction('config', (e) => {
+            config_report.start()
+            config_report.fixed()
+            config_report.title = 'classy.data_config'
+            config_report.createText(classy.data_config)
+          })
+          config_control.createAction('style', (e) => {
+            config_report.start()
+            config_report.fixed()
+            config_report.title = 'classy.data_style'
+            config_report.createText(classy.data_style)
+          })
+          config_control.createAction('save config', (e) => {
+            classy.downloadCofig()
+          })
+          config_control.createAction('save CSS', (e) => {
+            classy.downloadCSS()
+          })
+          config_control.createAction('save DOM', (e) => {
+            classy.downloadHTML(root)
+          })
+        })
+      })
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>test: config-box</title>
+  <link href="config-box.css" rel="stylesheet">
+  <script src="config-box.js" defer></script>
+</head>
+
+<body>
+  <div id="config_box" class="config-box" style="width:250px">
+    <div class="config-box_head">
+      <span class="config-box_title">TITLE</span>
+      <span class="config-box_close" onclick="this.parentElement.parentElement.remove()"></span>
+    </div>
+    <div class="config-box_body">
+      <div class="config-box_field">
+        <span class="config-box_text">Choose only one</span>
+        <div class="config-box_switch">
+          <span class="config-box_switch-item">switch item 1</span>
+          <span class="config-box_switch-item">switch item long text long long text</span>
+          <span class="config-box_switch-item active">switch item 3</span>
+        </div>
+      </div>
+      <div class="config-box_field">
+        <div class="config-box_choose">
+          <span class="config-box_choose-item active">choose item 1</span>
+          <span class="config-box_choose-item">choose item 2</span>
+          <span class="config-box_choose-item">choose item 3</span>
+        </div>
+      </div>
+      <div class="config-box_field">
+        <span class="config-box_input" contenteditable="true" spellcheck="false" onfocus="this.textContent=''">input here ...</span>
+      </div>
+      <div class="config-box_field">
+        <span class="config-box_action">Action</span>
+        <div class="config-box_text"><b>*</b>Example</div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+﻿<html lang="en" class="ccL dhD"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <title>minifier</title>
+  <link rel="stylesheet" href="lib/root.css">
+  <link rel="stylesheet" href="lib/utility.css">
+  <script src="lib/filesaver.min.js"></script>
+  <script src="lib/terser.min.js"></script>
+   <!--
+    https://cdn.jsdelivr.net/npm/source-map@0.7.3/dist/source-map.js
+    https://cdn.jsdelivr.net/npm/terser/dist/bundle.min.js
+  -->
+</head>
+
+<body class="WKN nwc ccL hpb OoK dhD">
+  <header>
+    <select id="selector" class="rDN fWq rDI oMb sKz PYm zTF">
+      <option selected="" disabled="">Select Minifier</option>
+      <option value="javascript">Javascript</option>
+      <!-- <option value="css">CSS</option> -->
+      <!-- <option value="html">HTML</option> -->
+    </select>
+  </header>
+  <div class="nBi Kjj TVm ozn ccL WKN deU">
+    <div class="MFX HOw fKn dYk Dhd AYE GwL FoZ Ytm KIj dra NuB ohG Dgh ccL WKN nwc">
+      <div class="">
+        <input disabled="" id="file_input" class="rDI mLP sKz hpb nIT Gzs" type="file">
+      </div>
+      <div class="dhD ccL gxf">
+        <textarea disabled="" id="ta_input" placeholder="Paste here ..." class="rDI Gzs sKz hpb zTF RyF khm ccL PWI mLP"></textarea>
+      </div>
+    </div>
+    <div class="fKn AYE Ytm NuB ccL Dgh dhD WKN nwc">
+      <div class="dhD ccL">
+        <textarea disabled="" id="ta_output" placeholder="Result ..." class="rDI ccL RyF sKz khm zTF PWI hpb Gzs mLP"></textarea>
+      </div>
+      <div class="gxf Gzs">
+        <button disabled="" id="btn_minify" class="rDI">Minify</button>
+        <button disabled="" id="btn_save" class="rDI">Save</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    let
+      selector = document.getElementById('selector'),
+      btn_minify = document.getElementById('btn_minify'),
+      btn_save = document.getElementById('btn_save'),
+      file_name = '',
+      file_extension = '',
+      selected_option = ''
+      ;
+    selector.addEventListener('change', (e)=> {
+      file_input.removeAttribute('disabled')
+      file_input.value = ''
+      ta_input.removeAttribute('disabled')
+      ta_output.removeAttribute('disabled')
+      let selected_value = selector.options[selector.selectedIndex].value
+      if(selected_value === 'javascript') {
+        file_name = 'default.js'
+        file_extension = 'js'
+      }
+      if(selected_value === 'css') {
+        file_name = 'default.css'
+        file_extension = 'css'
+      }
+      if(selected_value === 'html') {
+        file_name = 'default.html'
+        file_extension = 'html'
+      }
+      selected_option = selected_value
+    })
+    file_input.addEventListener('change', function (e) {
+      btn_minify.removeAttribute('disabled')
+      btn_save.removeAttribute('disabled')
+      const file = e.target.files[0]
+      file_name = file.name.replace('.'+file_extension, '') + '.min.'+file_extension
+      const reader = new FileReader()
+      reader.addEventListener('load', function () {
+        ta_input.value = reader.result
+      })
+      reader.readAsText(file)
+    })
+    ta_input.addEventListener('input', ()=> {
+      btn_minify.removeAttribute('disabled')
+      btn_save.removeAttribute('disabled')
+    })
+    btn_minify.addEventListener('click', ()=> minifyTA() )
+    btn_save.addEventListener('click', ()=> saveFile() )
+    function minifyTA() {
+      if( selected_option === 'javascript') {
+        // Terser.minify([STRING]/*,{sourceMap:true}*/) .then((e)=>{
+        //    console.log(e.code)
+        //    console.log(e.map)
+        // })
+        Terser.minify([ta_input.value]).then(result => {
+          ta_output.value = result.code
+        })
+      }
+      if( selected_option === 'css') {
+        ta_output.value = ta_input.value.replace(/(\/\*[^]+?\*\/|\s)+/g, " ").replace(/^ |([ ;]*)([^\w:*.#% -])([ ;]*)|\*?(:) */g, "$2$4")
+      }
+      if( selected_option === 'html' ) {
+        //ta_output.value = ta_input.value.replace(/(<!--[^]+?->|\s)+/g," ").replace(/ (?=<|$)|<\/[tl].>|<.p> *(<[p/])| ?\/?(>)/gi, "$1$2")
+      }
+    }
+    
+    function saveFile() {
+      var file = new File([ta_output.value], file_name, { type: 'text/'+selected_option+';charset=utf-8' })
+      saveAs(file)
+    }
+  </script>
+
+</body></html>
