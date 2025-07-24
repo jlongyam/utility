@@ -1,0 +1,31 @@
+.console-container {
+  display: block;
+  border: 1px dotted silver;
+  padding: 1em;
+}
+.console-line {
+  border-bottom: 2px solid gray;
+  padding: 5px;
+  margin: 0;
+  font-family: Consolas, monospace;
+  font-size: 15px;
+  overflow-x: auto;
+  }
+  .console-line_log { color: #5e5e5e; }
+  .console-line_error { color: red; }
+  .console-line_warn { color: orange; }
+  .console-line_debug { color: green; }
+script.expose {
+  color: #000;
+  display: block;
+  white-space: pre;
+  font-family: Consolas, monospace;
+  font-size: 15px;
+  padding: 0 5px 5px 5px;
+  border: 2px solid gray;
+  border-left: 15px solid gray;
+  overflow-x: auto;
+  }
+  script.expose:first-line {
+    line-height: .25;/* remove initial white-space */
+    }

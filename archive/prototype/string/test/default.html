@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+  <title>test: string default</title>
+  <link rel="stylesheet" href="../../../lib/native-style.css">
+  <script src="../../../lib/ua-parser.pack.js"></script>
+  <script src="../../../lib/detect.min.js"></script>
+  <script src="../../../module/result/dist/result-hilight.min.js"></script>
+</head>
+<body>
+  <h1>Test string default</h1>
+  <h2>constructor</h2>
+  <section>
+    <script data-source-show="true">
+      const a = new String("Hello World")
+      const b = String("Hello World")
+      result.js(a instanceof String)
+      result.js(b instanceof String)
+      result.js(typeOf(a))
+      result.js(typeOf(b))
+      result.js(a === 'Hello World')
+      result.js(b === 'Hello World')
+      result.js(a.valueOf())
+      result.js(typeOf(a.toString()))
+    </script>
+  </section>
+  <h2>Properties</h2>
+  <section>
+    <h3>length</h3>
+    <script data-source-show="true">
+      let str = 'Hello World'
+      let l = str.length
+      result.js(l)
+    </script>
+  </section>
+  <h2>Method Core</h2>
+  <section>
+    <h3>at</h3>
+    <script data-source-show="true">result.js('Hello World'.at(6))</script>
+    <h3>charAt</h3>
+    <script data-source-show="true">result.js('Hello World'.charAt(0))</script>
+    <h3>charCodeAt</h3>
+    <script data-source-show="true">result.js('Hello World'.charCodeAt(2))</script>
+    <h3>codePointAt</h3>
+    <script data-source-show="true">result.js('Hello World'.codePointAt(2))</script>
+    <h3>concat</h3>
+    <script data-source-show="true">result.js('Hello World'.concat(' !', '.'))</script>
+    <h3>endsWith</h3>
+    <script data-source-show="true">result.js('Hello World'.endsWith('d'))</script>
+    <h3>includes</h3>
+    <script data-source-show="true">result.js('Hello World'.includes('rl'))</script>
+    <h3>indexOf</h3>
+    <script data-source-show="true">result.js('Hello World'.indexOf('We'))</script>
+    <h3>lastIndexOf</h3>
+    <script data-source-show="true">result.js('Hello World'.lastIndexOf('o'))</script>
+    <h3>padEnd</h3>
+    <script data-source-show="true">result.js(str.padEnd(l+3,'.'))</script>
+    <h3>padStart</h3>
+    <script data-source-show="true">result.js(str.padStart(l+3,'.'))</script>
+    <h3>repeat</h3>
+    <script data-source-show="true">result.js('Hello World'.repeat(2))</script>
+    <h3>replace</h3>
+    <script data-source-show="true">result.js('Hello World'.replace('o','Z'))</script>
+    <h3>replaceAll</h3>
+    <script data-source-show="true">result.js('Hello World'.replaceAll('o','Z'))</script>
+    <h3>search</h3>
+    <script data-source-show="true">result.js('Hello World'.search('o'))</script>
+    <h3>slice</h3>
+    <script data-source-show="true">result.js(str.slice(6,l))</script>
+    <h3>split</h3>
+    <script data-source-show="true">
+      result.js(str.split(' '))
+      result.js(str.split(''))
+      result.js(str.split('',5))
+    </script>
+    <h3>startsWith</h3>
+    <script data-source-show="true">result.js('Hello World'.startsWith('He'))</script>
+    <h3>toLowerCase</h3>
+    <script data-source-show="true">result.js('Hello World'.toLowerCase())</script>
+    <h3>toUpperCase</h3>
+    <script data-source-show="true">result.js('Hello World'.toUpperCase())</script>
+    <h3>trim</h3>
+    <script data-source-show="true">result.js('"'+'  Hello World  '.trim()+'"')</script>
+    <h3>trimStart</h3>
+    <script data-source-show="true">result.js('"'+'  Hello World  '.trimStart()+'"')</script>
+    <h3>trimEnd</h3>
+    <script data-source-show="true">result.js('"'+'  Hello World  '.trimEnd()+'"')</script>
+  </section>
+  <h2>Method DOM</h2>
+  <section>
+    <h3>anchor</h3>
+    <script data-source-show="true">result.js(str.anchor('hello_world'))</script>
+    <h3>big</h3>
+    <script data-source-show="true">result.js(str.big())</script>
+    <h3>blink</h3>
+    <script data-source-show="true">result.js(str.blink())</script>
+    <h3>bold</h3>
+    <script data-source-show="true">result.js(str.bold())</script>
+    <h3>fixed</h3>
+    <script data-source-show="true">result.js(str.fixed())</script>
+    <h3>fontcolor</h3>
+    <script data-source-show="true">result.js(str.fontcolor('red'))</script>
+    <h3>fontsize</h3>
+    <script data-source-show="true">result.js(str.fontsize('1em'))</script>
+    <h3>italics</h3>
+    <script data-source-show="true">result.js(str.italics())</script>
+    <h3>link</h3>
+    <script data-source-show="true">result.js(str.link('about:blank'))</script>
+    <h3>small</h3>
+    <script data-source-show="true">result.js(str.small())</script>
+    <h3>strike</h3>
+    <script data-source-show="true">result.js(str.strike())</script>
+    <h3>sub</h3>
+    <script data-source-show="true">result.js(str.sub())</script>
+    <h3>sup</h3>
+    <script data-source-show="true">result.js(str.sup())</script>
+  </section>
+  <h2>More</h2>
+  <section>
+    <ul>
+      <li>isWellFormed</li>
+      <li>localCompare</li>
+      <li>match</li>
+      <li>matchAll</li>
+      <li>normalize</li>
+      <li>raw</li>
+      <li>toLocaleLowerCase</li>
+      <li>toLocaleUpperCase</li>
+    </ul>
+    <h3>iterator</h3>
+    <script data-source-show="true">
+      let s = "The quick red fox jumped over the lazy dog's back."
+      let it = str[Symbol.iterator]()
+      let char = it.next()
+      while (!char.done && char.value !== ' ') {
+        result.js(char.value)
+        char = it.next()
+      }
+    </script>
+  </section>
+  <h2>Depreceated</h2>
+  <section>
+    <ul>
+      <li>All DOM method</li>
+      <li>substr</li>
+    </ul>
+  </section>
+  <h2>See also</h2>
+  <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Text_formatting">Text formatting</a></p>
+</body>
+</html>

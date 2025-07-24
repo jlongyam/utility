@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+  <title>functions intro</title>
+  <link rel="stylesheet" href="../../../lib/native-style.css">
+  <script src="../../../lib/result-hilight.min.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>Functions Intro</h1>
+  </header>
+  <main>
+    <details>
+      <summary><h2>arguments</h2></summary>
+      <script data-source-show>
+        function joker( one, two, three ) {
+          // translate arguments to array
+          //const args = Array.prototype.slice.call(arguments)
+          // or
+          //const args = Array.from(arguments);
+          // or
+          const args = [...arguments]
+          return args
+        }
+        result.js( JSON.stringify( joker('one', 'two', 'three')))
+      </script>
+    </details>
+    <details>
+      <summary><h2>rest parameter</h2></summary>
+      <script data-source-show=>
+        function sum( ...args ) {
+          result.js( typeof args + ': ' +Array.isArray( args ) )
+          let total = 0
+          for( const arg of args) {
+            total += arg
+          }
+          return total
+        }
+        result.js( sum( 1,2,3) )
+      </script>
+    </details>
+    <details>
+      <summary><h2><code>get</code></h2></summary>
+      <script data-source-show>
+        let obj = {
+          get foo() {
+            return 'bar'
+          }
+        }
+        result.js( obj.foo )
+      </script>
+    </details>
+    <details>
+      <summary><h2>set</h2></summary>
+      <script data-source-show>
+        const myConst = {
+          arr: [],
+          set val( str ) {
+            this.arr.push(str)
+          }
+        }
+        myConst.val = 'first'
+        myConst.val = 'last'
+        result.js( ''+myConst.arr )
+        // remove set
+        delete myConst.val
+        result.js( typeof myConst.val )
+      </script>
+      <script data-source-show>
+        const o = { a: 'first' }
+        Object.defineProperty( o, 'b', {
+          set( str ) {
+            this.a += ' ' +str
+          }
+        })
+        o.b = 'name'
+        result.js ( JSON.stringify(o) )
+      </script>
+    </details>
+    <details>
+      <summary><h2>method</h2></summary>
+      <script data-source-show>
+        const foo = {
+          bar() {
+            return 'baz'
+          }
+        }
+        result.js(foo.bar())
+      </script>
+    </details>
+    <details>
+      <summary><h2>arrow function</h2></summary>
+      <script data-source-show>
+        (()=> result.js(document.currentScript.innerHTML.trim()) )()
+      </script>
+    </details>
+  </main>
+</body>
+
+</html>

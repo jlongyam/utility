@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <title>test: createFragment</title>
+  <link rel="stylesheet" href="../../lib/native-style.css">
+  <link rel="stylesheet" href="../../lib/box.css">
+  <script src="../../lib/result-hilight.min.js"></script>
+  <script src="createFragment.js"></script>
+</head>
+
+<body>
+  <h1>Test</h1>
+  <section>
+    <h2><code>createFragment</code></h2>
+    <script data-source-show>
+      result.html(`<div class="box" id="box"></div>`, () => {
+        box.prepend(createFragment('h3', { textContent: 'New Fragment' }))
+      })
+      result.js(box.innerHTML)
+    </script>
+  </section>
+  <section>
+    <h2><code>createFragment<mark>s</mark></code></h2>
+    <script data-source-show>
+      result.html(`<div class="box" id="box2"></div>`)
+      createFragments(box2, [
+        ['h3', 'A heading 3' ],
+        ['ul', { style: 'color: blue' },
+          ['li', 'list item 1'],
+          ['li', 'list item 2'],
+          ['li', 'list item 3']
+        ],
+        ['p', { class: 'box' },
+          ['button', { onclick: 'alert(9)' } ,'Click']
+        ]
+      ])
+      result.js(box2.innerHTML)
+    </script>
+  </section>
+</body>
+
+</html>

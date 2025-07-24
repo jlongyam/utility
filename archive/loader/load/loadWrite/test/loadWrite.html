@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>test: loadWrite</title>
+  <script src="../loadWrite.js"></script>
+  <script src="inc/loader.js"></script>
+</head>
+<body>
+  <pre id="pre"></pre>
+  <script>
+    insertHTML('<div>Inserted by body <b>script</b></div>', pre)
+    insertHTML('<div>Using extenal <b>function.js<b> function</div>', pre)
+    insertHTML('<div>'+text+'</div>', pre)
+  </script>
+</body>
+</html>

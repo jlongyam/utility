@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>[ui-ignore]</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<style type="text/css">
+		body {
+			margin: 0 auto;
+			max-width: 40em;
+			width: 88%;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="app"></div>
+
+	<script src="ui.js"></script>
+	<script>
+		let {sync, display} = ui;
+
+		// Create a sync
+		let data = sync({
+			heading: 'My Counter',
+			emoji: '👋'
+		});
+
+		// Create a template
+		function template () {
+			let {heading, emoji} = data;
+			return `
+				<h1>${heading} ${emoji}</h1>
+				<details>
+					<summary><strong>Tap me to open</strong></summary>
+					This element is not ignored.
+				</details>
+				<details ui-ignore>
+					<summary><strong>Tap me to open</strong></summary>
+					This element is ignored
+				</details>
+				<p>Open both sections, then click the button.</p>
+				<p><button data-render>Click to re-render</button></p>`;
+		}
+
+		// Create a reactive component
+		display('#app', template);
+
+		// Update emoji
+		let emojiOptions = ['👋', '🎉'];
+		let currentEmoji = 0;
+		document.addEventListener('click', function (event) {
+			if (!event.target.matches('[data-render]')) return;
+			currentEmoji = currentEmoji === 0 ? 1 : 0;
+			data.emoji = emojiOptions[currentEmoji];
+		});
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>test: router</title>
+  <link rel="stylesheet" href="../../lib/native-style.css">
+  <link rel="stylesheet" href="../../lib/box.css">
+  <script src="router.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1><a href="router.html">Test</a></h1>
+  </header>
+  <main>
+    <section>
+      <h3>Registered</h3>
+      <ul class="ul">
+        <li><a href="#/Whatever"></a></li>
+        <li><a href="#/Actor/Joker/Delete"></a></li>
+        <li><a href="#/another/NAME"></a></li>
+        <li><a href="#/Home/"></a></li>
+        <li><a href="#/Sweet/Home/"></a></li>
+        <li><a href="#/Home/Alone"></a></li>
+        <li><a href="#/result/ABC"></a></li>
+      </ul>
+      <div class="box">
+        <pre id="pre" style="font-weight: bold; font-size: 1em;">WELCOME</pre>
+      </div>
+      <h3>Unregisterd</h3>
+      <p>Catched by <code>#/:any/:arg</code></p>
+      <ul class="ul">
+        <li><a href="#/So-what?"></a></li>
+        <li><a href="#/Hello/"></a></li>
+        <li><a href="#/Naaah"></a></li>
+        <li><a href="#/Yes/No/Accept/"></a></li>
+      </ul>
+    </section>
+  </main>
+  <script>
+    let a_ul = document.querySelectorAll('.ul')
+    a_ul.forEach(ul => {
+      let a_li = ul.children
+      for (let li of a_li) {
+        let a = li.children[0]
+        a.textContent = a.getAttribute('href')
+      }
+    })
+    function display(str) {
+      pre.innerHTML = str
+    }
+    let router = new Router({
+      '#/:N': (N) => { display('All routes') }
+      , '#/:x/:z/:Delete': (x, z, commad) => { display(x + ' ,' + z + ' , ' + commad) } // BUG
+      , '#/:y/:n': (y, n) => { display(y + ' ,' + n) }
+      , '#/Sweet/Home/': (action) => { display('So Sweet') }
+      , '#/Home/': () => { display('we are home') }
+      , '#/Home/:action': (action) => { display('I a\'m ' + action) }
+      , '#/result/:res': (res) => { display('result is: ' + res) }
+    })
+  </script>
+</body>
+
+</html>

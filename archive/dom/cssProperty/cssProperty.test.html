@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>test: cssProperty</title>
+  <link rel="stylesheet" href="../../lib/native-style.css">
+  <script src="../../lib/result-hilight.min.js"></script>
+  <script src="cssProperty.js"></script>
+</head>
+
+<body>
+  <h1>Test <code>cssProperty</code></h1>
+  <section>
+    <h2>Create fake style and dom</h2>
+    <script data-source-show="true">
+      result.css(`
+        :root {
+          --font_color: red;
+        }
+        div[id] {
+          color: var(--font_color);
+          font-weight: bold;
+        }
+        div[id]:not(:last-child) {
+          margin-bottom: .5em
+        }
+      `)
+    </script>
+  </section>
+  <section>
+    <h2>Display get and set</h2>
+    <p>When no el argument, it's point to <b>root</b>.</p>
+    <script data-source-show="true">
+      result.html(`
+        <div id="div_1">This is demo element 1</div>
+        <div id="div_2">This is demo element 2</div>
+      `)
+      result.js( cssProperty.get('--font_color') )
+      result.js( cssProperty.get('font-weight', div_1) )
+      // set :root
+      cssProperty.set('--font_color', 'purple')
+      result.js( cssProperty.get('--font_color'))
+      // set: <element>
+      cssProperty.set('color', 'orange', div_2)
+      result.js( div_2.outerHTML )
+    </script>
+  </section>
+</body> 
+
+</html>

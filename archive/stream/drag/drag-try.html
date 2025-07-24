@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>try: drag</title>
+  <script src="offset.js"></script>
+  <style>
+    html, body, #drag_area { height: 100%;box-sizing: border-box;}
+    body { margin: 0; padding: 2.5%;}
+    #drag_area {
+      border: 2px solid silver;
+      padding: 5%;
+    }
+    #drag_item {
+      display: block;
+      position: fixed;
+      box-sizing: border-box;
+      border: 2px solid gray;
+      padding: .5em;
+      font-family: monospace;
+      font-size: 1.25em;
+      background-color: silver;
+      color: black;
+      left: 100px;
+      top: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div id="drag_area">
+    <div id="drag_item" draggable="true">DRAG</div>
+  </div>
+  <script>
+    var drag_area = document.querySelector('#drag_area')
+    var drag_item = document.querySelector('#drag_item')
+    //
+    var drag_item_ofset = offset(drag_item)
+    console.log(drag_item_ofset)
+    //
+    drag_area.addEventListener('dragover', (e)=> {
+      e.preventDefault()
+      console.log('drag_area:dragover, target: '+e.target.id) // produce 2 id: drag_area+drag_item
+    }, false)
+    drag_area.addEventListener('dragenter', (e)=> {
+      console.log('drag_area:dragenter, target: '+e.target.id) // produce 2 id: drag_area+drag_item
+    })
+    drag_area.addEventListener('dragleave', (e)=> {
+      console.log('drag_area:dragleave, target: '+e.target.id) // produce 2 id: drag_area+drag_item
+    })
+    drag_area.addEventListener('drop', (e)=> {
+      e.preventDefault()
+      console.log('drag_area:drop, target: '+e.target.id) // produce 1 id: drag_area
+      console.log(e)
+    })
+    //
+    drag_item.addEventListener('drag', (e)=> {
+      console.log('drag_item:drag, target: '+e.target.id) // produce 1 id: drag_item
+    })
+    drag_item.addEventListener('dragstart', (e)=> {
+      console.log('drag_item:dragstart, target: '+e.target.id) // produce 1 id: drag_item
+    })
+    drag_item.addEventListener('dragend', (e)=> {
+      console.log('drag_item:dragend, target: '+e.target.id) // produce 1 id: drag_item
+      console.log(e)
+    })
+  </script>
+</body>
+</html>

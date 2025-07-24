@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>test: forEach</title>
+  <link rel="stylesheet" href="../../../lib/native-style.css">
+  <script src="../../../module/result/dist/result-hilight.min.js"></script>
+  <script src="../forEach.js"></script>
+</head>
+<body>
+  <h1>Test Object.forEach</h1>
+  <section>
+    <h2>Value</h2>
+    <script data-source-show="true">
+      var
+        obj = {
+          one: 'One',
+          two: 'Two',
+          three: 'Three'
+        },
+        out = []
+        ;
+      obj.forEach( v => {
+        out.push(v)
+      })
+      result.js(JSON.stringify(out))
+    </script>
+  </section>
+  <section>
+    <h2>Key and Value</h2>
+    <script data-source-show="true">
+      out = []
+      obj.forEach( ( val, key ) => {
+        out.push({ key: val })
+      })
+      result.js(JSON.stringify(out))
+    </script>
+  </section>
+  <section>
+    <h2>Context</h2>
+    <script>
+      result.js('TODO')
+    </script>
+  </section>
+</body>
+</html>

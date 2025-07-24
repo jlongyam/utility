@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+  <title>Try-context-menu</title>
+<!--<script src="https://unpkg.com/es7-object-polyfill"></script>-->
+  <script src="ctxmenu.js"></script>
+
+<style>
+:root {
+  --sans-font: -apple-system, BlinkMacSystemFont, "Avenir Next", Avenir,
+    "Nimbus Sans L", Roboto, "Noto Sans", "Segoe UI", Arial, Helvetica,
+    "Helvetica Neue", sans-serif;
+  --mono-font: Consolas, Menlo, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  
+  --ctx_border-color: #d9d9d9;
+}
+html, body { height:100%;}
+#ctx_area {
+  border: 2px solid silver;
+  height: 200px;
+}
+/* theme */
+
+.ctxmenu {
+  font-family: var(--sans-font); /* @window: Segoe UI*/
+  box-shadow: none;
+  border-color: var(--ctx_border-color);
+  font-size: 12px;
+}
+.ctxmenu li {
+  padding-left: 15px;
+}
+.ctxmenu li > span {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /*align-items: center;*/
+  padding-right: 10px;
+}
+.ctxmenu li > span span:first-child {
+  padding: 0 10px 0 0;
+}
+.ctxmenu li > span *:last-child {
+  padding-right: 0;
+  color: gray;
+}
+.ctxmenu li.divider {
+  border-color: var(--ctx_border-color);
+  margin: 5px 3px;
+}
+</style>
+</head>
+<body>
+  <div id="ctx_area"></div>
+  <p><a href="javascript:location.reload()">Reload</a></p>
+<script>
+// menu definition is an array of objects
+var menuDefinition = [
+  {
+    /*icon: 'ad.png',*/
+    text: '<span>Hello there</span><code>Ctrl+i</code>',
+    action: null
+  },
+  {
+    icon: 'ad.svg',
+    text: '<span>Another Long Line here</span><span>Alt+Ctrl+C</span>',
+    action: null
+  },
+  /*{ <html>: '<u>Underline</u>' },
+  { text: 'Forward' },
+  { text: 'Reload' },
+    { text: "Heading" },*/
+    {
+        text: "Action Item",
+        action: () => alert("Hello World!")
+    },
+    { isDivider: true },
+    {
+        text: "Anchor Item",
+        href: "",
+        disabled: true
+    },
+    {
+      text: "even more actions",
+                subMenu: [
+                    {
+                        text: "This is URL",
+                        href: '#!'
+                        },
+                       {
+                        text: 'more ...',
+                        subMenu: [
+                          {
+                            text: 'foo bar',
+                            action: null,
+                            icon: 'ad.png'
+                          }
+                        ]
+                       }
+                ],
+      subMenuAttributes: {
+        'class': 'other_submenu_class'
+      }
+    }
+]
+
+ctxmenu.attach( '#ctx_area', menuDefinition)
+</script>
+<script>
+/*Object.assign(window, {
+        showContextMenuForEvent: function (e) {
+            ctxmenu.show(menuExample, e, config);
+        },
+        showContextMenuForElement: function (element, e) {
+            e.stopPropagation();
+            ctxmenu.show(menuExample, element, config);
+        }*/
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>test: drag</title>
+  <style>
+    html, body, #drag_area { height: 100%;box-sizing: border-box;}
+    body { margin: 0; padding: 2.5%;}
+    #drag_area {
+      border: 2px solid rgb(196, 196, 196);
+      padding: 5%;
+    }
+    #drag_item {
+      display: block;
+      position: fixed;
+      box-sizing: border-box;
+      border: 2px solid rgb(128, 128, 128);
+      padding: .5em;
+      font-family: monospace;
+      font-size: 1.25em;
+      background-color: rgb(196, 196, 196);
+      color: rgb(0, 0, 0);
+      left: 100px;
+      top: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div id="drag_area">
+    <div id="drag_item" draggable="true">DRAG</div>
+  </div>
+  <script>
+    var drag_area = document.querySelector('#drag_area')
+    var drag_item = document.querySelector('#drag_item')
+    //
+    var
+      posX = 0,
+      posY = 0,
+      mouseX = 0,
+      mouseY = 0
+      ;
+    drag_item.addEventListener('mousedown', mouseDown, false);
+    window.addEventListener('mouseup', mouseUp, false);
+    function mouseDown(e) {
+      e.preventDefault();
+      posX = e.clientX - drag_item.offsetLeft;
+      posY = e.clientY - drag_item.offsetTop;
+      window.addEventListener('mousemove', moveElement, false);
+    }
+    function mouseUp() {
+      window.removeEventListener('mousemove', moveElement, false);
+    }
+    function moveElement(e) {
+      mouseX = e.clientX - posX;
+      mouseY = e.clientY - posY;
+      drag_item.style.left = mouseX + 'px';
+      drag_item.style.top = mouseY + 'px';
+    }
+    
+  </script>
+</body>
+</html>

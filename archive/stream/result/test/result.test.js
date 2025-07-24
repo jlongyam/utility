@@ -1,0 +1,1 @@
+result.js('Hello, from "result.test.js"')

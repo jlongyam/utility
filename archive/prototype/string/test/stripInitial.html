@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>test: stripInit</title>
+  <link rel="stylesheet" href="../../../lib/native-style.css">
+  <script src="../stripInitial.min.js"></script>
+  <script src="../../../module/result/dist/result-hilight.min.js"></script>
+</head>
+
+<body>
+  <h1>Test string stripInit</h1>
+  <script data-source-show="true">
+    result.html('<h2>Before</h2>')
+    result.html(`
+      <pre id="before">
+        body {
+          font-family: Monospace;
+          font-size: 1.3em;
+          line-height: 1.7em;
+          margin: 5%;
+          }
+        .expose {
+          display: block;
+          white-space: pre;
+          background-color: whitesmoke;
+          margin: 20px 0;
+          padding: 20px;
+          }
+        .result {
+          border-top: 20px solid #6a6a6a;
+          background-color: black;
+          color: silver;
+          margin: 0;
+          padding: 20px;
+          }
+      </pre>
+    `, () => {
+      result.css(`
+        pre {
+          font-size: 1em;
+          padding: 1em;
+          border: 1px solid silver;
+        }
+      `)
+    })
+    result.html('<h2>After</h2>')
+    result.html(`<pre id="after"></pre>`, () => {
+      after.innerHTML = before.innerHTML.stripInitial()
+    })
+  </script>
+</body>
+
+</html>

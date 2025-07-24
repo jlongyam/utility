@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>test: current</title>
+  <link rel="stylesheet" href="../../lib/native-style.css">
+  <script src="../../lib/ua-parser.pack.js"></script>
+  <script src="../../lib/detect.min.js"></script>
+  <script src="../../lib/prototype/getAll.min.js"></script>
+  <script src="../../lib/result-hilight.min.js"></script>
+  <script src="../current.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>Test</h1>
+  </header>
+  <main>
+    <section>
+      <h2><code>current</code></h2>
+      <script data-source-show>
+        result.data = ''
+        result.data += current()+'\n'
+        result.data += current.src()+'\n'
+        result.data += current.script()+'\n'
+        result.data += current.script.src()+'\n'
+        result.js(result.data)
+      </script>
+      <script data-source-show src="include.js"></script>
+    </section>
+  </main>
+</body>
+
+</html>

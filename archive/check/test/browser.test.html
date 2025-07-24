@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>test: typeOf</title>
+  <link rel="stylesheet" href="../../lib/native-style.css">
+  <script src="../../lib/result.min.js"></script>
+  <script src="../engine.js"></script>
+  <script src="../../lib/ua-parser.pack.js"></script>
+  <script src="../detect.min.js"></script
+  
+</head>
+
+<body>
+  <header>
+    <h1>Test detect</h1>
+  </header>
+  <main>
+    <section>
+      <h1><code>engine</code></h1>
+      <script data-source-show="true">
+        result.js(engine)
+      </script>
+    </section>
+    <section>
+      <h1><code>typeOf</code> and <code>typeClass</code></h1>
+      <script data-source-show="true">
+        result.examples = [
+          {},
+          [],
+          '',
+          null,
+          undefined,
+          /\\/g,
+          window,
+          document,
+          console,
+          new Map(),
+          new Set()
+        ]
+        result.list = []
+        result.examples.forEach(type=> {
+          result.list.push(typeOf(type)+' : '+typeClass(type))
+        })
+        result.js(result.list.join('\n'))
+      </script>
+    </section>
+    <section>
+      <h2><code>browser</code></h2>
+      <p>require <b><code>ua-parser</code></b></p>
+      <script data-source-show="true">
+        result.list = [
+          browser.engine,
+          browser.name,
+          browser.version,
+          browser.cpu,
+          browser.os.name,
+          browser.os.version
+        ]
+        result.js(JSON.stringify(result.list,0,2))
+      </script>
+    </section>
+    <section>
+      <h2>browser related detector</h2>
+      <script data-source-show="true">
+        result.js(colorScheme)
+        result.js(screen.width + ':' + screen.height)
+        result.js(online)
+      </script>
+    </section>
+  </main>
+
+</body>
+
+</html>

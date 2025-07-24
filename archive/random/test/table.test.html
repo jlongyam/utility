@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <title>test: random.table</title>
+  <link rel="stylesheet" href="../../lib/native-style.css">
+  <script src="../../lib/stripInitial.min.js"></script>
+  <script src="../../lib/toUpperFirst.min.js"></script>
+  <script src="../../lib/createElement.min.js"></script>
+  <script src="../../lib/result-hilight.min.js"></script>
+  <script src="../random.js"></script>
+  <script src="../random.int.js"></script>
+  <script src="../random.vocal.js"></script>
+  <script src="../random.cons.js"></script>
+  <script src="../random.word.js"></script>
+  <script src="../random.table.js"></script>
+</head>
+<body>
+  <h1>Test</h1>
+  <section>
+    <h2><code>random.table(TBL,ROW,COL)</code></h2>
+    <script data-source-show="true">
+      result.html('<table id="tbl_0"></table>', ()=> random.table(tbl_0))
+    </script>
+  </section>
+  <section>
+    <h2><code>[data-random-table]</code></h2>
+    <p>without value</p>
+    <script data-source-show>
+      result.html('<table data-random-table></table>')
+    </script>
+    <p>with value</p>
+    <script data-source-show>
+      result.html('<table data-random-table="10,6"></table>')
+    </script>
+  </section>
+</body>
+</html>

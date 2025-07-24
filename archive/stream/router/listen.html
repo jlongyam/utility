@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <title></title>
+  <script>String.prototype.stripInitial=function(){var t=this.match(/^\s*(?=[^\s]+)/gm).reduce((function(t,e){return Math.min(t,e.length)}),1/0),e=new RegExp("^\\s{"+t+"}","mg");return t>0?this.replace(e,""):this};let result={createWorkSpace:()=>{let t=Object.assign(document.createElement("div"),{classList:"result-area"});return document.currentScript.parentElement.appendChild(t),t.appendChild(document.currentScript),t},showSource:t=>{t.classList.add("result-script"),null===t.getAttribute("src")?t.innerHTML=t.innerHTML.stripInitial().trim():t.setAttribute("data-result-source",t.getAttribute("src"))},html:(t,e)=>{let r=Object.assign(document.createElement("div"),{innerHTML:t,classList:"result-demo"});if(document.currentScript.parentElement.classList.contains("result-area"))document.currentScript.parentElement.appendChild(r);else{result.createWorkSpace().appendChild(r)}return null!==document.currentScript.getAttribute("data-source-show")&&result.showSource(document.currentScript),e&&e.call(),{then:t=>{t&&t.call()}}},js:(t,e)=>{let r=Object.assign(document.createElement("pre"),{textContent:t,classList:"result-log"});if(document.currentScript.parentElement.classList.contains("result-area"))document.currentScript.parentElement.appendChild(r);else{result.createWorkSpace().appendChild(r)}return null!==document.currentScript.getAttribute("data-source-show")&&result.showSource(document.currentScript),e&&e.call(),{then:t=>{t&&t.call()}}},css:(t,e)=>{let r=Object.assign(document.createElement("style"),{textContent:t});return document.head.appendChild(r),null!==document.currentScript.getAttribute("data-source-show")&&result.showSource(document.currentScript),e&&e.call(),{then:t=>{t&&t.call()}}}};</script>
+  <style>body,html{height:100%}*,::after,::before{box-sizing:border-box}html{font:16px/24px monospace;--font-regular:system-ui,-apple-system,"Segoe UI","Roboto","Ubuntu","Cantarell","Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";--font-code:ui-monospace,'Cascadia Code','Source Code Pro',Menlo,Consolas,'DejaVu Sans Mono',monospace}body{margin:0;padding:5%;font-family:var(--font-regular)}.result-area{font-family:inherit;padding:2.5%;line-height:2em}.result-log,.result-script{font:1em var(--font-code);padding:1em;background-color:#000;color:silver;margin:0 0 1em;border-top:1em solid gray;position:relative;overflow:auto}.result-script[data-result-source]::before{content:'//<script src="' attr(data-result-source) '">';color:gray}.result-demo{margin:0 0 1em}.result-script{display:block;background-color:#fff9c8;color:#000;white-space:pre}</style>
+</head>
+<body>
+<ul id=ul></ul>
+<p id=p></p>
+<script data-source-show>
+  let links = [
+    'listen.html',
+    '#/home/path/search?foo=/bar',
+    '#/any/world'
+  ]
+  links.forEach( link=> {
+    ul.innerHTML += `<li><a href="${link}">${link}</a></li>`
+  })
+  window.addEventListener('hashchange', ()=> {
+    let watch_hash = location.hash.substring(2)
+    let a_hash = watch_hash.split('?')
+    let url_part = {}
+    url_part.hash = ( a_hash[0][a_hash[0].length-1] === '/' ) ? a_hash[0].substring(0, a_hash[0].length-1) : a_hash[0]
+    url_part.search = (a_hash[1] === undefined) ? false : a_hash[1]
+    let a_url = url_part.hash.split('/')
+    switch(a_url[0]) {
+      case 'home': {
+        p.innerHTML = 'Welcome Home, ' + a_url[2] + ': ' + url_part.search
+      }; break
+      default: {
+        p.innerHTML = '404'
+      }; break
+    }
+    console.log(a_url, url_part.search)
+  })
+</script>
+</body>
+</html>

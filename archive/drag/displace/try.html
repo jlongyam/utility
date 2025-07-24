@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>title</title>
+  
+  <style>
+    html, body {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      
+    }
+    #root {
+      border: 2px solid green;
+      width: 80%;
+      position: relative;
+      height: 100%;
+      width: 100%
+    }
+    #move_el {
+      border: 2px solid gray;
+      width: 400px;
+      height: 300px;
+      position: absolute;
+    
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <div id="move_el">
+    <header>
+      <h1>Title</h1>
+    </header>
+    <main>
+      <section>
+        <h2>section</h2>
+        <pre>TODO</pre>
+      </section>
+    </main>
+    </div>
+  </div>
+   <script src="displace.min.js"></script>
+  <script>
+      window.displacejs  = displacejs
+      const element = document.querySelector('#move_el')
+      const d = displacejs(element);
+  </script>
+</body>
+</html>

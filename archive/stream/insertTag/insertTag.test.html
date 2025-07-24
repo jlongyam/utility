@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <title>test: insertTag</title>
+  <link rel="stylesheet" href="../../lib/native-style.css">
+  <link rel="stylesheet" href="../../lib/box.css">
+  <script src="../../lib/encodeHTML.min.js"></script>
+  <script src="../../lib/escapeQuote.min.js"></script>
+  <script src="../../lib/stripInitial.min.js"></script>
+  <script src="insertTag.js"></script>
+  <style type="text/css">
+    textarea {
+      height: 300px;
+      width: 100%;
+      outline: 0;
+      padding: 1em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Test</h1>
+  </header>
+  <fieldset class="box">
+    <legend><h2><code>insertTag</code></h2></legend>
+    <main>
+      <section>
+        <textarea id="ta">
+          Hello World,
+          from textarea.
+          Bla bla ...
+          select text to insert tag,
+          default is MARK.
+        </textarea>
+        <br />
+        <p>
+          <button onclick="insertTag(ta)">insert default tag</button>
+          <button onclick="insertTag(ta, 'b')">insert &lt;b&gt;</button>
+          <button onclick="insertTag(ta, 'i')">insert &lt;i&gt;</button>
+          <button onclick="insertTag(ta, 'span', 'class=\'any\'')">insert &lt;span class='any'&gt;</button>
+        </p>      
+        <p>
+          <button onclick="ta.value = ta.value.encodeHTML()">encode HTML</button>
+          <button onclick="ta.value = ta.value.escapeQuote()">Escape single quote</button>
+          <button onclick="ta.select()">Select All</button>
+          <button onclick="ta.value = ''">Clear</button>
+        </p>
+      </section>
+    </main>
+  </fieldset>
+  <script>
+    ta.value = ta.value.stripInitial().trim()
+  </script>
+</body>
+</html>

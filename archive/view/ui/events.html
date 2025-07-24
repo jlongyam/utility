@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Event Binding</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<style type="text/css">
+		body {
+			margin: 0 auto;
+			max-width: 40em;
+			width: 88%;
+		}
+	</style>
+</head>
+<body>
+
+
+	<div id="app"></div>
+
+	<script src="ui.js"></script>
+	<script>
+		let {sync, display} = ui;
+
+		// Track clicks
+		let count = sync(0);
+
+		// Increase the count
+		function increase () {
+			count.value++;
+		}
+
+		// Decrease the count
+		function decrease () {
+			count.value--;
+		}
+
+		// The template
+		function template () {
+			return `
+				<p>
+					<button onclick="increase()">Increase</button>
+					<button onclick="decrease()">Decrease</button>
+				</p>
+				<div aria-live="polite">Count: ${count.value}</div>`;
+		}
+
+		// Render a template with on* events
+		display('#app', template, {events: {increase, decrease}});
+	</script>
+
+</body>
+</html>

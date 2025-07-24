@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>test: expose</title>
+  <script src="../../lib/ua-parser.pack.js"></script>
+  <script src="../../lib/detect.min.js"></script>
+  <script src="../../lib/prototype/getAll.min.js"></script>
+  <script src="../../lib/prototype/encodeHTML.min.js"></script>
+  <script src="../../lib/dom/selector.min.js"></script>
+  <script src="../../lib/dom/createElement.min.js"></script>
+  <script src="../../lib/result-hilight.min.js"></script>
+  <script src="../console-expose.js"></script>
+</head>
+<body>
+  <script src="inc/executor.js"></script>
+  <script>
+    console.log('hello, from "expose.html script"')
+    console.log(document.currentScript.getAttribute('src')=== null)
+  </script>
+  <p>this is paragraph</p>
+  <script>
+    console.log('Another log from body')
+  </script>
+</body>
+</html>

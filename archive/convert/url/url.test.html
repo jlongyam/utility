@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="content-type" content="text/html" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>url</title>
+  <script>function log(msg){var d=document;var f=d.createDocumentFragment();f.appendChild(d.createTextNode(msg));f.appendChild(d.createElement('br'));p=d.querySelector('#log');p.appendChild(f)}</script>
+  <style>#log{border:2px solid gray;padding:5px;font-family:Consolas,monospace}</style>
+  <script src="./url.js"></script>
+</head>
+<body>
+<pre id="log"></pre>
+<script>
+log( urlEncode("-_.!~*'()") );
+log( urlDecode("-_.%21%7E%2A%27%28%29"))
+
+</script>
+</body>
+</html>

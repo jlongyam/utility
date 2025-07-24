@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>test: path</title>
+  <link rel="stylesheet" href="../../lib/native-style.css">
+  <script src="../../lib/ua-parser.pack.js"></script>
+  <script src="../../lib/detect.min.js"></script>
+  <script src="../../lib/prototype/getAll.min.js"></script>
+  <script src="../../lib/result-hilight.min.js"></script>
+  <script src="../path.js"></script>
+</head>
+
+<body>
+  <h1>Test</h1>
+  <main>
+    <section>
+      <h2><code>new Path()</code></h2>
+      <script data-source-show>
+        let path = new Path() // empty: not recomended
+        result.js(path)
+        result.js(Object.getAll.property(path))
+        result.js(Object.getAll.method(path))
+        result.js(typeOf(path.relative)) // failed access to Path method
+      </script>
+      <script data-source-show>
+        path = new Path(location) // also not recomended
+        result.js(path)
+        result.js(Object.getAll.property(path))
+        result.js(Object.getAll.method(path))
+        result.js(typeOf(path.relative)) // failed
+      </script>
+    </section>
+    <section>
+      <h2><code>Path.location</code></h2>
+      <script data-source-show>
+        path = new Path(location.pathname) // Recomended argument
+        result.js(path)
+        result.js(typeOf(path.relative)) // ready
+        result.js(Object.getAll.property(path))
+        result.js(Object.getPrototypeOf(path))
+        result.js(path.location) // pass
+      </script>
+    </section>
+    <section>
+      <h2><code>Path.directory</code></h2>
+      <script data-source-show>
+        result.js(path.directory())
+        result.js(path.directory(path.directory()))
+        result.js(path.directory(path.directory(path.directory())))
+      </script>
+    </section>
+    <section>
+      <h2><code>Path.up(NUM)</code></h2>
+      <script data-source-show>
+        result.js(path.location)
+        result.js(path.up(1)) // leave file
+        result.js(path.up(2))
+        result.js(path.up(3))
+      </script>
+    </section>
+    <section>
+      <h2><code>Path.root</code></h2>
+      <script data-source-show>
+        result.js(path.root()) // default
+        result.js(path.root('current/'))
+        result.js(path.root('current')) // without tail
+      </script>
+    </section>
+    <section>
+      <h2><code>Path.name</code></h2>
+      <script data-source-show>
+        result.js(path.name())
+        result.js(path.name('/part/dir/file'))
+        result.js(path.name(path.directory()))
+      </script>
+    </section>
+    <section>
+      <h2><code>Path.relative</code></h2>
+      <script data-source-show>
+        result.js(path.location)
+        result.js(path.root('current/'))
+        result.js(path.relative(path.root('current/')))
+        result.js(path.relative('part/', 'part/dir/file'))
+        result.js(path.up(2) + '/')
+        result.js(path.relative(path.up(2) + '/'))
+        result.js(path.relative('part', 'part/dir/file'))
+      </script>
+    </section>
+  </main>
+</body>
+
+</html>

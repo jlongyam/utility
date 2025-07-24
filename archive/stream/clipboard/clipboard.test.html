@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>test: clipboard</title>
+  <link rel="stylesheet" href="../../lib/native-style.css">
+  <link rel="stylesheet" href="../../lib/box.css">
+  <script src="clipboard.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Test <code>clipboard</code></h1>
+  </header>
+  <main>
+    <section class="box">
+      <h2><code>data-clipboard-copy=[QUERY,TYPE]</code></h2>
+      <p>QUERY: for <code>document.querySelector(QUERY)</code></p>
+      <p>TYPE: <code>value|textContent|innerHTML</code></p>
+      <form>
+        <input id="input_copy" type="text" value="CONTENT">
+        <input id="input_button" data-clipboard-copy="#input_copy,value" type="button" value="copy">
+        <input id="input_paste" type="text">
+        <input type="reset" value="reset">
+      </form>
+    </section>
+  </main>
+</body>
+</html>

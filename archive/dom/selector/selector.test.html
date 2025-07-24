@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html id="app">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <title>test: selector</title>
+  <link rel="stylesheet" href="../../lib/native-style.css">
+  <script src="../../lib/stripInitial.min.js"></script>
+  <script src="../../lib/result-hilight.min.js"></script>
+  <script src="selector.js"></script>
+</head>
+
+<body>
+  <h1>Test <code>selector</code></h1>
+  <script data-source-show="">
+    result.js($('head').outerHTML)
+    result.js($$('script').length)
+    result.js(window.app.tagName)
+  </script>
+</body>
+
+</html>

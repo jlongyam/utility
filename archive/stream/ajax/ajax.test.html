@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>test: ajax</title>
+  <link rel="stylesheet" href="../../lib/native-style.css">
+  <link rel="stylesheet" href="../../lib/box.css">
+  <script src="ajax.js"></script>
+  <style>
+    .indicator {
+      padding: .5em;
+      background-color: silver;
+    }
+    .indicator::before {
+      content: 'Ajax';
+    }
+    .indicator[data-loading]::before {
+      content: 'Loading ...';
+    }
+    .indicator[data-loading] {
+      background-color: gray;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Test</h1>
+  </header>
+  <main>
+    <section>
+      <h2><code>get</code></h2>
+      <div id="indicator_get" class="indicator"></div>
+      <pre id="box_get" class="box">RESULT HERE</pre>
+      <button onclick="ajaxGet()">get <b>name</b></button>
+      <button onclick="box_get.textContent='RESULT HERE'">reset</button>
+      <script>
+        function ajaxGet() {
+          ajax({
+            method: 'get',
+            data: 'q=name',
+            url: 'response.php',
+            callback: (result) => {
+              box_get.textContent = result.responseText
+              // console.log(result)
+            }
+          }, indicator_get)
+        }
+      </script>
+    </section>
+    <section>
+      <h2><code>post</code></h2>
+      <div id="indicator_post" class="indicator"></div>
+      <pre id="box_post" class="box">RESULT HERE</pre>
+      <button onclick="ajaxPost()"><b>send</b> post</button>
+      <button onclick="box_post.textContent='RESULT HERE'">reset</button>
+      <script>
+        function ajaxPost() {
+          ajax({
+            method: 'post',
+            data: 'send=whatever this is text from html',
+            url: 'response.php',
+            callback: (result) => {
+              box_post.textContent = result.responseText
+              // console.log(result)
+            }
+          }, indicator_post)
+        }
+      </script>
+    </section>
+    <!-- <section>
+      <h2>plain HTML</h2>
+      <h3>get</h3>
+      <form action="response.php">
+        <input type="text" name="input-text" value="name">
+        <input type="submit">
+      </form>
+      <h3>post</h3>
+      <form action="response.php">
+        <input type="text" name="input-text" value="text send from html">
+        <input type="submit">
+      </form>
+    </section> -->
+  </main>
+</body>
+
+</html>

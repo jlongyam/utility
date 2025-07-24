@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>test: loadDefer</title>
+  <link rel="stylesheet" href="../../../lib/native-style.css">
+  <script src="../loadDefer.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Test <code>loadDefer</code></h1>
+  </header>
+  <main>
+    <h2>Result</h2>
+    <pre id="pre"></pre>
+  </main>
+  <script>
+    let str_early = 'local variable'
+    loadDefer([
+      'inc/script0.js',
+      'inc/script1.js',
+      'inc/script2.js',
+      'inc/script3.js',
+    ])
+    pre.innerHTML += "Executed <b>first</b>\n"
+    document.currentScript.remove()
+  </script>
+</body>
+</html>

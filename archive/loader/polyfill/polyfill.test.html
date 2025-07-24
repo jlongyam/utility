@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>test: polyfill</title>
+  <script src="../prototype/string/stripInitial.min.js"></script>
+  <script src="../demo/result/result.min.js"></script>
+  <script src="polyfill.js"></script>
+</head>
+<body>
+  <h1>Test polyfill</h1>
+  <section>
+    <h2>Array.foreach</h2>
+    <script>
+      var arr = [1,2,3]
+      var str = ''
+      arr.forEach( i => {
+        str += i
+      })
+      result(str)
+    </script>
+  </section>
+  
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="content-type" content="text/html" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>demo</title>
+  <script src="preview.min.js"></script>
+</head>
+<body>
+  <main>
+    <h1>Basic Preview</h1>
+    <section>
+      <h3>Result area</h3>
+      <section>
+        <iframe id="ifr"></iframe>
+      </section>
+      <section>
+        <div id="div" style="padding: 1rem; border: 1px solid silver">DIV</div>
+      </section>
+    </section>
+    <section>
+      <h3>Source string</h3>
+      <section>
+        <form>
+          <input id="txt" type="text" value="<b>Sample</b>" />
+          <input type="reset" value="reset" />
+        </form>
+      </section>
+      <section>
+        <h5>Preview in:</h5>
+        <button onclick="preview( txt.value ).in_frame( 'ifr' )">iframe</button>
+        <button onclick="preview( txt.value ).in_window()">window</button>
+        <button onclick="preview( txt.value ).in_element( div )">div</button>
+      </section>
+    </section>
+    <section>
+      <h3>Source Array</h3>
+      <section>
+        <form>
+          <input style="width:400px" id="txt1" type="text" value="<b id='b'>Sample</b>" /><br />
+          <input style="width:400px" id="txt2" type="text" value="<style>b{color:red}</style>" /><br />
+          <input style="width:400px" id="txt3" type="text" value='<script>b.textContent="bold"</script>' /><br />
+          <input type="reset" value="reset" />
+        </form>
+      </section>
+      <button onclick="preview( [ txt1.value, txt2.value, txt3.value ] ).in_frame( 'ifr' )">iframe</button>
+      <button onclick="preview( [ txt1.value, txt2.value, txt3.value ] ).in_window()">window</button>
+      <button onclick="preview( [ txt1.value, txt2.value, txt3.value ] ).in_element( div )">div</button>
+    </section>
+    <section>
+    	<h3>Source Textarea</h3>
+    	<section>
+    		<textarea id="ta">&lt;b&gt;bold&lt;/b&gt;</textarea>
+    	</section>
+    	<section>
+    		<h5>Preview in:</h5>
+    		<button onclick="preview( ta.value ).in_frame( 'ifr' )">iframe</button>
+    		<button onclick="preview( ta.value ).in_window()">window</button>
+    		<button onclick="preview( ta.value ).in_element( div )">div</button>
+    	</section>
+    </section>
+    <section>
+    	<h3>Source Element.textContent</h3>
+    	<section>
+    		<pre id="pre">&lt;i&gt;italic&lt;/i&gt;</pre>
+    	</section>
+    	<section>
+    		<h5>Preview in:</h5>
+    		<button onclick="preview( pre.textContent ).in_frame( 'ifr' )">iframe</button>
+    		<button onclick="preview( pre.textContent ).in_window()">window</button>
+    		<button onclick="preview( pre.textContent ).in_element( div )">div</button>
+    	</section>
+    </section>
+  </main>
+</body>
+</html>

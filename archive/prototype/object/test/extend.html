@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>test: extend</title>
+  <link rel="stylesheet" href="../../../lib/native-style.css">
+  <script src="../../../module/result/dist/result-hilight.min.js"></script>
+  <script src="../extend.min.js"></script>
+</head>
+
+<body>
+  <h1>Test Object.extend</h1>
+  <section>
+    <script data-source-show="true">
+      const obj = {
+        one: 'One',
+        two: 'Two',
+        three: 'Three'
+      }
+      obj.extend({
+        four: 'four'
+      })
+      result.js(JSON.stringify(obj,0,2))
+    </script>
+  </section>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!dotype html>
+<meta charset="utf-8">
+<pre id="pre"></pre>
+<script>
+//https://stackoverflow.com/questions/3913355/how-to-format-tidy-beautify-in-javascript
+function formatHTML(str_html, tab = '  ' ) {
+    var result = '';
+    var indent= '';
+
+    str_html.split(/>\s*</).forEach(function(element) {
+        if (element.match( /^\/\w/ )) {
+            indent = indent.substring(tab.length);
+        }
+
+        result += indent + '<' + element + '>\r\n';
+
+        if (element.match( /^<?\w[^>]*[^\/]$/ ) && !element.startsWith("input")  ) { 
+            indent += tab;              
+        }
+    });
+
+    return result.substring(1, result.length-3);
+}
+// 
+</script>
+<script>
+let str_html = '<h3>A heading 3</h3><ul style="color: blue"><li>list item 1</li><li>list item 2</li><li>list item 3</li></ul><p class="box"><button onclick="alert(9)">Click</button></p>'
+pre.textContent = formatHTML(str_html)
+</script>

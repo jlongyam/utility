@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html">
+  <title>test: random lib</title>
+  <link rel="stylesheet" href="../../lib/native-style.css">
+  <script src="../../lib/stripInitial.min.js"></script>
+  <script src="../../lib/result-hilight.min.js"></script>
+  <script src="../../lib/toUpperFirst.min.js"></script>
+  <script src="../random.js"></script>
+  <script src="../random.int.js"></script>
+  <script src="../random.char.js"></script>
+  <script src="../random.vocal.js"></script>
+  <script src="../random.cons.js"></script>
+  <script src="../random.word.js"></script>
+  <script src="../random.sentence.js"></script>
+  <script src="../random.paragraph.js"></script>
+  <script src="../random.chardate.js"></script>
+  <script src="../random.uuid.js"></script>
+  <script src="../random.color.js"></script>
+  <script src="../random.font.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>Test Random</h1>
+  </header>
+  <main>
+    <section>
+      <h2><code>random.int</code></h2>
+      <script data-source-show="true">
+        // random.int(MAX)
+        result.js(random.int(9))
+        // data-random-int="MAX"
+        result.html('<output data-random-int="99"></output>')
+      </script>
+    </section>
+    <section>
+      <h2><code>random.char</code></h2>
+      <script data-source-show="true">
+        // random.char(SIZE) // default SIZE = random.int()
+        result.js(random.char())
+        // data-random-char="SIZE"
+        result.html('<output data-random-char="10"></output>')
+      </script>
+    </section>
+    <section>
+      <h2><code>random.vocal</code></h2>
+      <script data-source-show="true">
+        // internal
+        result.js(random.vocal())
+      </script>
+    </section>
+    <section>
+      <h2><code>random.cons</code></h2>
+      <script data-source-show="true">
+        // internal
+        result.js(random.cons())
+      </script>
+    </section>
+    <section>
+      <h2><code>random.word</code></h2>
+      <script data-source-show="true">
+        // random.word(size = random.int(), reverse = false, upperFirst= false)
+        result.js(random.word() + ' | ' + random.word(6, true) + ' | ' + random.word(8, false, true))
+        result.html('<output data-random-word="8"></output>')
+      </script>
+    </section>
+    <section>
+      <h2><code>random.sentence</code></h2>
+      <script data-source-show="true">
+        // random.sentence(size = 4, sep=',', upperFirst = false )
+        result.js(random.sentence() + ' ' + random.sentence(2, '.'))
+        result.js(random.sentence(6, '.', true))
+        //data-random-sentence="MAX"
+        result.html('<p data-random-sentence="10"></p>')
+      </script>
+    </section>
+    <section>
+      <h2><code>random.paragraph</code></h2>
+      <script data-source-show="true">
+        // random.paragraph( size = random.int() )
+        result.js(random.paragraph(2))
+        // data-random-paragraph="MAX"
+        result.html('<p data-random-paragraph="12"></p>')
+      </script>
+    </section>
+    <section>
+      <h2><code>random.chardate</code></h2>
+      <script data-source-show="true">
+        result.js(random.chardate)
+        result.html('<output data-random-chardate></output>')
+      </script>
+    </section>
+    <section>
+      <h2><code>random.uuid</code></h2>
+      <script data-source-show="true">
+        result.js(random.uuid)
+        result.html('<output data-random-uuid></output>')
+      </script>
+    </section>
+    <section>
+      <h2><code>random.color</code></h2>
+      <script data-source-show="true">
+        result.js(random.color)
+        //  data-random-color="color|background|border"
+        result.html('<output data-random-color="color">font color</output>')
+        result.html('<output data-random-color="background" style="padding: 5px">background color</output>')
+        result.html('<output data-random-color="border" style="border: 4px solid; padding: 5px">border color</output>')
+      </script>
+    </section>
+    <section>
+      <h2><code>random.font(arr)</code></h2>
+      <script data-source-show="true">
+        // random.font([FONT_STACK])
+        result.js(random.font())
+        // Combined width other radom
+        result.html(`
+          <article style="border: 1px solid silver; padding: 1em;">
+            <h1 data-random-word="10" data-random-font></h1>
+            <h5 data-random-sentence="6" data-random-font></h5>
+            <p data-random-paragraph="10" data-random-font></p>
+          </article>
+        `)
+      </script>
+    </section>
+  </main>
+</body>
+
+</html>

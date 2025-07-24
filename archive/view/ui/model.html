@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>mode;()</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<style type="text/css">
+		body {
+			margin: 0 auto;
+			max-width: 40em;
+			width: 88%;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="app"></div>
+
+	<script src="ui.js"></script>
+	<script>
+		let {model, display} = ui;
+
+		let todos = model(['Swim', 'Climb', 'Jump', 'Play'], {
+			add (todos, todo) {
+				todos.push(todo);
+			},
+			delete (todos, todo) {
+				let index = todos.indexOf(todo);
+				if (index < 0) return;
+				todos.splice(index, 1);
+			}
+		});
+
+		// Create a template
+		function template () {
+			return `
+				<p>You have ${todos.value.length} todos:</p>
+				<ul>
+					${todos.value.map(function (todo) {
+						return `<li key="${todo}">${todo}</li>`;
+					}).join('')}
+				</ul>`;
+		}
+
+		// Create a reactive display
+		// It automatically renders into the UI
+		display('#app', template);
+
+		// After two seconds, add an item to the todo list
+		setTimeout(function () {
+			todos.value.push('Take a nap... zzzz');
+			console.log('push', todos.value);
+		}, 2000);
+
+		// After four seconds, use the setter method
+		setTimeout(function () {
+			todos.add('Take a nap... zzzz');
+			console.log('setter', todos.value);
+		}, 4000);
+	</script>
+
+</body>
+</html>

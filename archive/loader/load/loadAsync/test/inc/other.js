@@ -1,0 +1,1 @@
+var other_string = 'string from <b>other.js</b>\n'

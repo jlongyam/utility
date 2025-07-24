@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <title>localObject</title>
+  <script src="../string/stripInitial.min.js"></script>
+  <script src="../../demo/result/result.min.js"></script>
+  <script src="localObject.min.js"></script>
+</head>
+
+<body>
+
+  <h1>localObject</h1>
+  <pre>(local|session).(set|get)Object()</pre>
+  <script>
+    var obj = { foo: 'bar' }
+    result(JSON.stringify(obj))
+  </script>
+
+  <h2>sessionStorage</h2>
+  <script>
+    sessionStorage.setObject('obj', obj)
+    result(JSON.stringify(sessionStorage.getObject('obj')))
+    sessionStorage.clear()
+  </script>
+
+  <h2>localStorage</h2>
+  <script>
+    localStorage.setObject('obj', obj)
+    result(JSON.stringify(localStorage.getObject('obj')))
+    localStorage.clear()
+  </script>
+
+</body>
+
+</html>

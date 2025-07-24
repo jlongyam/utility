@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ui plus CustomHTML</title>
+  <script src="index.legacy.js"></script>
+<script src="../ui/ui.min.js"></script>
+</head>
+<body>
+<div id=root></div>
+
+
+<script src="my-component.js"></script>
+<script>
+let { sync, display } = ui
+let data = sync({
+  heading: 'Hello world',
+  body: 'This is body'
+})
+function template() {
+  let { heading, body } = data
+  return `
+    <h1>${heading}</h1>
+    <p>${body}</p>
+    <my-component></my-component>
+  `
+}
+display('#root', template)
+
+</script>
+</script>
+</body>
+</html>

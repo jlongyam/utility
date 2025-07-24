@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>test: walker</title>
+  <link rel="stylesheet" href="../../lib/native-style.css">
+  <script src="../../lib/ua-parser.pack.js"></script>
+  <script src="../../lib/detect.min.js"></script>
+  <script src="../../lib/prototype/getAll.min.js"></script>
+  <script src="../../lib/result-hilight.min.js"></script>
+  <script src="walkerRange.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>Test <code>walker</code></h1>
+  </header>
+  <main>
+    <section>
+      <h2><code>walk</code></h2>
+      <p>Note: walker will work well with <b>Range-API</b></p>
+      <script data-source-show>
+        result.data = ''
+        walk(0, 2, 10, (i)=> {
+          if( i === 4 ) result.data += `${i} Added\n`
+          else result.data += `result ${i}\n`          
+        })
+        result.js(result.data)
+      </script>
+    </section>
+  </main>
+</body>
+
+</html>

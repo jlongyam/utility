@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+  <title>globalThis</title>
+  <link rel="stylesheet" href="../../../lib/native-style.css">
+  <script src="../../../lib/result-hilight.min.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>globalThis</h1>
+  </header>
+  <main>
+    <details open>
+      <summary>
+        <h2>check</h2>
+      </summary>
+      <script data-source-show=>
+        result.js(typeof globalThis.XMLHttpRequest === 'function')
+        result.js( typeof globalThis.foo === 'undefined' )
+      </script>
+    </details>
+    <details>
+      <summary>
+        <h2>polyfill</h2>
+      </summary>
+      <script data-source-show>
+        function check(it) {
+          // Math is known to exist as a global in every environment.
+          return it && it.Math === Math && it;
+        }
+        const globalObject = check(typeof window === "object" && window)
+          || check(typeof self === "object" && self)
+          || check(typeof global === "object" && global)
+          || // This returns undefined when running in strict mode
+          (function () { return this })() || Function("return this")()
+          ;
+        result.js(typeof globalObject)
+      </script>
+      <h3>then</h3>
+      <script data-source-show>
+        if (typeof globalObject.bar === "undefined") {
+          // No Intl in this environment; define our own on the global scope
+          Object.defineProperty(globalObject, "bar", {
+            value: {
+              // implementation
+            },
+            // all default
+            enumerable: false,
+            configurable: true,
+            writable: true,
+          })
+        }
+        result.js(typeof bar)
+      </script>
+    </details>
+  </main>
+</body>
+
+</html>

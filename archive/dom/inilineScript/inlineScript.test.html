@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>test: inlineScript</title>
+  <script src="inlineScript.js"></script>
+</head>
+<body>
+  <div id="root">
+    <div id="div"></div>
+    <script>
+      inlineScript('document.querySelector("div").textContent="Hello World"')
+    </script>
+  </div>
+</body>
+</html>

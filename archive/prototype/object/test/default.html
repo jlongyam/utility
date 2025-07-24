@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+  <title>test: object default</title>
+  <link rel="stylesheet" href="../../../lib/native-style.css">
+  <script src="../../../lib/ua-parser.pack.js"></script>
+  <script src="../../../lib/detect.min.js"></script>
+  <script src="../../string/stripInitial.min.js"></script>
+  <script src="../../../module/result/dist/result-hilight.min.js"></script>
+  <style>
+    summary>* {
+      display: inline-block
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Test object default</h1>
+  <h2>constructor</h2>
+  <section>
+    <script data-source-show="true">
+      var o = new Object()
+      result.js(typeof (o))
+    </script>
+    <script data-source-show="true">
+      o = new Object(undefined)
+      result.js(typeof (o))
+    </script>
+    <script data-source-show="true">
+      o = new Object(1)
+      result.js(typeof (o))
+    </script>
+  </section>
+  <h2>Properties</h2>
+  <section>
+    <h3>constructor</h3>
+    <script data-source-show="true">
+      var a = []
+      result.js(typeOf(a))
+      result.js(typeof a)
+      result.js(typeOf(a, 1))
+      result.js(a.constructor === Array)
+    </script>
+  </section>
+  <h2>Method</h2>
+  <section>
+    <details>
+      <summary>
+        <h3>assign</h3>
+      </summary>
+      <script data-source-show="true">
+        var
+          a = { a: 1, b: 2 },
+          b = { b: 3, c: 4 },
+          c = { c: 5, d: 6 }
+          ;
+        Object.assign(a, b, c)
+        result.js(JSON.stringify(a))
+      </script>
+    </details>
+    <details>
+      <summary>
+        <h3>create</h3>
+      </summary>
+      <script data-source-show="true">
+        var o = Object.create({}, { foo: { value: 'bar', enumerable: true } })
+        result.js(JSON.stringify(o))
+        var o = Object.create({}, { foo: { value: 'bar' } })
+        result.js(JSON.stringify(o))
+      </script>
+    </details>
+    <details>
+      <summary>
+        <h3>defineProperties</h3>
+      </summary>
+      <script data-source-show="true">
+        // default:
+        // configurable: false, enumerable: false, value: undefined, writable: false
+        // get: undefined, set: undefined
+        const foo = {}
+        Object.defineProperties(foo, {
+          bar: {
+            value: 'BAR',
+            writable: false,
+            enumerable: true
+          },
+          baz: {
+            value: true,
+            writable: true,
+            enumerable: true
+          },
+          joker: {
+            value: [1, 2, 3],
+            writable: true
+          }
+        })
+        foo.baz = false
+        result.js(JSON.stringify(foo))
+      </script>
+    </details>
+    <details>
+      <summary>
+        <h3>defineProperty</h3>
+      </summary>
+      <script data-source-show="true">
+        const obj_0 = {}
+        Object.defineProperty(obj_0, 1, {
+          value: 'One',
+          writable: true,
+          enumerable: true
+        })
+        result.js(JSON.stringify(obj_0))
+      </script>
+    </details>
+    <details>
+      <summary>
+        <h3>entries</h3>
+      </summary>
+      <script data-source-show="true">
+        const obj_1 = {
+          a: 'something',
+          b: 77
+        }
+        var str = ''
+        for (const [key, value] of Object.entries(obj_1)) {
+          str += key + ':' + value + '\n'
+        }
+        result.js(str)
+      </script>
+    </details>
+    <details>
+      <summary>
+        <h3>freeze and isFrozen</h3>
+      </summary>
+      <script data-source-show>
+        const obj_2 = {
+          prop: 67
+        }
+        Object.freeze(obj_2)
+        obj_2.prop = 90
+        result.js(obj_2.prop)
+        result.js(Object.isFrozen(obj_2))
+      </script>
+    </details>
+    <details>
+      <summary>
+        <h3>fromEntries</h3>
+      </summary>
+      <script data-source-show>
+        // transforms a list of key-value pairs into an object
+        const obj_3 = new Map([
+          ['foo', 'bar'],
+          ['baz', 'zig']
+        ])
+        result.js(JSON.stringify(Object.fromEntries(obj_3)))
+      </script>
+    </details>
+    <details>
+      <summary>
+        <h3>getOwnPropertyDescriptor</h3>
+      </summary>
+      <script data-source-show>
+        const obj_4 = {
+          prop: 53
+        }
+        const obj_4_descr = Object.getOwnPropertyDescriptor(obj_4, 'prop')
+        result.js(`
+          ${obj_4_descr.configurable}
+          ${obj_4_descr.value}
+        `)
+      </script>
+    </details>
+    <details>
+      <summary>
+        <h3>getOwnPropertyDescriptors</h3>
+      </summary>
+      <script data-source-show>
+        const obj_5 = {
+          prop: 'Hello'
+        }
+        const obj_5_descr = Object.getOwnPropertyDescriptors(obj_5)
+        result.js(`
+          ${obj_5_descr.prop.configurable}
+          ${obj_5_descr.prop.writable}
+        `)
+      </script>
+    </details>
+    <details>
+      <summary>
+        <h3>getOwnPropertyNames</h3>
+      </summary>
+      <script data-source-show>
+        let obj_6 = { a: 1, b: 2, c: 3 }
+        result.js(Object.getOwnPropertyNames(obj_6))
+      </script>
+    </details>
+    <details>
+      <summary>
+        <h3>getPrototypeOf</h3>
+      </summary>
+      <script data-source-show>
+        result.js(typeClass(Object.getPrototypeOf("foo")))
+        const proto = {}
+        const obj_7 = Object.create(proto)
+        result.js(Object.getPrototypeOf(obj_7) === proto)
+      </script>
+    </details>
+    <details>
+      <summary>
+        <h3>groupBy</h3>
+      </summary>
+      <script data-source-show>
+        // good for 'boormarking' or 'tagging'
+        const inventory = [
+          { name: "asparagus", type: "vegetables", quantity: 5 },
+          { name: "bananas", type: "fruit", quantity: 0 },
+          { name: "goat", type: "meat", quantity: 23 },
+          { name: "cherries", type: "fruit", quantity: 5 },
+          { name: "fish", type: "meat", quantity: 22 },
+        ]
+        result.js(JSON.stringify(Object.groupBy(inventory, ({ type }) => type), 0, 2))
+        function myCallback({ quantity }) {
+          return quantity > 5 ? "ok" : "restock"
+        }
+        result.js(JSON.stringify(Object.groupBy(inventory, myCallback), 0, 2))
+      </script>
+    </details>
+    <details>
+      <summary>
+        <h3>hasOwn</h3>
+      </summary>
+      <script data-source-show>
+        // Alias Object.prototype.hasOwnProperty, but this way is recomended
+        let obj_8 = {
+          foo: 'var'
+        }
+        result.js(Object.hasOwn(obj_8, 'foo'))
+        result.js(Object.hasOwn(obj_8, 'unknown'))
+      </script>
+    </details>
+    <details>
+      <summary>
+        <h3>is</h3>
+      </summary>
+      <script data-source-show>
+        let obj_9 = {}
+        result.js(Object.is({}, obj_9))
+        result.js(Object.is(document.body, document.querySelector('body')))
+      </script>
+    </details>
+    <details>
+      <summary>
+        <h3>isExtensible and preventExtensions</h3>
+      </summary>
+      <script data-source-show>
+        // New objects are extensible.
+        const empty = {}
+        result.js(Object.isExtensible(empty))
+        empty.first = 'Ok'
+        result.js(empty.first)
+        Object.preventExtensions(empty)
+        empty.second = 'Maybe'
+        result.js(JSON.stringify(empty))
+      </script>
+    </details>
+    <details>
+      <summary>
+        <h3>isPrototypeOf</h3>
+      </summary>
+      <script data-source-show>
+        let span = document.createElement('span')
+        result.js(HTMLElement.prototype.isPrototypeOf(span))
+        result.js(HTMLHtmlElement.prototype.isPrototypeOf(span))
+      </script>
+    </details>
+    <details>
+      <summary>
+        <h3>isSealed and seal</h3>
+      </summary>
+      <script data-source-show>
+        // Objects aren't sealed by default.
+        const car = {}
+        result.js(Object.isSealed(car))
+        car.speed = 80
+        result.js(JSON.stringify(car))
+        Object.seal(car)
+        car.type = 'truck'
+        result.js(JSON.stringify(car))
+      </script>
+    </details>
+    <details>
+      <summary>
+        <h3>keys and values</h3>
+      </summary>
+      <script data-source-show>
+        let obj_10 = {
+          hello: 'again',
+          again: 'hello'
+        }
+        result.js(Object.keys(obj_10))
+        result.js(Object.values(obj_10))
+      </script>
+    </details>
+    <details>
+      <summary>
+        <h3>propertyIsEnumerable</h3>
+      </summary>
+      <script data-source-show>
+        let arr_11 = [], obj_11 = {}
+        arr_11[0] = 'ok'
+        obj_11.foo = 'bar'
+        result.js(arr_11.propertyIsEnumerable('0'))
+        result.js(obj_11.propertyIsEnumerable('foo'))
+        result.js(arr_11.propertyIsEnumerable('length'))
+        result.js(JSON.stringify(obj_11))
+        // no 'length' included
+      </script>
+    </details>
+    <details>
+      <summary>
+        <h3>toString</h3>
+      </summary>
+      <script data-source-show>
+        const arr = [1, 2, 3]
+        result.js(arr.toString())
+        result.js(Object.prototype.toString.call(arr))
+      </script>
+    </details>
+    <details>
+      <summary>
+        <h3>valueOf</h3>
+      </summary>
+      <script data-source-show>
+        class Box {
+          #value;
+          constructor(value) {
+            this.#value = value;
+          }
+          valueOf() {
+            return this.#value;
+          }
+        }
+        let box = new Box(123)
+        result.js(box+7)
+        result.js(box===130)
+        result.js(box.valueOf())
+      </script>
+    </details>
+  </section>
+  <section>
+    <h2>Other method</h2>
+    <ul>
+      <li>getOwnPropertySymbols</li>
+      <li>setPrototypeOf</li>
+      <li>toLocaleString</li>
+    </ul>
+  </section>
+</body>
+
+</html>
