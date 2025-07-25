@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" data-mode=""><!-- snippet | website -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title></title>
+  <link id="style" href="html-cms.css" rel="stylesheet">
+  <script id="utility" src="utility.js"></script>
+</head>
+<body class="hide">
+<div id="menu_bar">
+  <div>
+    <button id="button_insert" class="menu_button" onclick="insert()" disabled>#</button>
+    <button id="button_edit" class="menu_button" onclick="edit()">Edit</button>
+    <button id="button_mark" class="menu_button" onclick="mark()">Mark</button>
+  </div>
+  <button id="button_preview" class="menu_button" onclick="preview()">Preview</button>
+  <div>
+    <button id="button_update" class="menu_button" onclick="update()">Update</button>
+  </div>
+</div>
+<div id="code_layout">
+  <pre class="" id="code_editor">Content Updated ...</pre>
+  <textarea class="hide" id="code_proxy" wrap="off" onkeydown=handleTab(this) spellcheck="false"></textarea>
+  <iframe class="hide" id="code_preview"></iframe>
+  <textarea class="hide" id="code_marker" wrap="off" onkeydown=handleTab(this) spellcheck="false"></textarea>
+</div>
+<script src="html-cms.js"></script>
+<script>content(`&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;&lt;/title&gt;
+  &lt;style&gt;
+    body { <b>font: 1.1rem/1.5 Consolas, monospace;</b> }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  <mark>&lt;h1&gt;Hello World&lt;/h1&gt;</mark>
+&lt;/body&gt;
+&lt;/html&gt;`)
+</script>
+</body>
+</html>

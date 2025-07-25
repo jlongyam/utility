@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en" data-mode=""><!-- snippet | website -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title></title>
+  <style id="style">
+    :root {
+      --font: 1.1rem/1.5 monospace;
+      --border: 2px solid gray;
+      --base-height: 48px;
+      --base-padding: 5px;
+      --padding: calc(var(--base-padding) * 5);
+      --outline-color: orange;
+      }
+    * { box-sizing: border-box; }
+    ::selection {
+      background-color: rgba(0,188,212,0.30);
+      color: black;
+      }
+    html {
+      height: 100%;
+      font-size: 16px;
+      }
+    body {
+      height: 100%;
+      margin: 0;
+      -moz-tab-size: 2;
+      tab-size: 2;
+      }
+    mark {
+      padding: 3px 0;
+      background-color: #ffff8e;
+      }
+    #menu_bar {
+      border: var(--border);
+      border-bottom: 0;
+      background-color: silver;
+      padding: var(--base-padding);
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      height: var(--base-height);
+      }
+    .menu_button {
+      font-family: monospace;
+      font-size: 1.1rem;
+      padding: var(--base-padding);
+      z-index: 9;
+      }
+      .menu_button:focus {
+        outline: 2px solid var(--outline-color);
+        outline-offset: 2px;
+        }
+    #code_layout {
+      border: var(--border);
+      position: relative;
+      top: 0;
+      bottom: 0;
+      height: calc(100% - var(--base-height));
+      }
+    #code_editor {
+      outline: 0;
+      font: var(--font);
+      padding: var(--padding);
+      margin: 0;
+      overflow: auto;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border: 0;
+      color: #607d8b;
+      }
+    #code_preview {
+      border: 0;
+      margin: 0;
+      width: 100%;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      }
+    #code_marker,
+    #code_proxy {
+      border: 0;
+      margin: 0;
+      font: var(--font);
+      outline: 0;
+      resize: none;
+      width: 100%;
+      height: 100%;
+      padding: var(--padding);
+      overflow: auto;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border: 0;
+      }
+      #code_marker:focus,
+      #code_proxy:focus {
+        outline: 2px solid var(--outline-color);
+        }
+    .hide {
+      display: none;
+      }
+    /* response DESKTOP */
+    @media screen and (min-width: 768px) {
+      :root {
+        --font: 1rem/1.75 Consolas, 'Ubuntu mono', monospace;
+        --base-padding: 3px;
+        --base-height: 40px;
+      }
+    }
+  </style>
+</head>
+<body class="hide">
+<div id="menu_bar">
+  <div>
+    <button id="button_insert" class="menu_button" onclick="insert()" disabled>#</button>
+    <button id="button_edit" class="menu_button" onclick="edit()">Edit</button>
+    <button id="button_mark" class="menu_button" onclick="mark()">Mark</button>
+  </div>
+  <button id="button_preview" class="menu_button" onclick="preview()">Preview</button>
+  <div>
+    <button id="button_update" class="menu_button" onclick="update()">Update</button>
+  </div>
+</div>
+<div id="code_layout">
+  <pre class="" id="code_editor">Content Updated ...</pre>
+  <textarea class="hide" id="code_proxy" wrap="off" onkeydown=handleTab(this) spellcheck="false"></textarea>
+  <iframe class="hide" id="code_preview"></iframe>
+  <textarea class="hide" id="code_marker" wrap="off" onkeydown=handleTab(this) spellcheck="false"></textarea>
+</div>
+<!--
+  session map by event:
+   1 menu_bar > button
+     1.1 insert -> insert()               <=> code_proxy.value
+     1.2 edit|save -> edit()              <=> code_editor.textContent
+     1.3 mark|save -> mark()              <=> code_editor.innerHTML 
+     1.4 preview|go back -> preview()     <=> code_preview -> ifr_doc
+   2 code_layout
+     2.1 code_editor                      <=>
+         2.1.1 textContent                <=> edit()
+         2.1.2 innerHTML                  <=> mark()
+     2.2 code_proxy -> value              <=> edit()
+     2.2 code_marker -> value             <=> mark()
+     2.3 code_preview -> ifr_doc          <=> preview()
+   
+  session map by content:
+   1 code_editor.textContent              <=> code_proxy.value
+   2 code_editor.innerHTML                <=> code_marker.value
+-->
+<script>
+function handleTab(el) {
+  if(event.keyCode===9) {
+    event.preventDefault()
+    let
+      v=el.value,
+      s=el.selectionStart,
+      e=el.selectionEnd
+    ;
+    el.value=v.substring(0, s)+'\t'+v.substring(e)
+    el.selectionStart=el.selectionEnd=s+1
+    return false
+  }
+}
+function downloadString(text, fileType, fileName) {
+  let blob = new Blob([text], { type: fileType })
+  let a = document.createElement('a');
+  a.download = fileName;
+  a.href = URL.createObjectURL(blob);
+  a.dataset.downloadurl = [fileType, a.download, a.href].join(':');
+  a.style.display = "none";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(function() { URL.revokeObjectURL(a.href); }, 1500);
+}
+const html5_str = ( title= document.title, head_str='', body_str='' )=> `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>${title}</title>
+  ${head_str}
+</head>
+<body>
+  ${body_str}
+</body>
+</html>`
+function insert() {
+  code_editor.textContent = code_proxy.value = html5_str( document.title, '<style>\n\t\n\t</style>', '<pre id="log">LOG</pre>\n\t<script>\n\t\n\t<\/script>')
+}
+function update() {
+  let last_script = document.scripts[document.scripts.length-1]
+  last_script.innerHTML = 'content(`' + code_editor.innerHTML + '`)\n'
+  code_editor.innerHTML = 'Content Updated ...'
+  str = html5_str( document.title, document.querySelector('#style').outerHTML, document.body.innerHTML )
+  let file_name = location.href.split('/').pop()
+  downloadString(str,'text/html',file_name)
+}
+function edit() {
+  code_preview.className = code_marker.className = 'hide'
+  code_proxy.focus()
+  button_preview.removeAttribute('disabled')
+  if(button_edit.textContent === 'Edit') {
+    code_proxy.className = ''
+    code_editor.className =  'hide'
+    button_edit.textContent = 'Save'
+    button_insert.removeAttribute('disabled')
+    button_mark.setAttribute('disabled','')
+    button_update.setAttribute('disabled','')
+    if(sessionStorage.getItem('content-current_textContent') === null ) {
+      code_proxy.value = code_editor.textContent
+    }
+    else code_proxy.value = sessionStorage.getItem('content-current_textContent')
+    code_proxy.focus()
+    return
+  }
+  if(button_edit.textContent === 'Save') {
+    code_proxy.className = 'hide'
+    code_editor.className =  ''
+    button_edit.textContent = 'Edit'
+    button_insert.setAttribute('disabled','')
+    button_mark.removeAttribute('disabled')
+    button_update.removeAttribute('disabled')
+    code_marker.value = code_proxy.value
+    code_editor.textContent = code_proxy.value
+    sessionStorage.setItem('content-current_textContent', code_editor.textContent)
+    sessionStorage.setItem('content-current_innerHTML', code_editor.innerHTML)
+  }
+}
+function mark() {
+  code_proxy.className = code_preview.className = 'hide'
+  if( button_mark.textContent === 'Mark' ) {
+    code_marker.className = ''
+    code_editor.className = 'hide'
+    button_preview.setAttribute('disabled','')
+    button_update.setAttribute('disabled','')
+    button_edit.setAttribute('disabled','')
+    button_mark.textContent = 'Save'
+    if(sessionStorage.getItem('content-current_innerHTML') === null ) {
+      code_marker.value = code_editor.innerHTML
+    }
+    else code_marker.value = sessionStorage.getItem('content-current_innerHTML')
+    code_marker.focus()
+    return
+  }
+  if( button_mark.textContent === 'Save' ) {
+    code_marker.className = 'hide'
+    code_preview.className = 'hide'
+    code_editor.className = ''
+    button_preview.removeAttribute('disabled')
+    button_update.removeAttribute('disabled')
+    button_edit.removeAttribute('disabled')
+    button_mark.textContent = 'Mark'
+    code_editor.innerHTML = code_marker.value
+    code_proxy.value = code_editor.textContent
+    sessionStorage.setItem('content-current_innerHTML', code_marker.value )
+    sessionStorage.setItem('content-current_textContent', code_editor.textContent )
+  }
+}
+function preview() {
+  if( button_preview.textContent === 'Preview') {
+    button_preview.textContent = 'Go Back'
+    code_proxy.className = code_marker.className = 'hide'
+    code_preview.className = ''
+    code_editor.className = 'hide'
+    button_edit.setAttribute('disabled','')
+    button_insert.setAttribute('disabled','')
+    button_mark.setAttribute('disabled','')
+    button_update.setAttribute('disabled','')
+    let ifr_doc = code_preview.contentWindow.document
+    ifr_doc.open()
+    ifr_doc.write(code_proxy.value)
+    ifr_doc.close()
+    return
+  }
+  if( button_preview.textContent === 'Go Back') {
+    button_preview.textContent = 'Preview'
+    code_preview.className = 'hide'
+    button_edit.removeAttribute('disabled')
+    button_update.removeAttribute('disabled')
+    if( button_edit.textContent === 'Save' ) {
+      button_mark.setAttribute('disabled','')
+      button_insert.removeAttribute('disabled')
+      code_proxy.className = ''
+      code_proxy.focus()
+    }
+    if( button_edit.textContent === 'Edit' ) {
+      button_mark.removeAttribute('disabled')
+      code_proxy.className = 'hide'
+      code_editor.className = ''
+    }
+  }
+}
+function viewMode( mode ) {
+  const mode_snippet = ()=> {
+    button_insert.classList.add('hide')
+    button_edit.classList.add('hide')
+    button_mark.classList.add('hide')
+    button_update.classList.add('hide')
+    document.title = location.href.split('\/').pop()
+    document.body.classList.remove('hide')
+  }
+  const mode_site = ()=> {
+    preview()
+    menu_bar.remove()
+    code_layout.style.height = '100%'
+    code_layout.style.border = '0'
+    document.title = location.href.split('\/').pop()
+    document.body.classList.remove('hide')
+  }
+  const mode_admin = ()=> {
+    document.body.classList.remove('hide')
+  }
+  switch( mode ) {
+    case 'snippet': mode_snippet(); break;
+    case 'website': mode_site(); break;
+    default : mode_admin(); break;
+  }
+}
+function content(str) {
+  if( sessionStorage.getItem('content-current_innerHTML') === null){
+    code_editor.innerHTML = str.trim()
+  }
+  else code_editor.innerHTML = sessionStorage.getItem('content-current_innerHTML')
+  code_proxy.value = code_editor.textContent
+  code_marker.value = code_editor.innerHTML
+  let data_mode = document.querySelector('html').dataset.mode
+  if(location.search.includes('?mode') || location.search.includes('?admin') ) {
+    data_mode = location.search.split('=')[1]
+  }
+  viewMode(data_mode)
+  document.body.classList.remove('hide')
+  document.title = location.href.split('/').pop()
+  sessionStorage.setItem('content-default', str)
+}
+</script>
+<script>content(`&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;&lt;/title&gt;
+  &lt;style&gt;
+    body { <b>font: 1.1rem/1.5 Consolas, monospace;</b> }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  <mark>&lt;h1&gt;Hello World&lt;/h1&gt;</mark>
+&lt;/body&gt;
+&lt;/html&gt;`)
+</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+:root {
+      --font: 1.1rem/1.5 monospace;
+      --border: 2px solid gray;
+      --base-height: 48px;
+      --base-padding: 5px;
+      --padding: calc(var(--base-padding) * 5);
+      --outline-color: orange;
+      }
+    * { box-sizing: border-box; }
+    ::selection {
+      background-color: rgba(0,188,212,0.30);
+      color: black;
+      }
+    html {
+      height: 100%;
+      font-size: 16px;
+      }
+    body {
+      height: 100%;
+      margin: 0;
+      -moz-tab-size: 2;
+      tab-size: 2;
+      }
+    mark {
+      padding: 3px 0;
+      background-color: #ffff8e;
+      }
+    #menu_bar {
+      border: var(--border);
+      border-bottom: 0;
+      background-color: silver;
+      padding: var(--base-padding);
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      height: var(--base-height);
+      }
+    .menu_button {
+      font-family: monospace;
+      font-size: 1.1rem;
+      padding: var(--base-padding);
+      z-index: 9;
+      }
+      .menu_button:focus {
+        outline: 2px solid var(--outline-color);
+        outline-offset: 2px;
+        }
+    #code_layout {
+      border: var(--border);
+      position: relative;
+      top: 0;
+      bottom: 0;
+      height: calc(100% - var(--base-height));
+      }
+    #code_editor {
+      outline: 0;
+      font: var(--font);
+      padding: var(--padding);
+      margin: 0;
+      overflow: auto;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border: 0;
+      color: #607d8b;
+      }
+    #code_preview {
+      border: 0;
+      margin: 0;
+      width: 100%;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      }
+    #code_marker,
+    #code_proxy {
+      border: 0;
+      margin: 0;
+      font: var(--font);
+      outline: 0;
+      resize: none;
+      width: 100%;
+      height: 100%;
+      padding: var(--padding);
+      overflow: auto;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border: 0;
+      }
+      #code_marker:focus,
+      #code_proxy:focus {
+        outline: 2px solid var(--outline-color);
+        }
+    .hide {
+      display: none;
+      }
+    /* response DESKTOP */
+    @media screen and (min-width: 768px) {
+      :root {
+        --font: 1rem/1.75 Consolas, 'Ubuntu mono', monospace;
+        --base-padding: 3px;
+        --base-height: 40px;
+      }
+    }

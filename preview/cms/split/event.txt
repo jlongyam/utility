@@ -1,0 +1,19 @@
+<!--
+  session map by event:
+   1 menu_bar > button
+     1.1 insert -> insert()               <=> code_proxy.value
+     1.2 edit|save -> edit()              <=> code_editor.textContent
+     1.3 mark|save -> mark()              <=> code_editor.innerHTML 
+     1.4 preview|go back -> preview()     <=> code_preview -> ifr_doc
+   2 code_layout
+     2.1 code_editor                      <=>
+         2.1.1 textContent                <=> edit()
+         2.1.2 innerHTML                  <=> mark()
+     2.2 code_proxy -> value              <=> edit()
+     2.2 code_marker -> value             <=> mark()
+     2.3 code_preview -> ifr_doc          <=> preview()
+   
+  session map by content:
+   1 code_editor.textContent              <=> code_proxy.value
+   2 code_editor.innerHTML                <=> code_marker.value
+-->

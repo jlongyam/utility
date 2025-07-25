@@ -1,0 +1,27 @@
+{
+  "name": "html-console",
+  "version": "1.0.0",
+  "description": "Dev Console Object in HTML",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlongyam/html-console.git"
+  },
+  "keywords": [
+    "console",
+    "html",
+    "console",
+    "html",
+    "html",
+    "console"
+  ],
+  "author": "jlongyam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jlongyam/html-console/issues"
+  },
+  "homepage": "https://github.com/jlongyam/html-console#readme"
+}

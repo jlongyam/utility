@@ -1,0 +1,25 @@
+#testResults {
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-family: monospace;
+}
+
+.test {
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+.pass {
+  background-color: #dfd;
+}
+
+.fail {
+  background-color: #fdd;
+}
+
+.summary {
+  font-weight: bold;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #eee;
+}

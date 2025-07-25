@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test-view</title>
+  <link href="../src/tester-view.css" rel="stylesheet">
+  <script>
+    function getElementsByClass(cl) {
+      var retnode = [];
+      var elem = document.getElementsByTagName('*');
+      for (var i = 0; i < elem.length; i++) {
+        if ((' ' + elem[i].className + ' ').indexOf(' ' + cl + ' ') > -1) retnode.push(elem[i]);
+      }
+      return retnode;
+    };
+    function switchTab(tabName) {
+      // Hide all tabs
+      var tabs = document.getElementById('tabs').getElementsByTagName('div');
+      for (var i = 0; i < tabs.length; i++) {
+        if (tabs[i].className.indexOf('tab-content') !== -1) {
+          tabs[i].className = 'tab-content';
+        }
+      }
+      // Show selected tab
+      document.getElementById(tabName + '-tab').className = 'tab-content active';
+      // Update tab buttons
+      var buttons = getElementsByClass('tab-button');
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].className = buttons[i].className.replace(' active', '');
+      }
+      document.getElementById(tabName + '-button').className += ' active';
+      // Update preview if switching to preview tab
+      if (tabName == 'preview') {
+        updatePreview();
+      }
+    }
+    function updatePreview() {
+      var cssText = document.getElementById('css-code').value;
+      var htmlText = document.getElementById('html-code').value;
+      var iframe = document.getElementById('preview-frame');
+      // IE6 compatible iframe content writing
+      var doc = iframe.contentWindow.document;
+      doc.open();
+      doc.write('<html><head><style type="text/css">' + cssText + '</style></head><body>' + htmlText + '</body></html>');
+      doc.close();
+    }
+  </script>
+</head>
+
+<body>
+  <div class="tab-buttons">
+    <span id="css-button" class="tab-button active" onclick="switchTab('css');">CSS</span>
+    <span id="html-button" class="tab-button" onclick="switchTab('html');">HTML</span>
+    <span id="preview-button" class="tab-button" onclick="switchTab('preview');">Preview</span>
+    <div class="clear"></div>
+  </div>
+  <div id="tabs">
+    <div id="css-tab" class="tab-content active">
+      <textarea id="css-code" spellcheck="false" wrap="off"></textarea>
+    </div>
+    <div id="html-tab" class="tab-content">
+      <textarea id="html-code" spellcheck="false" wrap="off"></textarea>
+    </div>
+    <div id="preview-tab" class="tab-content">
+      <iframe id="preview-frame" frameborder="0"></iframe>
+    </div>
+  </div>
+  <script src="test-view.js"></script>
+</body>
+
+</html>
