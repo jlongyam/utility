@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>audio</title>
+  <link href="../../../_export.css" rel="stylesheet">
+  <link href="../../../utility/_export.css" rel="stylesheet">
+  <script src="../../../utility/demo/dev.js" defer></script>
+</head>
+<body class="page">
+  <div>
+    <div class="code" data-name="audio[controls] source"></div>
+    <div class="empty"></div>
+    <audio controls autorun=false>
+      <source src="../.sample/audio.mp3" type="audio/mpeg">
+      <source src="" type="audio/ogg">
+      <p>Download:<br>
+        <a href="file.mp3" onclick='return false'>MP3</a> or<br>
+        <a href="#!">OGG</a> audio.
+      </p>
+    </audio>
+    <button>Button</button>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="figure figcaption + audio"></div>
+    <div class="empty"></div>
+    <figure>
+      <figcaption>Listen to the T-Rex:</figcaption>
+      <audio controls src="../.sample/audio.mp3">
+        <a href="#!"> Download audio </a>
+      </audio>
+    </figure>
+    <div class="empty"></div>
+  </div>
+</body>
+</html>

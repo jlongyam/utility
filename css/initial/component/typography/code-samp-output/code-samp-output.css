@@ -1,0 +1,17 @@
+code, samp, output {
+  font-size: 1rem;
+  font-family: var(--font-code);
+}
+code {
+  font-weight: bold;
+}
+samp {
+  background-color: black;
+  color: white;
+  padding: 2px 4px;
+}
+output {
+  border: 1px solid var(--color-border_text);
+  padding: 2px 4px;
+  font-weight: bold;
+}

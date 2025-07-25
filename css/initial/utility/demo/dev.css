@@ -1,0 +1,24 @@
+:root {
+  --dev_code-height: 26px;
+}
+.empty {
+  /* calc(var(--line-height) * 1em) */
+  /* line-height original: 24px = 1.5 */
+  height: var(--dev_code-height);
+  background-color: whitesmoke;
+}
+.code {
+  height: var(--dev_code-height);
+  position: relative;
+}
+.code::before {
+  content: attr(data-name);
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  font: bold normal 16px/24px monospace;
+  color: white;
+  background-color: purple;
+  padding: 0 5px;
+}

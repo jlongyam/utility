@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>debug</title>
+  <link href="debug.css" rel="stylesheet">
+  <style>
+    body {
+      padding: 10px;
+    }
+    #root {
+      padding: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <input id="toggle" type=button onclick=document.querySelector('#root').classList.toggle('debug') value=Toggle>
+  </div>
+  <div id="root" class="debug">
+    <h1>Example</h1>
+    <section>
+      <h2>This is heading</h2>
+      <p>
+        Paragraph ... done.
+      </p>
+    </section>
+    <section>
+      <h2>List</h2>
+      <ul>
+        <li>List item 1</li>
+        <li>
+          List item 2
+          <ol>
+            <li>Order item 1</li>
+            <li>Order item 2</li>
+            <li>
+              Order item 3
+              <dl>
+                <dt>Test</dt>
+                <dd>Foo <b>bar</b></dd>
+              </dl>
+            </li>
+          </ol>
+        </li>
+        <li>List item 3</li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>

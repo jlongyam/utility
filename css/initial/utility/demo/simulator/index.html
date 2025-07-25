@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>simulator</title>
+  <base target="_blank">
+  <link href="../../../global.css" rel="stylesheet">
+  <link href="../../layout/box/_export.css" rel="stylesheet">
+  <script src="../../js/gap.js"></script>
+</head>
+<body class="page">
+<div id="div"></div>
+<script>
+  const demo_path = location.search.substring(1)
+  const sim_size = [
+    'xx-small',
+    'x-small',
+    'small',
+    'medium',
+    'large',
+    'x-large',
+    'xx-large'
+  ]
+  sim_size.forEach((i)=> {
+    div.innerHTML += `<div class="box mb_5px"><a href="${i+'.html?'+demo_path}" onclick="history.back()">${i}</a></div>`
+  })
+</script>
+</body>

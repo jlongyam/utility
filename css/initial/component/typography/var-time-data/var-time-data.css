@@ -1,0 +1,15 @@
+var {
+  font-style: normal;
+  color: #4caf50;
+  font-weight: bold;
+}
+time {
+  font-weight: bold;
+  border-top: 2px solid var(--color-border_text, silver);
+  border-bottom: 2px solid var(--color-border_text, silver);
+  padding: 0 2px;
+}
+data:hover::after {
+  content: ' [value: ' attr(value) ']';
+  color: gray;
+}

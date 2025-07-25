@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>meter</title>
+  <link href="../../../_export.css" rel="stylesheet">
+  <link href="../../../utility/_export.css" rel="stylesheet">
+  <script src="../../../utility/demo/dev.js" defer></script>
+</head>
+<body class="page">
+  <div>
+    <div class="code" data-name="meter (safe)"></div>
+    <div class="empty"></div>
+    <meter min="200" max="500" value="350">safe</meter>
+    <span>Text</span>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="meter (warning)"></div>
+    <div class="empty"></div>
+    <meter min="0" max="100" low="33" high="66" optimum="80" value="50">warning</meter>
+    <input type=button value=Button>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="meter (danger)"></div>
+    <div class="empty"></div>
+    <meter low="69" high="80" max="100" value="84">danger</meter>
+    <input type=checkbox>
+    <div class="empty"></div>
+  </div>
+</body>
+</html>

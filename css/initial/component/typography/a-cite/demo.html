@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>a-cite</title>
+  <link href="../../../_export.css" rel="stylesheet">
+  <link href="../../../utility/_export.css" rel="stylesheet">
+  <script src="../../../utility/demo/dev.js" defer></script>
+</head>
+<body class="page">
+  <div>
+    <div class="code" data-name="a:not([href])"></div>
+    <div class="empty"></div>
+    <a>No href</a>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="a:link"></div>
+    <div class="empty"></div>
+    Go to <a href="about:blank">about:blank</a>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="a:visited"></div>
+    <div class="empty"></div>
+    Current page: <a href="./demo.html">demo.html</a>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="a:active"></div>
+    <div class="empty"></div>
+    Click this <a href="#!">link</a>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="a[href~='#']"></div>
+    <div class="empty"></div>
+    Go to <a href="#">TOP</a>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="a[target]"></div>
+    <div class="empty"></div>
+    Open blank in <a href="about:blank" target="_blank">in new tab</a>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="a[href^='mailto']"></div>
+    <div class="empty"></div>
+    Send <a href="mailto:my@email.com" onclick="return false">email</a>  to
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="a[href^='tel']"></div>
+    <div class="empty"></div>
+    Direct Call at <a href="tel:+49.157.0156" onclick="return false">+49 157 0156</a>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="cite"></div>
+    <div class="empty"></div>
+    More information can be found in <cite>[ISO-0000]</cite>.
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="cite a"></div>
+    <div class="empty"></div>
+    First sentence in <cite><a href="https://example.com" onclick="return false">Example Book</a></cite> by Foo Bar (Part 1, Chapter 1).
+    <div class="empty"></div>
+  </div>
+</body>
+</html>

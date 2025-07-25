@@ -1,0 +1,7 @@
+.box {
+  --box_padding: 2.5%;
+  --box_border: 1px solid silver;
+  padding: var(--box_padding);
+  border: var(--box_border);
+  margin: 5px 0;
+}

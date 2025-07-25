@@ -1,0 +1,28 @@
+/* Defaults */
+:root {
+    --color-scheme-background: pink;
+    --color-scheme-text-color: red;
+}
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+    :root {
+        --color-scheme-background: white;
+        --color-scheme-text-color: black;
+    }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-scheme-background: black;
+        --color-scheme-text-color: white;
+    }
+}
+
+/* Usage */
+html {
+    background: var(--color-scheme-background);
+    color: var(--color-scheme-text-color);
+}
+

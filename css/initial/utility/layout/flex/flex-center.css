@@ -1,0 +1,21 @@
+/*  https://www.w3.org/Style/Examples/007/center.en.html */
+/*  Note:
+    Parent must have certain height. Example:
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        }
+    </style>
+    */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: inherit;
+  }
+/* Layout
+  <div class="flex-center">
+    <h1>Hello World</h1>
+  </div>
+  */

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>dl-dt-dd</title>
+  <link href="../../../_export.css" rel="stylesheet">
+  <link href="../../../utility/_export.css" rel="stylesheet">
+  <script src="../../../utility/demo/dev.js" defer></script>
+</head>
+<body class="page">
+  <div>
+    <div class="code" data-name="dl"></div>
+    <div class="empty"></div>
+    <dl>dl_content</dl>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="dt"></div>
+    <div class="empty"></div>
+    <dt>dt_content</dt>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="dd"></div>
+    <div class="empty"></div>
+    <dd>dd_content</dd>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="dl dt dd"></div>
+    <div class="empty"></div>
+    <dl>
+      <dt>dt content 1</dt>
+      <dd>dd content 1</dd>
+      <dt>dt content 2</dt>
+      <dt>dt content 3</dt>
+      <dd>
+        <li>dd-li item 1</li>
+        <li>dd-li item 2</li>
+        <li>dd-li item 3</li>
+        <div>div content</div>
+        <ul>
+          <li>ul-li item 1</li>
+          <li>ul-li item 2
+            <ul>
+              <li>ul-li item 2.1</li>
+              <li>ul-li item 2.2</li>
+            </ul>
+          </li>
+          <li>ul-li item 3</li>
+        </ul>
+      </dd>
+      <dd>
+        <ol>
+          <li>ol-li item 1</li>
+          <li>ol-li item 2</li>
+          <li>ol-li item 3</li>
+        </ol>
+      </dd>
+      <dd>
+        <menu>
+          <li>menu-li item 1</li>
+          <li>menu-li item 2</li>
+          <li>menu-li item 3</li>
+        </menu>
+      </dd>
+      <dt>dt item 4</dt>
+      <dt><h3>dt-h3 content</h3></dt>
+      <dt><h1>dt-h1 content</h1></dt>
+      <dd>
+        <div>dd-div</div>      
+        <p>paragraph</p>
+      </dd>
+      <dl>
+        <dt>deep 1 dl-dt</dt>
+        <dd>deep 1 dl-dd</dd>
+        <dd>
+          <dl>
+            <dt>deep 2 dl-dt</dt>
+            <dd>deep 2 dl-dd
+              <p>paragraph</p>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </dl>
+    <div class="empty"></div>
+  </div>
+</body>
+</html>

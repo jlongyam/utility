@@ -1,0 +1,18 @@
+progress {
+  -webkit-appearance: none;
+  border: 1px solid var(--input_color-border);
+  border-radius: calc(var(--input_radius) / 2);
+  height: calc(var(--input_height-pointer) / 2);
+  background-color: var(--input_color-face); /* == firefox */
+  /* == chrome */
+  &::-webkit-progress-bar {
+    background-color: var(--input_color-face);
+  }
+  &::-webkit-progress-value {
+    background-color: var(--progress_color-value);
+  }
+  /* == firefox */
+  &::-moz-progress-bar {
+    background-color: var(--progress_color-value);
+  }
+}

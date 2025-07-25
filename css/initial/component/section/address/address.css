@@ -1,0 +1,9 @@
+address {
+  margin: var(--margin-section);
+  overflow-wrap: break-word;
+  font-style: normal;
+  padding: var(--padding-section);
+  border: 1px dotted var(--color-border_layout);
+  display: inline-flex;
+    flex-direction: column;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>svg</title>
+  <link href="../../../_export.css" rel="stylesheet">
+  <link href="../../../utility/_export.css" rel="stylesheet">
+  <script src="../../../utility/demo/dev.js" defer></script>
+</head>
+<body class="page">
+  
+  <div>
+    <div class="code" data-name="svg[width][height]"></div>
+    <div class="empty"></div>
+    <svg width="100%" height="100%">
+      <rect width="100%" height="100%" fill="red" />
+      <circle cx="100%" cy="100%" r="150" fill="blue" stroke="black" />
+      <polygon points="120,0 240,225 0,225" fill="green" />
+      <text x="50" y="100" font-family="Verdana" font-size="55" fill="white" stroke="black" stroke-width="2">
+        Hello <a href="#!">World</a> !
+      </text>
+    </svg>
+    <span>Span Text</span>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="figure figcaption + svg"></div>
+    <div class="empty"></div>
+    <figure>
+      <figcaption>SVG image:</figcaption>
+      <svg width="100%" height="100%">
+        <rect width="100%" height="100%" fill="red" />
+        <circle cx="100%" cy="100%" r="150" fill="blue" stroke="black" />
+        <polygon points="120,0 240,225 0,225" fill="green" />
+        <text x="50" y="100" font-family="Verdana" font-size="55" fill="white" stroke="black" stroke-width="2">
+          <a href="javascript:alert('OK')">OK</a>
+        </text>
+      </svg>
+    </figure>
+    <div class="empty"></div>
+  </div>
+</body>
+</html>

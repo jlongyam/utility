@@ -1,0 +1,13 @@
+fieldset {
+  border: 1px solid var(--color-border_layout);
+  margin: var(--margin-section);
+  padding: var(--padding-section);
+}
+legend {
+  padding: .25em .5em;
+  font-weight: bold;
+  font-size: 1.25em;
+}
+legend > :is(h1,h2,h3,h4,h5,h6) {
+  margin: 0;
+}

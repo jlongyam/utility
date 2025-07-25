@@ -1,0 +1,13 @@
+iframe {
+  display: block;
+  max-inline-size: 100%;
+  block-size: auto;
+  border: var(--ifame_border);
+  width: var(--iframe_width);
+  height: var(--iframe_height);
+  object-fit: cover;
+  object-position: center;
+  &:not([src]) {
+    background-color: silver;
+  }
+}

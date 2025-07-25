@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compare</title>
+  <link href="compare.css" rel="stylesheet">
+</head>
+<body>
+  <main class="compare">
+    <nav class="compare-tab">
+      <label class="tab-item" for="switch_1">Before</label>
+      <label class="tab-item _button">Debug: <b id="indicator">OFF</b></label>
+      <label class="tab-item" for="switch_2">After</label>
+    </nav>
+    <div class="compare-view">
+      <section class="view-split">
+        <div class="split_half">
+          <input id="switch_1" class="switch-radio" type="radio" name="switch" checked>
+          <iframe id="iframe_1" class="compare-iframe switch-target" src="demo.html?unstyle"></iframe>
+        </div>        
+        <div class="split_half">
+          <input id="switch_2" class="switch-radio" type="radio" name="switch">
+          <iframe id="iframe_2" class="compare-iframe switch-target" src="demo.html"></iframe>
+        </div>
+      </section>
+    </div>
+  </main>
+  <script>
+    function configIframe( ifr_src = 'demo.html' ) {
+      document.querySelector('.tab-item._button').addEventListener('click', ()=> {
+        if( indicator.textContent === 'OFF' ) {
+          indicator.textContent = 'ON'
+          iframe_1.src = ifr_src + '?unstyle&debug'
+          iframe_2.src = ifr_src + '?debug'
+          return
+        }
+        if( indicator.textContent === 'ON' ) {
+          indicator.textContent = 'OFF'
+          iframe_1.src = ifr_src + '?unstyle'
+          iframe_2.src = ifr_src
+        }
+      })
+    }
+    if(location.search.length > 0 ) {
+      let root = '../../../'
+      let target = location.search.substring(1)
+      iframe_1.src = root+target+'?unstyle'
+      iframe_2.src = root+target
+      configIframe( root+target )
+    }
+    else {
+      configIframe()
+    }
+  </script>
+  <!--<script src="demo.js"></script>-->
+</body>
+</html>

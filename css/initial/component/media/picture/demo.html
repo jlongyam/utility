@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>picture</title>
+  <link href="../../../_export.css" rel="stylesheet">
+  <link href="../../../utility/_export.css" rel="stylesheet">
+  <script src="../../../utility/demo/dev.js" defer></script>
+</head>
+<body class="page">
+  
+  <div>
+    <div class="code" data-name="picture source[srcset][media] img"></div>
+    <div class="empty"></div>
+    <picture>
+      <source srcset="../.sample/128x128.png" media="(orientation: portrait)" />
+      <img src="../.sample/640x480.png" />
+    </picture>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="figure figcaption + picture"></div>
+    <div class="empty"></div>
+    <figure>
+      <figcaption>Picture</figcaption>
+      <picture>
+        <source srcset="../.sample/128x128.png" media="(orientation: portrait)" />
+        <img src="../.sample/640x480.png" />
+      </picture>
+    </figure>
+    <div class="empty"></div>
+  </div>
+</body>
+</html>

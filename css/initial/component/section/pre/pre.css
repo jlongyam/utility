@@ -1,0 +1,7 @@
+pre {
+  font-family: var(--font-code);
+  font-size: var(--font-size);
+  margin: var(--margin-section);
+  padding: var(--padding-section);
+  overflow: auto;
+}

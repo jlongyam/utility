@@ -1,0 +1,9 @@
+.page {
+  --page_padding: 2.5%;
+  --page_margin: 0;
+  width: 100%;
+  height: 100%;
+  padding: var(--page_padding);
+  margin: var(--page_margin);
+  overflow: auto;
+}

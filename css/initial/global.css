@@ -1,0 +1,167 @@
+@layer variable {
+  @layer layout {
+    :root {
+      --padding-layout: 1em;
+      --margin-layout: 1em;
+      --padding-section: .5em;
+      --margin-section: .5em;
+    }
+  }
+  @layer text {
+    :root {
+      --font-primary: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, Cantarell, Oxygen, 'Helvetica Neue', Arial, sans-serif;
+      --font-code: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', 'Roboto Mono', 'Ubuntu Monospace', 'Oxygen Mono', 'Liberation Mono', monospace;
+      --font-size: 1rem;
+      --line-height: 1.75;
+    }
+  }
+  @layer appearance {
+    :root {
+      --color-theme: #fbfbfb;
+      --color-accent: #808080;
+      --color-text: #000;
+      --color-selection: #00bcd4;
+      --color-border_text: #c0c0c0;
+      --color-border_layout: #c0c0c0; /* border_section */
+      --color-border_control: #c0c0c0; /* input, etc */
+      --color-outline: #009688;
+    }
+  }
+  @layer special {
+    :root {
+      --tab-size: 4;
+    }
+  }
+  /* @layer variable.element.<ELEMENT_NAME> */
+}
+*,*::before,*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	position: relative;
+	background-repeat: no-repeat;
+  text-decoration: inherit;
+  vertical-align: baseline;
+  @media(prefers-reduced-motion: reduce) {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-delay: 0s !important;
+    transition-duration: 0s !important;
+  }
+}
+html {
+  font: normal 400 16px/24px monospace;
+  background-color: #9e9e9e;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  color-scheme: dark light; /* for `light-dark()` */
+  ::selection {
+    background-color: var(--color-selection);
+    color: #000;
+    text-shadow: none;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    &:focus-within {
+      scroll-behavior: smooth;
+    }
+  }
+}
+body {
+  font: normal normal 1rem/var(--line-hight) var(--font-primary);
+	background-color: #fff;
+  color: #000;
+  margin: 0;
+  height: 100%;
+  overflow: auto;
+  overflow-wrap: break-word;
+	word-break: break-word;
+	cursor: default;
+	tab-size: var(--tab-size);
+  -moz-tab-size: var(--tab-size);
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  :focus-visible {
+    outline: 2px solid var(--color-outline);
+    outline-offset: 2px;
+    scroll-margin-block: 10vh;
+  }
+}
+@layer variable.element {
+  @layer input {
+    :root {
+      --input_font: normal 500 1rem/1.5 var(--font-primary);
+      --input_font-code: normal 500 1rem/1.5 var(--font-code);
+      --input_gap: 5px;
+      --input_padding: 2px var(--input_gap);
+      --input_height: 36px;
+      --input_height-pointer: 18px;
+      --input_outline: 3px solid var(--color-outline);/* overriede */
+      --input_outline-offset: 1px;
+      --input_radius: 2px;
+      --input_color-face: #f1f3f4; /* follow audio background */
+      --input_color-border: #8f8f9d;
+      --input_color-hover: #e3e3e3;
+      --input_color-disabled: #cfcfcf;
+      --input_font-disabled: #afafaf;
+      --input_text-disabled: #fafafa;
+      --input_range-width: 150px;
+      --input_image-size: 36px;
+    }
+  }
+  @layer option {
+    :root {
+      --option_padding: 5px;
+      --option_color-hover: #c0c0c0;
+    }
+  }
+  @layer textarea {
+    :root {
+      --textarea_width: 200px;
+    }
+  }
+  @layer progress {
+    :root {
+      --progress_color-value: green;
+    }
+  }
+  @layer meter {
+    :root {
+      --meter_width: 150px;
+      --meter_color-safe: #00ab60;
+      --meter_color-warning: #ffbd4f;
+      --meter_color-danger: #e22850;
+    }
+  }
+  @layer iframe {
+    :root {
+      --iframe_width: 100%;
+      --iframe_height: 300px;
+      --iframe_border: 1px solid var(--color-border_control);
+    }
+  }
+  @layer audio {
+    :root {
+      --audio_width: 300px;
+    }
+  }
+  @layer aside {
+    :root {
+      --aside-postion_top: 0;
+      --aside-postion_right: unset;
+      --aside-postion_bottom: unset;
+      --aside-postion_left: 0;
+      --aside-toggle_size: 36px;
+      --aside-border_size: 1px;
+    }
+  }
+}

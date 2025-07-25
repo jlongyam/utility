@@ -1,0 +1,8 @@
+header {
+  display: block;
+  padding: var(--padding-layout, 1em);
+  background-color: var(--color-theme, #fbfbfb);
+  color: var(--color-text, #000);
+  border: 1px solid transparent;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.4);
+}

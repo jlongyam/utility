@@ -1,0 +1,10 @@
+svg {
+  display: block;
+  max-inline-size: 100%;
+  block-size: auto;
+  object-fit: none;
+  object-position: center;
+  &:not([fill]) {
+    fill: currentColor;
+  }
+}

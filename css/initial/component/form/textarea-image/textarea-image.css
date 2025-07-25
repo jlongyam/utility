@@ -1,0 +1,28 @@
+input[type=image] {
+  vertical-align: middle;
+  padding: 0;
+  height: var(--input_image-size);
+  width: var(--input_image-size);
+}
+textarea {
+  font: var(--input_font-code);
+  color: inherit;
+  padding: var(--input_padding);
+  border: 1px solid var(--input_color-border);
+  border-radius: var(--input_radius);
+  position: relative;
+  min-height: calc((var(--line-height) * 2) + (var(--input_gap) * 2));
+  vertical-align: middle;
+  resize: vertical;
+  min-width: 100px;
+  width: var(--textarea_width);
+  &:focus {
+    outline: var(--input_outline);
+    outline-offset: var(--input_outline-offset);
+  }
+  &:disabled {
+    resize: none;
+    background-color: var(--input_text-disabled);
+    cursor: not-allowed;
+  }
+}

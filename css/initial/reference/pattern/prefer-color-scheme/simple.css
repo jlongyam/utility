@@ -1,0 +1,18 @@
+/*https://davidwalsh.name/prefers-color-scheme*/
+/*--------------------------------------------*/
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+    html {
+        background: white;
+        color: black;
+    }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    html {
+        background: black;
+        color: white;
+    }
+}

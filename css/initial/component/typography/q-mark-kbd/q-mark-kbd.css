@@ -1,0 +1,18 @@
+q::before,
+q::after {
+  content: '"';
+  font-family: monospace;
+  font-size: 1em;  
+}
+mark {
+  padding: 0 3px;
+  background-color: #ffeb3b;
+}
+kbd {
+  font-size: 1rem;
+  font-family: var(--font-code);
+  border: 1px solid silver;
+  padding: 0 2px;
+  background-color: #f5f5f5;
+  border-bottom-width: 2px;
+}

@@ -1,0 +1,21 @@
+input[list] {
+  vertical-align: middle;
+  &[type=color] {
+    min-width: calc(var(--input_height) * 2);
+    background-color: var(--input_color-face);
+    border-radius: var(--input_radius);
+    border-color: var(--input_color-border);
+    &:hover {
+      background-color: var(--input_color-hover);
+      &:disabled {
+        background-color: var(--input_color-face);
+      }
+    }
+    &:disabled {
+      border-color: var(--input_color-disabled);
+    }
+  }
+  &[type=time] {
+    position: relative;
+  }
+}

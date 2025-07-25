@@ -1,0 +1,8 @@
+hr {
+  border: none;
+  border-block-start: 1px solid;
+  block-size: 0;
+  color: inherit;
+  overflow: visible;
+  color: var(--color-border_layout);
+}

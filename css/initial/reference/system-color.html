@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <title>title</title>
+<style>
+*,*::before, *::after {	box-sizing: border-box; }
+html {
+  height: 100%;
+  font: 16px/24px monospace;
+  }
+body {
+  margin: 5%;
+  height: 100%;
+  font-family: system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+
+</style>
+<script>
+String.prototype.stripInitial = function () {
+  var
+    pttrn = /^\s*(?=[^\s]+)/mg,
+    indentLen = this.match(pttrn).reduce(function (min, line) { return Math.min(min, line.length) }, Infinity),
+    indent = new RegExp('^\\s{' + indentLen + '}', 'mg')
+    ;
+  return indentLen > 0 ? this.replace(indent, '') : this
+}
+{
+  let style = `
+    .result-area {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+      padding: 2.5%;
+      line-height: 2em;
+    }
+    .result-log,
+    .result-script {
+      font: 1em ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+      padding: 1em;
+      background-color: black;
+      color: silver;
+      margin: 0 0 1em 0;
+      border-top: 1em solid gray;
+      position: relative;
+      overflow: auto;
+    }
+    .result-script[data-result-source]::before {
+      content: '//<script src="' attr(data-result-source) '">';
+      color: gray;
+    }
+    .result-demo {
+      margin: 0 0 1em 0;
+    }
+    .result-script {
+      display: block;
+      background-color: #fff9c8;
+      color: black;
+      white-space: pre;
+    }
+  `
+  document.head.appendChild(Object.assign(document.createElement('style'), { textContent: style }))
+  document.head.removeChild(document.currentScript)
+}
+let result = {
+  createWorkSpace: () => {
+    let workarea = Object.assign(document.createElement('div'), { classList: 'result-area' })
+    document.currentScript.parentElement.appendChild(workarea)
+    workarea.appendChild(document.currentScript)
+    return workarea
+  },
+  showSource: (script) => {
+    script.classList.add('result-script')
+    if (script.getAttribute('src') === null) {
+      script.innerHTML = script.innerHTML.stripInitial().trim()
+    }
+    else {
+      script.setAttribute('data-result-source', script.getAttribute('src'))
+    }
+  },
+  html: (strHTML, cb) => {
+    let div = Object.assign(document.createElement('div'), { innerHTML: strHTML, classList: 'result-demo' })
+    if (!document.currentScript.parentElement.classList.contains('result-area')) {
+      let workarea = result.createWorkSpace()
+      workarea.appendChild(div)
+    }
+    else {
+      document.currentScript.parentElement.appendChild(div)
+    }
+    if (document.currentScript.getAttribute('data-source-show') !== null) {
+      result.showSource(document.currentScript)
+    }
+    if (cb) cb.call()
+    return {
+      then: (cb)=> { if (cb) cb.call()}
+    }
+  },
+  js: (strInput, cb) => {
+    let output = Object.assign(document.createElement('pre'), { textContent: strInput, classList: 'result-log' })
+    if (!document.currentScript.parentElement.classList.contains('result-area')) {
+      let workarea = result.createWorkSpace()
+      workarea.appendChild(output)
+    }
+    else {
+      document.currentScript.parentElement.appendChild(output)
+    }
+    if (document.currentScript.getAttribute('data-source-show') !== null) {
+      result.showSource(document.currentScript)
+    }
+    if (cb) cb.call()
+    return {
+      then: (cb)=> { if (cb) cb.call()}
+    }
+  },
+  css: ( strInput, cb )=> {
+    let style = Object.assign(document.createElement('style'), { textContent: strInput })
+    document.head.appendChild(style)
+    if (document.currentScript.getAttribute('data-source-show') !== null) {
+      result.showSource(document.currentScript)
+    }
+    if (cb) cb.call()
+    return {
+      then: (cb)=> { if (cb) cb.call()}
+    }
+  }
+}
+</script>
+<style>
+.color_name {
+  padding: 5px;
+  background-color: white;
+}
+.color_block {
+  padding: 10px;
+}
+
+.color_layout {
+  font-family: monospace;
+}
+</style>
+</head>
+<body>
+<h1>Basic Colors</h1>
+<script>
+let array_color_system = [ "ActiveText", "ButtonFace", "ButtonText", "Canvas", "CanvasText", "Field", "FieldText", "GrayText", "Highlight", "HighlightText", "LinkText", "SelectedItem", "SelectedItemText", "VisitedText" ]
+result.html(`
+  <h2>System Color</h2>
+  <div class="color_layout">
+    ${array_color_system.map((item)=> {
+      return `
+        <div class="color_block" style="background-color:${item}">
+          <span class="color_name">${item}</span>
+        </div>
+      `
+    }).join('')}
+  </div>
+`)
+let array_color_safe = [
+  "Aqua",
+  "Black",
+  "Blue",
+  "Fuchsia",
+  "Gray",
+  "Green",
+  "Lime",
+  "Maroon",
+  "Navy",
+  "Olive",
+  "Purple",
+  "Red",
+  "Silver",
+  "Teal",
+  "White",
+  "Yellow"
+]
+result.html(`
+  <h2>Color safe</h2>
+  <div>
+    ${array_color_safe.map((item)=> {
+      return `
+        <div class="color_block" style="background-color:${item}"><span class="color_name">${item}</span></div>
+      `
+    }).join('')}
+  </div>
+`)
+let array_color_safe_extend = {
+  'Black': [ "Black", "DarkSlateGray", "DimGray", "SlateGray", "Gray", "LightSlateGray", "DarkGray", "Silver", "LightGray", "Gainsboro" ],
+  'White': [ "MistyRose", "AntiqueWhite", "Linen", "Beige", "WhiteSmoke", "LavenderBlush", "OldLace", "AliceBlue", "Seashell", "GhostWhite", "Honeydew", "FloralWhite", "Azure", "MintCream", "Snow", "Ivory", "White" ],
+  'Pink': [ "MediumVioletRed", "DeepPink", "PaleVioletRed", "HotPink", "LightPink", "Pink" ],
+  'Red': [ "DarkRed", "Red", "Firebrick", "Crimson", "IndianRed", "LightCoral", "Salmon", "DarkSalmon", "LightSalmon" ],
+  'Orange': [ "OrangeRed", "Tomato", "DarkOrange", "Coral", "Orange" ],
+  'Yellow': [ "DarkKhaki", "Gold", "Khaki", "PeachPuff", "Yellow", "PaleGoldenrod", "Moccasin", "PapayaWhip", "LightGoldenrodYellow", "LemonChiffon", "LightYellow" ],
+  'Brown': [ "Maroon", "Brown", "SaddleBrown", "Sienna", "Chocolate", "DarkGoldenrod", "Peru", "RosyBrown", "Goldenrod", "SandyBrown", "Tan", "Burlywood", "Wheat", "NavajoWhite", "Bisque", "BlanchedAlmond", "Cornsilk" ],
+  'Purple': [ "Indigo", "Purple", "DarkMagenta", "DarkViolet", "DarkSlateBlue", "BlueViolet", "DarkOrchid", "Fuchsia", "Magenta", "SlateBlue", "MediumSlateBlue", "MediumOrchid", "MediumPurple", "Orchid", "Violet", "Plum", "Thistle", "Lavender" ],
+  'Blue': [ "MidnightBlue", "Navy", "DarkBlue", "MediumBlue", "Blue", "RoyalBlue", "SteelBlue", "DodgerBlue", "DeepSkyBlue", "CornflowerBlue", "SkyBlue", "LightSkyBlue", "LightSteelBlue", "LightBlue", "PowderBlue" ],
+  'Cyan': [ "Teal", "DarkCyan", "LightSeaGreen", "CadetBlue", "DarkTurquoise", "MediumTurquoise", "Turquoise", "Aqua", "Cyan", "Aquamarine", "PaleTurquoise", "LightCyan" ],
+  'Green': [ "DarkGreen", "Green", "DarkOliveGreen", "ForestGreen", "SeaGreen", "Olive", "OliveDrab", "MediumSeaGreen", "LimeGreen", "Lime", "SpringGreen", "MediumSpringGreen", "DarkSeaGreen", "MediumAquamarine", "YellowGreen", "LawnGreen", "Chartreuse", "LightGreen", "GreenYellow", "PaleGreen" ]
+}
+result.html(`
+  <h2>Color safe Extend</h2>
+  <div style="font-family:monospace">
+    ${Object.keys(array_color_safe_extend).map((item)=> {
+      return `
+        <h3>${item}</h3>
+        <div>
+          ${array_color_safe_extend[item].map((i)=> {
+            return `<div style="background-color:${i};padding:10px"><span style="background-color:white;padding:5px">${i}</span></div>`
+          }).join('')}
+        </div>
+      `
+    }).join('')}
+  </div>
+`)
+</script>
+</body>
+</html>

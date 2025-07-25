@@ -1,0 +1,8 @@
+figure {
+  padding: var(--margin-section);
+  display: block;
+  > figcaption {
+    font-weight: bold;
+    padding: var(--padding-section);
+  }
+}

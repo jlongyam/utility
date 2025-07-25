@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1, viewport-fit=cover" />
+  <title>test: flex</title>
+  <link href="flex.css" rel="stylesheet">
+  <style> 
+    .demo-parent {
+      border: 1px solid silver;
+      height: 200px;
+    }
+    .demo-child {
+      border: 2px solid orange;
+      padding: 5px;
+    }
+    .demo-child:nth-child(1){ border-color: green; }
+    .demo-child:nth-child(2){ border-color: purple; }
+    [type=checkbox] { vertical-align: middle; }
+  </style>
+</head>
+<body>
+  <h1><code>.flex</code></h1>
+  <p>
+    <label><code>_sort-align</code></label>
+    <select id="select_align" onchange="changeAlign(this)">
+      <option value="">NO_CLASS</option>
+      <option value="_sort-align_start">_start</option>
+      <option value="_sort-align_center">_center</option>
+      <option value="_sort-align_end">_end</option>
+      <option value="_sort-align_stretch">_stretch</option>
+      <option value="_sort-align_baseline">_baseline</option>
+    </select>
+    <label><code>_sort-justify</code></label>
+    <select id="select_justify" onchange="changeJustify(this)">
+      <option value="">NO_CLASS</option>
+      <option value="_sort-justify_start">_start</option>
+      <option value="_sort-justify_center">_center</option>
+      <option value="_sort-justify_end">_end</option>
+      <option value="_sort-justify_space-between">_space-between</option>
+      <option value="_sort-justify_space-around">_space-around</option>
+    </select>
+    <label><code>_sort</code></label>
+    <select id="select_justify" onchange="changeJustify(this)">
+      <option value="">NO_CLASS</option>
+      <option value="_sort_vertical">_vertical</option>
+      <option value="_sort_vertical_reverse">_vertical_reverse</option>
+      <option value="_sort_horizontal">_horizontal</option>
+      <option value="_sort_horizontal_reverse">_horizontal_reverse</option>
+    </select>
+  </p>
+  <div id="demo_flex" class="demo-parent flex">
+    <div class="demo-child flex-item"><code>flex-item</code> 1 <input type="checkbox" onclick="checkGrow(this)"></div>
+    <div class="demo-child flex-item"><code>flex-item</code> 2 <input type="checkbox" onclick="checkGrow(this)"></div>
+    <div class="demo-child flex-item"><code>flex-item</code> 3 <input type="checkbox" onclick="checkGrow(this)"></div>
+  </div>
+  <script>
+    let str_class_1 = str_class_2 = str_class_3 = str_class_4 = ''
+    function implement_class(el) {
+      demo_flex.className = "demo-parent flex "+str_class_1+str_class_2+str_class_3+str_class_4
+    }
+    function changeAlign(el) {
+      str_class_1 = ' '+el.value
+      implement_class(el)
+    }
+    function changeJustify(el) { 
+      str_class_2 = ' '+el.value
+      implement_class(el)
+    }
+    function changeSort(el) {
+      str_class_3 = el.value
+      implement_class(el)
+    }
+    function checkGrow(el) {
+      let prev = el.previousElementSibling
+      if( el.parentElement.classList.contains( 'flex-item' ) ) {
+        el.parentElement.className = 'demo-child flex-item_grow'
+        prev.textContent = 'flex-item_grow'
+        return
+      }
+      if( el.parentElement.classList.contains( 'flex-item_grow' ) ) {
+        el.parentElement.className = 'demo-child flex-item'
+        prev.textContent = 'flex-item'
+        return
+      }
+    }
+  </script>
+</body>
+</html>

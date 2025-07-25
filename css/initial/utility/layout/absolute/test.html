@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>absolute</title>
+  <link href="../../../global.css" rel="stylesheet">
+  <link href="../box/page.css" rel="stylesheet">
+  <link href="absolute.css" rel="stylesheet">
+<style>
+.demo-parent {
+  border: 2px solid silver;
+  height: 80px;
+}
+.demo-child {
+  border: 2px solid orange;
+  height: 50px;
+  width: 25%;
+}
+.demo-absolute1 {
+  right: 20px;
+  bottom: 5px;
+}
+.demo-absolute2 {
+  top: 10px;
+  left: 150px;
+}
+</style>
+</head>
+<body class="page">
+  <h1><code>absolute-center</code></h1>
+  <br>
+  <div class="demo-parent relative">
+    <div class="demo-child absolute-center">_center</div>
+  </div>
+  <br>
+  <div class="demo-parent relative">
+    <div class="demo-child absolute-center _vertical">_vertical-left</div>
+  </div>
+  <br>
+  <div class="demo-parent relative">
+    <div class="demo-child absolute-center _vertical _right">_vertical _right</div>
+  </div>
+  <br>
+  <div class="demo-parent relative">
+    <div class="demo-child absolute-center _horizontal">_horizontal _top</div>
+  </div>
+  <br>
+  <div class="demo-parent relative">
+    <div class="demo-child absolute-center _horizontal _bottom">_horizontal _bottom</div>
+  </div>
+  <br>
+  <h2>Plus</h2>
+  <div class="demo-parent relative">
+    <div class="demo-child absolute demo-absolute1">absolute1</div>
+    <div class="demo-child absolute demo-absolute2">absolute2</div>
+  </div>
+  <h2>Example</h2>
+  <style>
+    .menu-bar {
+      border: 2px solid gray;
+      height: 56px;
+      width: 100%;
+    }
+    .icon {
+      width: 48px;
+      height: 48px;
+      border: 1px solid silver;
+      left: 2px;
+    }
+    .icon-r {
+      width: 32px;
+      height: 32px;
+      border: 1px solid silver;
+      right: 8px;
+    }
+    .title {
+      font-weight: bold;
+    }
+  </style>
+  <div id="nav" class="menu-bar relative">
+    <div class="icon absolute-center _vertical">Icon</div>
+    <div class="title absolute-center">Welcome</div>
+    <button class="icon-r absolute-center _vertical _right">=</button>
+  </div>
+  <br>
+</body>
+</html>

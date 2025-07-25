@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>figure-figcaption</title>
+  <link href="../../../_export.css" rel="stylesheet">
+  <link href="../../../utility/_export.css" rel="stylesheet">
+  <script src="../../../utility/demo/dev.js" defer></script>
+</head>
+<body class="page">
+  <div>
+    <div class="code" data-name="figure"></div>
+    <div class="empty"></div>
+    <figure>CONTENT</figure>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="figure figcaption"></div>
+    <div class="empty"></div>
+    <figure>
+      <figcaption>CAPTION</figcaption>
+      <div>CONTENT</div>
+    </figure>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="figure figcaption + pre"></div>
+    <div class="empty"></div>
+    <figure>
+      <figcaption>pre in figure</figcaption>
+      <pre>123456
+ABSCJH</pre>
+    </figure>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="section > figure"></div>
+    <div class="empty"></div>
+    <section>
+      <figure>
+        <figcaption>figure in layout element</figcaption>
+        <div>Figure is <u>not layout</u> element, but <b>section</b> element</div>
+      </figure>
+      <figure><b>Other</b> figure</figure>
+    </section>
+    <div class="empty"></div>
+  </div>
+</body>
+</html>

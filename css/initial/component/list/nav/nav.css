@@ -1,0 +1,14 @@
+nav {
+  border: 1px solid var(--color-border_layout);
+}
+/* TODO: should put in `compound` folder */
+header > nav > ul {
+  list-style: none;
+}
+header > nav > ul li {
+  display: inline-block;
+  font-weight: bold;
+  &:not(:last-child):after {
+    content: ' \02219 '
+  }
+}

@@ -1,0 +1,62 @@
+button,
+input[type=button],
+input[type=reset], 
+input[type=submit] {
+  -webkit-appearance: button;
+  cursor: pointer;
+  font: var(--input_font);
+  color: inherit;
+  padding: var(--input_padding);
+  height: var(--input_height);
+  border: 1px solid var(--input_color-border);
+  border-radius: var(--input_radius);
+  background-color: var(--input_color-face);
+  vertical-align: middle;
+  &:hover {
+    background-color: var(--input_color-hover);
+  }
+  &[disabled] {
+    cursor: not-allowed;
+    border-color: var(--input_color-disabled);
+    color: var(--input_font-disabled);
+    &:hover {
+      background-color: var(--input_color-face);
+    }
+  }
+  &:focus {
+    outline: var(--input_outline);
+	  outline-offset: var(--input_outline-offset);
+  }
+}
+input[type=file] {
+	font: var(--input_font);
+	color: inherit;
+  padding: 0;
+  border: none;
+  &:focus {
+    outline: var(--input_outline);
+	  outline-offset: var(--input_outline-offset);
+  }
+  &[disabled] {
+    cursor: not-allowed;
+    border-color: var(--input_color-disabled);
+    color: var(--input_font-disabled);
+    &::file-selector-button {
+      color: var(--input_font-disabled);
+    }
+    &:hover::file-selector-button {
+      background-color: var(--input_color-face);
+    }
+  }
+  &::file-selector-button {
+    border: 1px solid var(--input_color-border);
+    border-radius: var(--input_radius);
+    background-color: var(--input_color-face);
+    padding: var(--input_padding);
+	  height:  var(--input_height);
+	  font: inherit;
+  }
+  &:hover::file-selector-button {
+	  background-color: var(--input_color-hover);
+	}
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>dialog</title>
+  <link href="../../../_export.css" rel="stylesheet">
+  <link href="../../../utility/_export.css" rel="stylesheet">
+  <script src="../../../utility/demo/dev.js" defer></script>
+</head>
+<body class="page">
+  <div>
+    <div class="code" data-name="dialog[open]"></div>
+    <div class="empty"></div>
+    <dialog open>TEXT_CONTENT</dialog>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="dialog > CONTENT"></div>
+    <div class="empty"></div>
+    <button onclick=dialog.showModal()>Open Dialog</button>
+    <dialog id=dialog>
+      <section>
+        <div>CONTENT</div>
+      </section>
+      <section>
+        <button onclick=dialog.close()>Close</button>
+      </section>
+    </dialog>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="dialog > LONG_CONTENT"></div>
+    <div class="empty"></div>
+    <button onclick=dialog1.showModal()>Open Dialog</button>
+    <dialog id=dialog1>
+      <section>
+        <button onclick=dialog1.close()>Close</button>
+      </section>
+      <section>
+        <p>Paragraph</p>
+        <p>Paragraph</p>
+      </section>
+      <section>
+        <p>Paragraph</p>
+        <p>Paragraph</p>
+      </section>
+      <section>
+        <button onclick=dialog1.close()>Close</button>
+      </section>
+    </dialog>
+    <div class="empty"></div>
+  </div>
+</body>
+</html>

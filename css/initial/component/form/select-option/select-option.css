@@ -1,0 +1,52 @@
+select,
+option {
+  cursor: pointer;
+  font: var(--input_font);
+  color: inherit;
+  vertical-align: top;
+}
+select {
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: rgb%28138, 138, 138%29'></polygon></svg>");
+  background-origin: content-box;
+  background-position: right -1rem center;
+  background-repeat: no-repeat;
+  background-size: 9px 6px;
+  padding: var(--input_padding);
+  padding-right: 1.5rem;
+  background-color: var(--input_color-face);
+  border: 1px solid var(--input_color-border);
+  border-radius: var(--input_radius);
+  height: var(--input_height);
+  &[multiple] {
+    overflow:auto;
+    height: auto;
+    padding: 5px;
+    > option {
+      padding: var(--option_padding);
+    }
+    > option:hover {
+      background-color: var(--option_color-hover);
+    }
+  }
+  &:focus {
+    outline: var(--input_outline);
+	  outline-offset: var(--input_outline-offset);
+  }
+  &:hover {
+	  background-color: var(--input_color-hover);
+	  &[disabled] {
+	    background-color: var(--input_color-face);
+	    cursor: not-allowed;
+	    > option {
+        background-color: inherit;
+        cursor: inherit;
+      }
+	  }
+  }
+  &[disabled] {
+    border-color: var(--input_color-disabled);
+    color: var(--input_font-disabled);
+    cursor: not-allowed;
+  }
+}

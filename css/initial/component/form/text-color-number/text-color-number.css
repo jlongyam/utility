@@ -1,0 +1,37 @@
+input,
+input[type=text] {
+  font: var(--input_font-code);
+  color: inherit;
+  padding: var(--input_padding);
+  height: var(--input_height);
+  border: 1px solid var(--input_color-border);
+  border-radius: var(--input_radius);
+  &:focus {
+    outline: var(--input_outline);
+    outline-offset: var(--input_outline-offset);
+  }
+  &[disabled] {
+    border-color: var(--input_color-disabled);
+    color: var(--input_font-disabled);
+    cursor: not-allowed;
+    background-color: var(--input_text-disabled);
+  }
+}
+input[type=color] {
+  height: var(--input_height);
+  width: var(--input_height);
+  padding: 0;
+  vertical-align: middle;
+  background-color: var(--input_color-face);
+  &[disabled], &:hover[disabled] {
+    background-color: var(--input_color-face);
+  }
+  &:hover {
+    background-color: var(--input_color-hover);
+  }
+}
+@supports (-moz-appearance:none) {
+	input[type=color] {
+		padding: 3px 1px;
+  }
+}

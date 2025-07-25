@@ -1,0 +1,49 @@
+/* -- Usage ------------------------------------------------------
+
+  <div class="relative">
+    <div class="absolute-center _vertical _right">_vertical _right</div>
+  </div>
+  ----------------------------------------------------------------
+  */
+
+.relative {
+  position: relative;
+}
+/* free position
+  */
+.absolute {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* --------------------------------
+    shorthand: top right bottom left
+   --------------------------------
+  */
+.absolute-center,
+.absolute-center._center {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.absolute-center._vertical,
+.absolute-center._vertical._left {
+  margin: auto 0;
+}
+.absolute-center._horizontal,
+.absolute-center._horizontal._top {
+  margin: 0 auto;
+}
+.absolute-center._vertical._right {
+  margin: auto 0 auto auto;
+}
+.absolute-center._horizontal._bottom {
+  margin: auto auto 0 auto;
+}

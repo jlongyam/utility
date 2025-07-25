@@ -1,0 +1,7 @@
+video {
+  display: block;
+  max-inline-size: 100%;
+  block-size: auto;
+  object-position: center;
+  object-fit: cover;
+}

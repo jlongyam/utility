@@ -1,0 +1,12 @@
+footer {
+  display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: stretch;
+  padding: var(--padding-layout, 1em);
+  background-color: var(--color-theme, #fbfbfb);
+  color: var(--color-text, #000);
+  border-top: 1px solid var(--color-border_layout, #c0c0c0);
+  filter: invert(0);
+}

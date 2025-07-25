@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>aside</title>
+  <link href="../../../_export.css" rel="stylesheet">
+  <link href="../../../utility/_export.css" rel="stylesheet">
+  <script src="../../../utility/demo/dev.js" defer></script>
+</head>
+<body class="page">
+  <div>
+    <div class="code" data-name="div > aside"></div>
+    <div class="empty"></div>
+    <div>
+      <aside>
+        <div>div content</div>
+        <div>div content</div>
+      </aside>
+    </div>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="header > aside"></div>
+    <div class="empty"></div>
+    <header>
+      <h1>heading 1</h1>
+      <aside>
+        <div>div content</div>
+        <div>div content</div>
+      </aside>
+    </header>
+    <br>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="main > aside"></div>
+    <div class="empty"></div>
+    <main>
+      <h1>Heading 1</h1>
+      <p>Content section</p>
+      <section>
+        <h2>Heading 2</h2>
+        <p>Content section</p>
+        <aside>
+          <div>Nested</div>
+          <p><code>section aside</code></p>
+          <ul>
+            <li>List item 1</li>
+            <li>List item 2</li>
+            <li>List item 3</li>
+          </ul>
+        </aside>
+      </section>
+      <aside>
+        <nav>
+          <ul>
+            <li>List item 1</li>
+            <li>List item 2
+              <ol>
+                <li>List item 2.1</li>
+                <li>List item 2.2</li>
+                <li>List item 2.3</li>
+              </ol>
+            </li>
+            <li>List item 3</li>
+          </ul>
+        </nav>
+      </aside>
+    </main>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="fieldset > aside"></div>
+    <div class="empty"></div>
+    <fieldset>
+      <legend>legend</legend>
+      <main>
+        <input type="button" value="button">
+      </main>
+      <aside>
+        <p>paragraph</p>
+        <p>paragraph</p>
+      </aside>
+    </fieldset>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="figure > aside"></div>
+    <div class="empty"></div>
+    <figure>
+      <figcaption>figcaption</figcaption>
+      <pre>Content</pre>
+      <aside>
+        <menu>
+          <li>menu 1</li>
+          <li>menu 2</li>
+          <li>menu 3</li>
+        </menu>
+      </aside>
+    </figure>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="(flex) > aside"></div>
+    <div class="empty"></div>
+    <div class="flex" style="padding-top:0;padding-left: calc(var(--aside-toggle_size) + var(--aside-border_size));">
+      <div class="flex-item_grow flex-center">flex-item</div>
+      <div class="flex-item flex-center">flex-item</div>
+      <div class="flex-item flex-center">flex-item</div>
+      <aside>aside</aside>
+    </div>
+    <dl>
+      <dt><strong>Add</strong></dt>
+      <ul>
+        <li><code>padding-top:0;</code></li>
+        <li><code>padding-left: calc(var(--aside-toggle_size) + var(--aside-border_size));</code></li>
+      </ul>
+    </dd>
+    <div class="empty"></div>
+  </div>
+  <aside>
+    <nav>
+      <div class="code" data-name="body > aside > nav"></div>
+      <div class="empty"></div>
+      <p><strong>Note</strong>: put <code>aside</code> in the end to fix <code>z-index</code></p>
+      <ul>
+        <li>list item 1</li>
+        <li>list item 2</li>
+        <li>list item 3</li>
+      </ul>
+      <div class="empty"></div>
+    </nav>
+  </aside>
+</body>
+</html>

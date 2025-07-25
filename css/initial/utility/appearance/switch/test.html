@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>test: switch</title>
+  <link rel="stylesheet" href="../../global.css">
+  <link rel="stylesheet" href="../layout/_export.css">
+  <link rel="stylesheet" href="switch.css">
+</head>
+
+<body class="page">
+  <main>
+    <section class="box">
+      <label for="checker" class="switch-label">checker</label>
+      <input id="checker" class="switch-checkbox" type="checkbox" checked>
+      <div class="switch-target">CONTENT CHECK</div>
+    </section>
+    <section class="box">
+      <label for="switcher_1" class="switch-label">switcher 1</label>
+      <label for="switcher_2" class="switch-label">switcher 2</label>
+      <input id="switcher_1" class="switch-radio" type="radio" name="switcher" checked>
+      <div class="switch-target">CONTENT SWITCH 1</div>
+      <input id="switcher_2" class="switch-radio" type="radio" name="switcher">
+      <div class="switch-target">CONTENT SWITCH 2</div>
+    </section>
+    <section class="box">
+      <a class="switch-anchor" href="#anchor1">anchor 1</a>
+      <a class="switch-anchor" href="#anchor2">anchor 2</a>
+      <a class="switch-anchor" href="switch.test.html">anchor reset</a>
+      <div id="anchor1" class="switch-target">CONTENT ANCHOR 1</div>
+      <div id="anchor2" class="switch-target">CONTENT ANCHOR 2</div>
+    </section>
+    <section class="box">
+      <div>
+        <input type="button" class="switch-focus" value="focus 1">
+        <span class="switch-target">CONTENT FOCUS 1</span>
+      </div>
+      <div>
+        <input type="button" class="switch-focus" value="focus 2">
+        <span class="switch-target">CONTENT FOCUS 2</span>
+      </div>
+      <div>
+        <a class="switch-focus" href="javascript:;">inside
+          <div class="switch-target">CONTENT FOCUS INSIDE</div>
+        </a>
+      </div>
+    </section>
+    <section class="box">
+      <div class="switch-hover">switch hover 1</div>
+      <div class="switch-target">CONTENT HOVER 1</div>
+      <div class="switch-hover">switch hover 2</div>
+      <div class="switch-target">CONTENT HOVER 2</div>
+    </section>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+meter {
+  vertical-align: middle;
+  height: var(--input_height);
+  min-width: 25px;
+  width: var(--meter_width);
+  /* == chrome */
+  &::-webkit-meter-bar {
+    border-radius: calc(var(--input_radius) / 2);
+    height: calc(var(--input_height-pointer) / 1.5);
+    border-color: var(--input_color-border);
+  }
+  &::-webkit-meter-optimum-value {
+    background-color: var(--meter_color-safe);
+  }
+  &::-webkit-meter-suboptimum-value {
+    background-color: var(--meter_color-warning);
+  }
+  &::-webkit-meter-even-less-good-value {
+    background-color: var(--meter_color-danger);
+  }
+  /* == firefox */
+  @supports (-moz-appearance:none) {
+    -moz-appearance: none;
+    background: var(--input_color-face);
+    height: calc(var(--input_height-pointer) / 1.5);
+    border: 1px solid var(--input_color-border);
+    border-radius: calc(var(--input_radius) / 2);
+    vertical-align: middle;
+    &::-moz-meter-bar { background: black; }
+    &:-moz-meter-optimum::-moz-meter-bar { background: var(--meter_color-safe); }
+    &:-moz-meter-sub-optimum::-moz-meter-bar { background: var(--meter_color-warning); }
+    &:-moz-meter-sub-sub-optimum::-moz-meter-bar { background: var(--meter_color-danger); }
+  }
+}

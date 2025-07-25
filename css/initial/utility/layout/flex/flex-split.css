@@ -1,0 +1,11 @@
+/*
+<div class="flex-split">
+	<div class="split-half">
+*/
+.flex-split {
+	display: flex;
+	height: 100%;
+	flex-wrap: wrap;
+	align-content: stretch;
+	}
+	.split-half { width: 50%; }

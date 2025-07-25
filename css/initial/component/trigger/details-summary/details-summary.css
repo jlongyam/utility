@@ -1,0 +1,26 @@
+details {
+  --details_icon-close: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" fill="gray" width="24" height="24" viewBox="0 0 24 24"><path d="M10,17L15,12L10,7V17Z" /></svg>');
+  --details_icon-open: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" fill="gray" width="24" height="24" viewBox="0 0 24 24"><path d="M7,10L12,15L17,10H7Z" /></svg>');
+  }
+  details details {
+    margin-left: 1em;
+    }
+summary {
+  display: block;
+  position: relative;
+	padding-left: 1em;
+	cursor:pointer;
+  }
+  summary:before {
+  position: absolute;
+	content: var(--details_icon-close);
+	top: 7px;
+	left: -7px;
+	bottom: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	}
+	details[open] > summary:before {
+		content: var(--details_icon-open);
+		}

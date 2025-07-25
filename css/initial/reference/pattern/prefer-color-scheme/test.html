@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="content-type" content="text/html" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>test</title>
+  <link href="./simple.css" rel="stylesheet" />
+</head>
+<body>
+<pre>
+1. go to devtool
+2. ctrl+shift+p
+3. type 'Show Rendering'
+4. Set the Emulate CSS media feature
+   prefers-color-scheme to the value you want to debug.
+
+or
+
+1. go to devtool
+2. select console menu -> more tool
+3. do point 4 above
+</pre>
+<script>
+link = document.querySelector( 'link' )
+function changeHandler(el){
+  link.href = './'+el.value
+}
+</script>
+<select onchange="changeHandler(this)">
+  <option>simple.css</option>
+  <option>variable.css</option>
+</select>
+</body>
+</html>

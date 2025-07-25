@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>list-datalist-option</title>
+  <link href="../../../_export.css" rel="stylesheet">
+  <link href="../../../utility/_export.css" rel="stylesheet">
+  <script src="../../../utility/demo/dev.js" defer></script>
+</head>
+<body class="page">
+  <div>
+    <div class="code" data-name="form input[list] datalist"></div>
+    <div class="empty"></div>
+    <form>
+      <label for="list_icecream">Label for list</label>
+      <input list="ice_cream" id="list_icecream">
+      <input type=reset value=Reset>
+      <datalist id="ice_cream">
+        <option value="Chocolate"></option>
+        <option value="Coconut"></option>
+        <option value="Mint"></option>
+        <option value="Strawberry"></option>
+        <option value="Vanilla"></option>
+      </datalist>
+    </form>
+    <form>
+      <label for="list_icecream2">Label for list</label>
+      <input list="ice_cream2" id="list_icecream2" disabled>
+      <datalist id="ice_cream2">
+        <option value="Chocolate"></option>
+        <option value="Coconut"></option>
+      </datalist>
+    </form>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="input[list][type=color]"></div>
+    <div class="empty"></div>
+    <form>
+      <label for="colors">Label for <b>RED</b> color</label>
+      <input type="color" list="redColors" id="colors" value="#A52A2A">
+      <datalist id="redColors">
+        <option value="#800000"></option>
+        <option value="#8B0000"></option>
+        <option value="#A52A2A"></option>
+        <option value="#DC143C"></option>
+      </datalist>
+    </form>
+    <form>
+      <label for="colors2">Label for <b>RED</b> color</label>
+      <input type="color" list="redColors2" id="colors2" value="#A52A2A" disabled>
+      <datalist id="redColors2">
+        <option value="#800000"></option>
+        <option value="#8B0000"></option>
+      </datalist>
+    </form>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="input[list][type=time]"></div>
+    <div class="empty"></div>
+    <label for="inpt_list_popular">popularHours</label>
+    <input type="time" list="popularHours" id="inpt_list_popular">
+    <datalist id="popularHours">
+      <option value="12:00"></option>
+      <option value="13:00"></option>
+      <option value="14:00"></option>
+    </datalist>
+    <label for="inpt_list_popular2">popularHours</label>
+    <input type="time" list="popularHours2" id="inpt_list_popular2" disabled>
+    <datalist id="popularHours2">
+      <option value="12:00"></option>
+      <option value="13:00"></option>
+      <option value="14:00"></option>
+    </datalist>
+    <div class="empty"></div>
+  </div>
+  
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>iframe</title>
+  <link href="../../../_export.css" rel="stylesheet">
+  <link href="../../../utility/_export.css" rel="stylesheet">
+  <script src="../../../utility/demo/dev.js" defer></script>
+</head>
+<body class="page">
+  <div>
+    <div class="code" data-name="iframe:not(src)"></div>
+    <div class="empty"></div>
+    <iframe></iframe>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="iframe"></div>
+    <div class="empty"></div>
+    <iframe src="about:blank"></iframe>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="figure iframe"></div>
+    <div class="empty"></div>
+    <figure>
+      <figcaption>TITLE</figcaption>
+      <iframe></iframe>
+    </figure>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="iframe[width][height]"></div>
+    <div class="empty"></div>
+    <iframe width="500" height="300" src="../.sample/example.html"></iframe>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="iframe [src*=https]"></div>
+    <div class="empty"></div>
+    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&layer=mapnik"></iframe>
+    <div class="empty"></div>
+  </div>
+</body>
+</html>

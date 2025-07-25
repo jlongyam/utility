@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <title></title>
+  <script>String.prototype.stripInitial=function(){var t=this.match(/^\s*(?=[^\s]+)/gm).reduce((function(t,e){return Math.min(t,e.length)}),1/0),e=new RegExp("^\\s{"+t+"}","mg");return t>0?this.replace(e,""):this};let result={createWorkSpace:()=>{let t=Object.assign(document.createElement("div"),{classList:"result-area"});return document.currentScript.parentElement.appendChild(t),t.appendChild(document.currentScript),t},showSource:t=>{t.classList.add("result-script"),null===t.getAttribute("src")?t.innerHTML=t.innerHTML.stripInitial().trim():t.setAttribute("data-result-source",t.getAttribute("src"))},html:(t,e)=>{let r=Object.assign(document.createElement("div"),{innerHTML:t,classList:"result-demo"});if(document.currentScript.parentElement.classList.contains("result-area"))document.currentScript.parentElement.appendChild(r);else{result.createWorkSpace().appendChild(r)}return null!==document.currentScript.getAttribute("data-source-show")&&result.showSource(document.currentScript),e&&e.call(),{then:t=>{t&&t.call()}}},js:(t,e)=>{let r=Object.assign(document.createElement("pre"),{textContent:t,classList:"result-log"});if(document.currentScript.parentElement.classList.contains("result-area"))document.currentScript.parentElement.appendChild(r);else{result.createWorkSpace().appendChild(r)}return null!==document.currentScript.getAttribute("data-source-show")&&result.showSource(document.currentScript),e&&e.call(),{then:t=>{t&&t.call()}}},css:(t,e)=>{let r=Object.assign(document.createElement("style"),{textContent:t});return document.head.appendChild(r),null!==document.currentScript.getAttribute("data-source-show")&&result.showSource(document.currentScript),e&&e.call(),{then:t=>{t&&t.call()}}}};</script>
+  <style>body,html{height:100%}*,::after,::before{box-sizing:border-box}html{font:16px/24px monospace;--font-regular:system-ui,-apple-system,"Segoe UI","Roboto","Ubuntu","Cantarell","Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";--font-code:ui-monospace,'Cascadia Code','Source Code Pro',Menlo,Consolas,'DejaVu Sans Mono',monospace}body{margin:0;padding:5%;font-family:var(--font-regular)}.result-area{font-family:inherit;padding:2.5%;line-height:2em}.result-log,.result-script{font:1em var(--font-code);padding:1em;background-color:#000;color:silver;margin:0 0 1em;border-top:1em solid gray;position:relative;overflow:auto}.result-script[data-result-source]::before{content:'//<script src="' attr(data-result-source) '">';color:gray}.result-demo{margin:0 0 1em}.result-script{display:block;background-color:#fff9c8;color:#000;white-space:pre}</style>
+</head>
+<body >
+<style>
+  .box {
+    padding: 20px;
+  }
+</style>
+<h4>shade gray 1-9</h4>
+<script>
+  result.string = ''
+  for(i = 1; i <= 9; i++ ) {
+    result.string += '<div class="box" style="background-color:#'+i.toString().repeat(3)+'">shade gray '+i+'</div>'
+    }
+  result.html(result.string)
+</script>
+<h4>greys_yellows</h4>
+<img width="400" height="200" src="greys_yellows.png">
+<h4>Harmony</h4>
+<img width="400" height="200" src="Harmony.png">
+<h4>Like_Hot</h4>
+<img width="400" height="200" src="Like_Hot.png">
+<h4>Noir</h4>
+<img width="400" height="200" src="Noir.png">
+</body>
+</html>

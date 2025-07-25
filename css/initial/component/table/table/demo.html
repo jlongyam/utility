@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>table</title>
+  <link href="../../../_export.css" rel="stylesheet">
+  <link href="../../../utility/_export.css" rel="stylesheet">
+  <script src="../../../utility/demo/dev.js" defer></script>
+</head>
+<body class="page">
+  <div>
+    <div class="code" data-name="table > tr [H]"></div>
+    <div class="empty"></div>
+    <table>
+      <tr><th>tr 1 th content 1</th><th>tr 1 th content 2</th><th>short</th></tr>
+      <tr><td>tr 2 td content 1</td><td>tr 2 td content 2</td><td>tr 2 td content 3</td></tr>
+      <tr><td>tr 3 td content 1</td><td>tr 3 td content 2</td><td>tr 3 td content 3</td></tr>
+    </table>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="table > tr [V]"></div>
+    <div class="empty"></div>
+    <table>
+      <tr><th>tr 1 th content 1</th><td>tr 1 td content 1</td><td>tr 1 td content 2</td></tr>
+      <tr><th>tr 2 th content 2</th><td>tr 2 td content 1</td><td>tr 2 td content 2</td></tr>
+      <tr><th>short</th><td>tr 3 td content 1</td><td>tr 3 td content 3</td></tr>
+    </table>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="table > caption"></div>
+    <div class="empty"></div>
+    <table>
+      <caption>Table Caption</caption>
+      <tr><td>tr 1 td content 1</td><td>tr 1 td content 2</td></tr>
+      <tr><td>tr 2 td content 1</td><td>tr 3 td content 2</td></tr>
+    </table>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="table > caption > details"></div>
+    <div class="empty"></div>
+    <table>
+      <caption>
+        <h3>Heading 3</h3>
+        <details>
+          <summary>See more details</summary>
+          <p>Nothing to show</p>
+        </details>
+      </caption>
+      <tr><td>tr 1 td content 1</td><td>tr 1 td content 2</td></tr>
+      <tr><td>tr 2 td content 1</td><td>tr 3 td content 2</td></tr>
+    </table>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="table > colgroup > col"></div>
+    <div class="empty"></div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+      </colgroup>
+      <tr><td>tr 1 td content 1</td><td>tr 1 td content 2</td></tr>
+      <tr><td>tr 2 td content 1</td><td>tr 3 td content 2</td></tr>
+    </table>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="table > colgroup + thead + tfoot + tbody"></div>
+    <div class="empty"></div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+      </colgroup>
+      <thead>
+        <tr><th>thead tr 1 th content 1</th><th>thead tr 1 th content 2</th></tr>
+      </thead>
+      <tfoot>
+        <tr><th>tfoot tr 1 th content 1</th><th>tfoot tr 1 th content 2</th></tr>
+      </tfoot>
+      <tbody>
+        <tr><td>tbody tr 1 td content 1</td><td>tbody tr 1 td content 2</td></tr>
+        <tr><td>tbody tr 2 td content 1</td><td>tbody tr 2 td content 2</td></tr>
+      </tbody>
+      <caption>Table Caption</caption>
+    </table>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="table table"></div>
+    <div class="empty"></div>
+    <table>
+      <tr>
+        <td>
+          <table>
+            <tr><th>head 1</th><th>head 2</th></tr>
+            <tr><td>content 1</td><td>content 1A</td></tr>
+            <tr><td>content 2</td><td>content 2A</td></tr>
+          </table>
+        </td>
+        <td>content</td>
+      </tr>
+      <tr><td>content</td><td>content</td></tr>
+    </table>
+    <div class="empty"></div>
+  </div>
+</body>
+</html>

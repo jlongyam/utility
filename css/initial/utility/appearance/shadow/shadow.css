@@ -1,0 +1,30 @@
+.shadow {
+  box-shadow: 0 0 2px 0 rgba(0,0,0,1);
+}
+.shadow_top {
+  box-shadow: 0 -1px 1px 0 rgba(0,0,0,.4);
+}
+.shadow_right {
+  box-shadow: 1px 0 1px 0 rgba(0,0,0,.3);
+}
+.shadow_bottom {
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,.4);
+}
+.shadow_left {
+  box-shadow: -1px 0 1px 0 rgba(0,0,0,.3);
+}
+.shadow-x {
+  box-shadow: 0 0 4px 0 rgba(0,0,0,.8);
+}
+.shadow-x_top {
+  box-shadow: 0 -2px 2px 0 rgba(0,0,0,.3);
+}
+.shadow-x_right {
+  box-shadow: 2px 0 2px 0 rgba(0,0,0,.3);
+}
+.shadow-x_bottom {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.3);
+}
+.shadow-x_left {
+  box-shadow: -2px 0 2px 0 rgba(0,0,0,.4);
+}

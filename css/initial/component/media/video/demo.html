@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>video</title>
+  <link href="../../../_export.css" rel="stylesheet">
+  <link href="../../../utility/_export.css" rel="stylesheet">
+  <script src="../../../utility/demo/dev.js" defer></script>
+</head>
+<body class="page">
+  
+  <div>
+    <div class="code" data-name="video[controls]"></div>
+    <div class="empty"></div>
+    <video src="../.sample/vide.webm" controls>
+      <p>
+        Your browser does not support HTML video.
+        Here is a <a href="#!">link to the video</a> instead.
+      </p>
+    </video>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="video source"></div>
+    <video controls>
+      <source src="../.sample/video.mp4" type="video/mp4">
+      <source src="../.sample/video.webm" type="video/webm">
+      <p>
+        Your browser does not support this video.
+        Here is a <a href="#!">link to the video</a> instead.
+      </p>
+    </video>
+    <div class="empty"></div>
+  </div>
+  
+  <div>
+    <div class="code" data-name="figure figcaption + video"></div>
+    <div class="empty"></div>
+    <figure>
+      <figcaption>Watch a rabbit:</figcaption>
+      <video src="../.sample/video.webm" controls></video>
+    </figure>
+    <div class="empty"></div>
+  </div>
+</body>
+</html>

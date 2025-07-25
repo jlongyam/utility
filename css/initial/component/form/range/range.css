@@ -1,0 +1,63 @@
+/* independent input[type],
+   https://danielstern.ca/range.css/#/
+   */
+input[type=range] {
+  padding: 0;
+  min-width: 25px;
+  width: var(--input_range-width);
+  background-color: transparent;
+  border: none;
+  -webkit-appearance: none;
+  height: var(--input_height);
+  vertical-align: middle;
+  &:focus {
+    outline: var(--input_outline);
+    outline-offset: var(--input_outline-offset);
+  }
+  /* == chrome */
+  /* track */
+  &::-webkit-slider-runnable-track {
+    background-color: var(--input_color-face);
+    border: 0.2px solid var(--input_color-border);
+    border-radius: calc(var(--input_radius) - 0.5px);
+    width: 100%;
+    height: calc((var(--input_height-pointer) / 2) + 1px);
+    cursor: pointer;
+  }
+  /* point */
+  &::-webkit-slider-thumb {
+    margin-top: -5px;
+    width: var(--input_height-pointer);
+    height: var(--input_height-pointer);
+    background-color: var(--input_color-face);
+    border: 1px solid var(--input_color-border);
+    border-radius: var(--input_radius);
+    cursor: pointer;
+    -webkit-appearance: none;
+  }
+  &:hover::-webkit-slider-thumb {
+    background-color: var(--input_color-hover);
+  }
+  /* == firefox */
+  /* track */
+  &::-moz-range-track {
+    background-color: var(--input_color-face);
+    border: 0.2px solid var(--input_color-border);
+    border-radius: var(--input_radius);
+    width: 100%;
+    height: calc((var(--input_height-pointer) / 2) - 1px);
+    cursor: pointer;
+  }
+  /* point */
+  &::-moz-range-thumb {
+    width: calc(var(--input_height-pointer) - 2px);
+    height: calc(var(--input_height-pointer) - 2px);
+    background-color: var(--input_color-face);
+    border: 1px solid var(--input_color-border);
+    border-radius: var(--input_radius);
+    cursor: pointer;
+  }
+  &:hover::-moz-range-thumb {
+    background-color: var(--input_color-hover);
+  }
+}

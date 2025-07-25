@@ -1,0 +1,71 @@
+@import "../../../global.css";
+@import "../../../component/media/iframe/iframe.css";
+@import "../../layout/absolute/absolute.css";
+
+body {
+  padding: 0;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.device {
+  border-radius: 10px;
+  border-top: 20px solid black;
+  border-bottom: 40px solid black;
+  border-left: 10px solid black;
+  border-right: 10px solid black;
+  width: 100%;
+  height: 100%;
+  }
+  .device > iframe { height: 100%; }
+  
+/* ============================================== */
+
+.xx-small {
+  width: 320px; height: 568px;
+}
+.x-small {
+  width: 360px; height: 640px;
+}
+.small {
+  width: 412px; height: 732px;
+}
+.medium {
+  width: 600px; height: 960px;
+}
+.large {
+  width: 1024px; height: 1366px;
+}
+.x-large {
+  width: 1280px; height: 850px;
+}
+.xx-large {
+  width: 1920px; height: 1080px;
+}
+
+/* xx-small */
+@media screen and (max-width: 320px) {}
+/* x-small */
+@media screen and (min-width: 321px) and (max-width: 375px) {}
+/* small */
+@media screen and (min-width: 376px) and (max-width: 425px) {}
+/* medium */
+@media screen and (min-width: 426px) and (max-width: 768px) {}
+/* large */
+@media screen and (min-width: 769px) and (max-width: 1024px) {}
+/* x-large */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {}
+/* xx-large */
+@media screen and (min-width: 1441px) {}
+
+.spec {
+  font-family: var(--font-family_monospace);
+  font-size: .75rem;
+  position: absolute;
+  top:0;
+  left:0;
+  right: 0;
+  text-align: center;
+  z-index: 20;
+  color: #9e9e9e;
+}

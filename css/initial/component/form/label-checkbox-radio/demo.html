@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>label-checkbox-radio</title>
+  <link href="../../../_export.css" rel="stylesheet">
+  <link href="../../../utility/_export.css" rel="stylesheet">
+  <script src="../../../utility/demo/dev.js" defer></script>
+</head>
+<body class="page">
+  <div>
+    <div class="code" data-name="input[checkbox]"></div>
+    <div class="empty"></div>
+    <input type="checkbox" name="check">
+		<input type="checkbox" name="check" checked>
+		<input type="checkbox" name="check">
+		<input type="checkbox" name="check">
+		<input type="checkbox" name="check" disabled>
+		<input type="checkbox" name="check" checked disabled>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="input[radio]"></div>
+    <div class="empty"></div>
+    <input type="radio" name="rad">
+		<input type="radio" name="rad">
+		<input type="radio" name="rad" checked>
+		<input type="radio" name="rad">
+		<input type="radio" name="rad" disabled>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="label > [checkbox|radio]"></div>
+    <div class="empty"></div>
+    <label><input type="checkbox"> Label choose 1</label><br>
+    <label><input type="checkbox"> Label choose 2</label><br>
+    <label><input name="choise_1" type="radio"> Label choise 1</label><br>
+    <label><input name="choise_1" type="radio"> Label choise 2</label>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="[flex] > [checkbox|radio]"></div>
+    <div class="empty"></div>
+    <div class="flex" style="height: 24px;">
+      <input type="checkbox"><input type="radio">
+    </div>
+    <div class="empty"></div>
+  </div>
+</body>
+</html>

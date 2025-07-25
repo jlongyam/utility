@@ -1,0 +1,7 @@
+sub { bottom: -.25em; }
+sup { top: -.25em; }
+small {
+  font-size:  80%;
+  :where(h1,h2,h3) & { font-size:  40%; }
+  :where(h4,h5,h6) & { font-size:  60%; }
+}

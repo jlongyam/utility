@@ -1,0 +1,29 @@
+/* parent */
+.flex { display: flex; flex-wrap: wrap }
+	
+	/* modifier */
+
+	/* item-align */
+	._sort-align_start       { align-items: start }
+	._sort-align_center      { align-items: center }
+	._sort-align_end         { align-items: end }
+	._sort-align_stretch     { align-items: stretch }
+	._sort-align_baseline    { align-items: baseline }
+
+	/* item-justify */
+	._sort-justify_start         { justify-content: start }
+	._sort-justify_center        { justify-content: center }
+	._sort-justify_end           { justify-content: end }
+	._sort-justify_space-between { justify-content: space-between }
+	._sort-justify_space-around  { justify-content: space-around }
+	
+	/* item-direction */
+	._sort_vertical { flex-direction: column; }
+	._sort_vertical_reverse { flex-direction: column-reverse; }
+	._sort_horizontal { flex-direction: row; }
+	._sort_horizontal_reverse { flex-direction: row-reverse; }	
+
+	
+/* children */
+.flex-item		{ flex-shrink: 0 }
+.flex-item_grow	{ width: 0; min-width: 0; flex-grow: 1 }

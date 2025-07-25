@@ -1,0 +1,49 @@
+:has(>aside) {
+  padding-top: var(--aside-toggle_size);
+  min-height: var(--aside-toggle_size);
+}
+aside {
+  position: absolute;
+  top: var(--aside-postion_top);
+  right: var(--aside-postion_right);
+  bottom: var(--aside-postion_bottom);
+  left: var(--aside-postion_left);
+  min-height: var(--aside-toggle_size);
+  min-width: var(--aside-toggle_size);
+  background-color: #fff;
+  color: #000;
+  padding: var(--padding-layout);
+  visibility: hidden;
+  &::after {
+    position: absolute;
+    top: var(--aside-postion_top);
+    right: var(--aside-postion_right);
+    bottom: var(--aside-postion_bottom);
+    left: var(--aside-postion_left);
+    height: var(--aside-toggle_size);
+    width: var(--aside-toggle_size);
+    content: " ";
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>');
+    background-position: center;
+    background-color: whitesmoke;
+    border: 1px solid var(--color-border_layout);
+    visibility: visible;
+  }
+  &:hover::after {
+    display: none;
+  }
+  &:hover {
+    visibility: visible;
+    min-width: 250px;
+    max-width: 70vw;
+    max-height: 80vh;
+    overflow: auto;
+    white-space: nowrap;
+    z-index: 999;
+    border: 1px solid var(--color-border_layout);
+    &:has(>nav) {
+      border: none;
+      padding: 0;
+    }
+  }
+}

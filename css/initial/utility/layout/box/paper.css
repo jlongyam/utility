@@ -1,0 +1,9 @@
+/* <body class="paper"> */
+.paper {
+  --paper_shadow: 0 1px 2px black;
+  margin: 1.5%;
+  padding: 2.5%;
+  background-color: white;
+  box-shadow: var(--paper_shadow);
+  height: -webkit-fill-available;
+}

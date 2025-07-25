@@ -1,0 +1,24 @@
+:root {
+  --switch_width: initial;
+  --switch_height: initial;
+}
+.switch-checkbox,
+.switch-radio {
+  display: none;
+  visibility: hidden;
+}
+.switch-target {
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}
+.switch-checkbox:checked+.switch-target,
+.switch-radio:checked+.switch-target,
+.switch-target:target,
+.switch-focus:focus+.switch-target,
+.switch-focus:focus>.switch-target,
+.switch-hover:hover+.switch-target {
+  visibility: visible;
+  width: var(--switch_width);
+  height: var(--switch_height);
+}

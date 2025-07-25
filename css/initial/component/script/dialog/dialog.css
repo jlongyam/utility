@@ -1,0 +1,13 @@
+dialog {
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,.2);
+  padding: var(--padding-layout);
+  margin: auto;
+  max-width: 80%;
+  max-height: 70%;
+  &:-internal-dialog-in-top-layer::backdrop {
+    background-color: rgba(0,0,0,0.1);
+  }
+}

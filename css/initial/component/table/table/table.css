@@ -1,0 +1,33 @@
+@layer variable.element.table {
+  table {
+    --table_color-col_even: inherit;
+    --table_color-col_odd: #f9f9f9;
+    --table_caption_position: top;
+    --table_caption_justify: left;
+    --table_border: 1px solid var(--color-border_layout);
+    --table_padding: 5px;
+  }
+}
+table {
+  display: table;
+  border-collapse: collapse;
+  border-color: currentColor;
+  text-indent: 0;
+  margin: var(--margin-section);
+  table { margin: 0; }
+}
+caption {
+  caption-side: var(--table_caption_position);
+  text-align: var(--table_caption_justify);
+}
+col:nth-child(even) {
+  background-color: var(--table_color-col_even);
+}
+col:nth-child(odd) {
+  background-color: var(--table_color-col_odd);
+}
+td, th {
+  border: var(--table_border);
+  padding: var(--table_padding);
+  text-align: left;
+}

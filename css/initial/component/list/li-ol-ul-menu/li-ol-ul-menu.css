@@ -1,0 +1,20 @@
+li {
+  list-style-position: inside;
+  &::marker { color: var(--color-accent) }
+}
+ul {
+  list-style: square;
+  padding: 1em;
+  ul { padding: .5em 0 .5em 1.5em; }
+  ol { padding: .5em 0 .5em 1.5em; }
+}
+ol {
+  list-style: decimal;
+  padding: 1em;
+  ol { padding: .5em 0 .5em 1.75em; }
+  ul { padding: .5em 0 .5em 1.75em; }
+}
+menu {
+  list-style: none;
+  menu { padding: 0 0 0 1em; }
+}

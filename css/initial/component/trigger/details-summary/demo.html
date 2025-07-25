@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>details-summary</title>
+  <link href="../../../_export.css" rel="stylesheet">
+  <link href="../../../utility/_export.css" rel="stylesheet">
+  <script src="../../../utility/demo/dev.js" defer></script>
+</head>
+<body class="page">
+  <div>
+    <div class="code" data-name="details"></div>
+    <div class="empty"></div>
+    <details>content of <code>details</code></details>
+    <div class="empty"></div>
+  </div>
+    <div>
+    <div class="code" data-name="summary"></div>
+    <div class="empty"></div>
+    <summary>content of <code>summary</code></summary>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="details summary"></div>
+    <div class="empty"></div>
+    <p>paragraph</p>
+    <details>
+      <summary>Summary Text</summary>
+      NODE_TEXT
+    </details>
+    <p>paragraph</p>
+    <div class="empty"></div>
+  </div>
+  <div>
+    <div class="code" data-name="details details"></div>
+    <div class="empty"></div>
+    <details>
+      <summary>details deep 1</summary>
+      <details>
+        <summary>details deep 2</summary>
+        <details>
+          <summary>details deep 3</summary>
+          <p>paragraph</p>
+        </details>
+      </details>
+    </details>
+    <div class="empty"></div>
+  </div>
+  </div>
+    <div>
+    <div class="code" data-name="summary > h1"></div>
+    <div class="empty"></div>
+    <details>
+      <summary><h1>h1 in summary</h1></summary>
+      <main>
+        <p>Content</p>
+      </main>
+    </details>
+    <div class="empty"></div>
+  </div>
+</body>
+</html>

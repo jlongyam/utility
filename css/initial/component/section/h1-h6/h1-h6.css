@@ -1,0 +1,11 @@
+h1,h2,h3,h4,h5,h6 {
+  margin: var(--margin-section);
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+h1 { font: normal 900 calc(1rem * 2)/calc(24px * 2) var(--font-primary); }
+h2 { font: normal 700 calc(1rem * 1.75)/calc(24px * 1.75) var(--font-primary); }
+h3 { font: normal 700 calc(1rem * 1.25)/calc(24px * 1.25) var(--font-primary); }
+h4 { font: italic 700 calc(1rem * 1.1)/calc(24px * 1.1) var(--font-primary); }
+h5 { font: normal 500 calc(1rem * 1)/calc(24px * 1) var(--font-primary); }
+h6 { font: italic 500 calc(1rem * 1)/calc(24px * 1) var(--font-primary); }

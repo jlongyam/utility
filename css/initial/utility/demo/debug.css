@@ -1,0 +1,18 @@
+/* <html class="debug"> */
+.debug { outline: 1px solid #001F3F;; }
+.debug * { outline: 1px solid #0074D9; }
+.debug *:nth-child(odd) { outline: 1px solid #7FDBFF; }
+.debug * * { outline: 1px solid #39CCCC; }
+.debug * *:nth-child(odd) { outline: 1px solid #3D9970; }
+.debug * * * { outline: 1px solid #2ECC40; }
+.debug * * *:nth-child(odd) { outline: 1px solid #01FF70; }
+.debug * * * * { outline: 1px solid #FFDC00; }
+.debug * * * *:nth-child(odd) { outline: 1px solid #FF851B; }
+.debug * * * * * { outline: 1px solid #FF4136; }
+.debug * * * * *:nth-child(odd) { outline: 1px solid #F012BE; }
+.debug * * * * * * { outline: 1px solid #B10DC9; }
+.debug * * * * * *:nth-child(odd) { outline: 1px solid #85144B; }
+.debug * * * * * * * { outline: 1px solid #FFFFFF; }
+.debug * * * * * * *:nth-child(odd) { outline: 1px solid #AAAAAA; }
+.debug * * * * * * * * { outline: 1px solid #DDDDDD; }
+.debug * * * * * * * *:nth-child(odd) { outline: 1px solid #111111; }

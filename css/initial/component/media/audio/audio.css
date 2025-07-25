@@ -1,0 +1,16 @@
+/*Note: internal background cannot be change in chrome
+    consider other control follow that color
+*/
+audio {
+  display: block;
+  width: var(--audio_width);
+  height: var(--input_height);
+  @supports(-webkit-appearance:none) {
+    background-color: var(--input_color-face);
+    border: 1px solid var(--input_color-border);
+    border-radius: var(--input_radius);
+    @supports(-moz-appearance:none) {
+      border: none;
+    }
+  }
+}
