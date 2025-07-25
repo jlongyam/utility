@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta id="meta_ie" http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>add</title>
+  <script src="../../../../../script.js"></script>
+  <script src="../../config.js"></script>
+</head>
+<body>
+  <script>
+    script({ name: 'test' })
+    
+    function test() {
+      var arr = [1,2,3];
+      console.info("arr = [1,2,3]");
+      script.test({
+        name: "array(arr).add(4)",
+        call: function() {
+          return array(arr).add(4)
+        },
+        should: '1,2,3,4'
+      });
+      script.test({
+        name: "array(arr).add(5,'last')",
+        call: function() {
+          return array(arr).add(5,'last')
+        },
+        should: '1,2,3,4,5'
+      });
+      script.test({
+        name: "array(arr).add(0,'first')",
+        call: function() {
+          return array(arr).add(0,'first')
+        },
+        should: '0,1,2,3,4,5'
+      });
+      script.test({
+        name: "array(arr).add(6,'any')",
+        call: function() {
+          return array(arr).add(6,'any')
+        },
+        should: false
+      });
+      script.test({
+        name: "array(arr).add(6,0)",
+        call: function() {
+          return array(arr).add(6,0)
+        },
+        should: '6,0,1,2,3,4,5'
+      });
+      script.test({
+        name: "array(arr).add(99,2)",
+        call: function() {
+          return array(arr).add(99,2)
+        },
+        should: '6,0,99,1,2,3,4,5'
+      });
+      script.test({
+        name: "array(arr).add(7,{})",
+        call: function() {
+          return array(arr).add(7,{})
+        },
+        should: false
+      });
+      script.test({
+        name: "array(arr).add(8,'first').add(20)",
+        call: function() {
+          return array(arr).add(8,'first').add(20)
+        },
+        should: '8,6,0,99,1,2,3,4,5,20'
+      });
+    }
+  </script>
+</body>
+</html>

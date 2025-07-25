@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>execute</title>
+  <script src="../script.js"></script>
+</head>
+<body>
+  <script>
+    var str = '';
+    test({
+      name: 'execute',
+      call: function() {
+        execute(function(){
+          str += 1
+        }).then(function(){
+          str += 2
+        }).then(function(){
+          str += 3
+        })
+        execute(function(){
+          str += 4;
+          execute(function() {
+            str += 5;
+            execute(function(){
+              str += 6;
+              execute(function(){
+                str += 7
+              }).then(function(){
+                str += 8
+              })
+            }).then(function(){
+              str += 9
+            })
+          }).then(function(){
+            str += 0
+          })
+        })
+        return str
+      },
+      should: '1234567890'
+    });
+  </script>
+</body>
+</html>

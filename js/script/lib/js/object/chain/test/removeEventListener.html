@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta id="meta_ie" http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>removeEventListener</title>
+  <script src="../../../../../script.js"></script>
+  <script src="../../config.js"></script>
+</head>
+<body>
+  <script>
+    script({ name: 'test' })
+
+    function test() {
+      var o_simple = { one: 'ONE', two: 'TWO' };
+      console.log(JSON.stringify(o_simple));
+      script.test({
+        name: "object(o_simple).removeEventListener()",
+        call: function() {
+          return object(o_simple).removeEventListener()
+        },
+        should: false
+      })
+      object.createEvents(o_simple);
+      console.info("object.createEvents(o_simple)");
+      script.test({
+        name: "object(o_simple).removeEventListener()",
+        call: function() {
+          return object(o_simple).removeEventListener()
+        },
+        should: false
+      })
+      var info_add = "";
+      object(o_simple).addEventListener('add', function(s_key, s_val){
+        info_add += 'add: "'+s_key+'", value: "'+s_val+'"\n';
+      });
+      object(o_simple).addEventListener('add', function(s_key, s_val){
+        info_add += 'other add: "'+s_key+'", with value: "'+s_val+'"\n';
+      });
+      function addListener(s_key, s_val) {
+        info_add += 'from function, add: "'+s_key+'", value: "'+s_val+'"\n';
+      }
+      object(o_simple).addProperty('three','THREE');
+      object(o_simple).addProperty('four','FOUR');
+      object(o_simple).addProperty('five','FIVE');
+      object(o_simple).addEventListener('add', addListener);
+      object(o_simple).addProperty('six','SIX');
+      object(o_simple).addProperty('seven','SEVEN');
+      console.log(info_add);
+      console.info("object(o_simple).getEventListener('add')");
+      console.log(object(o_simple).getEventListener('add'));
+      console.info("object(o_simple).removeEventListener('add', 0)");
+      object(o_simple).removeEventListener('add', 0)
+      script.test({
+        name: "o_simple.events.add.length",
+        call: function() {
+          return o_simple.events.add.length;
+        },
+        should: 2
+      });
+      console.info("object(o_simple).getEventListener('add')");
+      console.log(object(o_simple).getEventListener('add'));
+      object(o_simple).removeEventListener('add', 'addListener');
+      console.info("object(o_simple).removeEventListener('add', 'addListener')");
+      script.test({
+        name: "o_simple.events.add.length",
+        call: function() {
+          return o_simple.events.add.length;
+        },
+        should: 1
+      });
+      console.info("object(o_simple).getEventListener('add')");
+      console.log(object(o_simple).getEventListener('add'));
+      object(o_simple).removeEventListener('add');
+      console.info("object(o_simple).removeEventListener('add')");
+      script.test({
+        name: "o_simple.events.add.length",
+        call: function() {
+          return o_simple.events.add.length;
+        },
+        should: 0
+      });
+      Console.log(o_simple);
+    }
+  </script>
+</body>
+</html>

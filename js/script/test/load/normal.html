@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta id="meta_ie" http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>normal</title>
+  <script src="../../script.js"></script>
+</head>
+<body>
+  <script>
+    script.test({
+      name: "load 'other.js'",
+      call: function() {
+        script.load('sample/other.js');
+        return document.scripts[1].getAttribute('src')    
+      },
+      should: 'sample/other.js'
+    });
+    script.test({
+      name: "load 'pre.css'",
+      call: function() {
+        script.load('sample/pre.css');
+        return document.getElementsByTagName('link')[0].getAttribute('href');
+      },
+      should: 'sample/pre.css'
+    });
+  </script>
+</body>
+</html>

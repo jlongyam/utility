@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>require</title>
+  <script src=../../../../vendor/require.js></script>
+</head>
+<body>
+  <script>
+    requirejs.config({
+      baseUrl: '.',
+      paths: {
+        'string': '../string'
+      },
+      waitSeconds: 0
+    })
+    //require(['string'],function(string){// already global (optional)
+    require(['string'],function(){
+      console.log(string('OK'))
+      console.log(string.index);
+    });
+  </script>
+</body>
+</html>

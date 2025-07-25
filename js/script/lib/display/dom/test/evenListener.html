@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>eventListener</title>
+  <script src="../../dom.js"></script>
+  <script>
+    function alert_head() {
+      alert('from head')
+    }
+    dom.eventListener.add( window,'load', alert_head )
+  </script>
+</head>
+<body>
+  <script>
+    function alert_body() {
+      alert('from body')
+    }
+    dom.eventListener.add( window,'load', alert_body )
+  </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>style</title>
+  <script src=../../../script.js></script>
+  <script src=../../package.js></script>
+</head>
+<body>
+  <script>
+    script.debug = false
+    script({
+      import: [
+        'dom/create.js',
+        'style.js'
+      ],
+      context: { name: 'dom' }
+    }, function(package,d,w){
+      var dom = package.dom, style = package.style;
+      var c = {}, px = 'px';
+      c.size = 16,
+      c.line = Math.round(c.size*1.15)+px
+      var s_style = style({
+        'body': [
+          'padding: '+c.size+px
+        ],
+        '#pre': [
+          'margin: 0',
+          'padding: '+c.size+px,
+          'font: normal '+c.size+px+'/'+c.line+' Consolas, monospace',
+          'border: 2px solid gray'
+        ]
+      })
+      dom.create(['pre',{ id: 'pre' }, s_style ], d.body )
+      dom.create(['style', s_style ], d.head );
+      script.log(style.get(dom('pre',{ id: 'pre' }).object, 'font-family'));
+      
+    })
+  </script>
+</body>
+</html>

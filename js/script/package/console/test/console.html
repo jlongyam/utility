@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>console</title>
+  <base href="../../">
+  <script src="../script.js"></script>
+  <script src="package.js"></script>
+</head>
+<body>
+  <script>
+    script({
+      import: ['console.js'],
+      context: { name: 'console' }
+    }, function(package,d,w){
+      if('console' in w) {
+        var Console = console
+        console = package.console
+        w.Console = Console
+      }
+      console.log('log',1,2,3)
+      console.error('error',1,2,3)
+      console.warn('warn',1,2,3)
+      console.info('info',1,2,3)
+      console.debug('debug',1,2,3)
+    })
+  </script>
+</body>
+</html>

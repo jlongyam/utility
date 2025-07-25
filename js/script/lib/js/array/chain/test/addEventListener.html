@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta id="meta_ie" http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>addEventListener</title>
+  <script src="../../../../../script.js"></script>
+  <script src="../../config.js"></script>
+</head>
+<body>
+  <p>
+    <strong>Note</strong><br>
+    add, get and remove listener can use object method
+  </p>
+  <script>
+    script({ name: 'test' })
+    
+    function test() {
+      var arr = [1,2,3,'one','two','three'];
+      console.info("arr: "+JSON.stringify(arr));
+      array.createEvents(arr);
+      console.log("array.createEvents(arr)");
+      //
+      console.log("============================")
+      //[add][listener]
+      array(arr).addEventListener('add', function(val,pos) {
+        console.info('[anon] Event [Add], value:' + val + ', pos: '+pos)
+        console.log("[anon] arr: "+arr)
+      })
+      function f_add_listener(val,pos) {
+        console.info('[func] Event [Add], value:' + val + ', pos: '+pos)
+        console.log("[func] arr: "+arr)
+      }
+      array(arr).addEventListener('add', f_add_listener );
+      //[add][action]
+      array(arr).add('a')
+      array(arr).add('one',0).add(0,'first').add('two').add('two');
+      console.log("============================")
+      //[change][listener]
+      array(arr).addEventListener('change', function(from,to,pos) {
+        console.info('[anon] Event [change], from:' + from + ', to: '+ to + ', pos: '+pos)
+        console.log("[anon] arr: "+arr)
+      })
+      function f_change_listener(from,to,pos) {
+        console.info('[func] Event [change], from:' + from + ', to: '+ to + ', pos: '+pos)
+        console.log("[func] arr: "+arr)
+      }
+      array(arr).addEventListener('change', f_change_listener );
+      //[change][action]
+      array(arr).change(1,8)
+      array(arr).change('one','six',5)
+      console.log("============================")
+      //[remove][listener]
+      array(arr).addEventListener('remove', function(val,pos) {
+        console.info('[anon] Event [remove], value:' + val + ', pos: '+pos)
+        console.log("[anon] arr: "+arr)
+      })
+      function f_remove_listener(val,pos) {
+        console.info('[func] Event [remove], value:' + val + ', pos: '+pos)
+        console.log("[func] arr: "+arr)
+      }
+      array(arr).addEventListener('remove', f_remove_listener );
+      //[remove][action]
+      array(arr).remove(0)
+      array(arr).remove('two',5)
+      array(arr).remove('two').remove('two')
+      
+    }
+  </script>
+</body>
+</html>

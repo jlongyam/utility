@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta id="meta_ie" http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>object</title>
+  <script src="../../../../script.js"></script>
+  <script src="../config.js"></script>
+</head>
+<body>
+  <script>
+    script({ name: 'test' })
+
+    function test() {
+      var prop = Object.getOwnPropertyNames(object);
+      console.log( JSON.stringify(prop,0,2) );
+      script.test({
+        name: "object(1)",
+        call: function() {
+          return object(1)
+        },
+        should: '1'
+      });
+      script.test({
+        name: "object('text')",
+        call: function() {
+          return object('text')
+        },
+        should: 'text'
+      });
+      script.test({
+        name: "object([1,2,3])",
+        call: function() {
+          return object([1,2,3])
+        },
+        should: '1,2,3'
+      });
+      script.test({
+        name: "object({ one: 'One', two: 'Two'})",
+        call: function() {
+          return object({ one: 'One', two: 'Two'})
+        },
+        should: '[object Object]'
+      });
+      script.test({
+        name: "object(window)",
+        call: function() {
+          return object(window)
+        },
+        should: '[object DOMWindow]'
+      });
+      script.test({
+        name: "object.chain: object({ key: 'value' }).test()",
+        call: function() {
+          object.chain.extend({
+            test: function() {
+              return true
+            }
+          })
+          return object({ key: 'value' }).test()
+        },
+        should: true
+      });
+      var chain = Object.getOwnPropertyNames(object.chain);
+      console.log( JSON.stringify(chain,0,2) );
+    }
+  </script>
+</body>
+</html>

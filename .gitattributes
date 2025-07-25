@@ -1,0 +1,12 @@
+# ==========
+# javascript
+# ==========
+#
+# style 1
+# -------
+#*.html linguist-detectable=false
+#*.css linguist-detectable=false
+#
+# style 2
+# -------
+*.* linguist-language=JavaScript

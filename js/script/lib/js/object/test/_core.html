@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>core</title>
+  <script src="../../../../script.js" console="true"></script>
+</head>
+<body>
+  <script>
+    script({ name: 'main' });
+    if( typeof object === 'undefined' ) object = {}
+    
+    function object(v_args) {
+      var b_object = false;
+      if( typeof v_args === 'object' ) {
+        if(String(v_args) === '[object Object]') b_object = true;
+        else return String(v_args);
+      }
+      else return String(v_args);
+      if( b_object ) {
+        var o_target = v_args;
+        Object.defineProperty(o_target, 'event', {
+          value: {
+            'ready': [],
+            'extend': []
+          },
+          configurable: true
+        });
+        return {
+          toString: function() {
+            return JSON.stringify(o_target)
+          },
+          extend: function( s_name, v_property ) {
+            o_target[s_name] = v_property;
+            if(o_target.event['extend'].length > 0) {
+              var a_extend = o_target.event['extend'];
+              for( i in a_extend ) a_extend[i].call(false,s_name, v_property);
+            }
+            return this
+          },
+          when: function( s_event, f_cb ) {
+            if(!f_cb.name) return;//console.log('cannot accept anonymous')// no anonymous
+            else o_target.event[s_event].push(f_cb)
+          }
+        }
+      }
+    }
+    var obj = {
+      one: 'ONE'
+    };
+    
+    function main() {
+      //[1]
+      console.log( object(obj) );
+      //[2]
+      object(obj).extend('two', 'TWO')
+      console.log( object(obj) );
+      //[3] PASS
+      function warn(prop, val) { console.log('warn: '+prop,val)}
+      object(obj).when('extend', warn );
+      object(obj).extend('three', 'THREE');
+      //[4] anonymous should not pass
+      object(obj).when('extend', function(){console.log('Anon')});
+      object(obj).extend('four', 'FOUR');
+      //[5] multiple listener
+      function other(p,v) {
+        console.log('Other '+p + ' '+v);
+      }
+      object(obj).when('extend', other );
+      object(obj).extend('five', 'FIVE');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta id="meta_ie" http-equiv="x-ua-compatible" content="ie=edge">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>repetitve</title>
+  <script src="../../script.js"></script>
+</head>
+<body>
+  <script>
+    script.test({
+      name: 'script.path.loaded',
+      call: function() {
+        script.load('sample/other.js');
+        script.load('sample/other.js');
+        script.load('sample/other.js');
+        return script.path.loaded.length;
+      },
+      should: 1
+    });
+  </script>
+</body>
+</html>

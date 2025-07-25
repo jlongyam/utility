@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>string</title>
+  <script src=../../../../script.js></script>
+  <script src=../../../package.js></script>
+</head>
+<body>
+  <script>
+    //script.debug = false
+    script({
+      import: [ 'js/string.js' ]
+    }, function(package,d,w){
+      //var string = package.js.string;// already global (optional)
+      console.log(string('OK'))
+      console.log(string.index);
+    })
+  </script>
+</body>
+</html>

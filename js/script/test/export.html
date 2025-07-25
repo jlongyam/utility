@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>export</title>
+  <script src=../script.js></script>
+  <script src=sample/config.js></script>
+</head>
+<body>
+  <script>
+    //[1] script.package // PASS
+    script({
+      package: script.package,
+      export: {
+        sample: 'SAMPLE'
+      }
+    });
+    //[2] free // PASS
+    script({
+      package: window,
+      export: {
+        sample: 'SAMPLE'
+      }
+    });
+    script.log(sample)
+    script({
+      package: script.package,
+      export: {
+        other: 'OTHER'
+      }
+    },function(package) {
+      script.log(package.other)
+      script.log(typeof package.sample)
+      script.log(package.sample)
+    });
+    script.package = window
+    script({
+      import: ['simple.js']
+    },function() {
+      script.log(simple)
+    })
+  </script>
+</body>
+</html>

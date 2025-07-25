@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta id="meta_ie" http-equiv="x-ua-compatible" content="ie=edge">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>name</title>
+  <script src="../../script.js"></script>
+</head>
+<body>
+  <script>
+    try {
+      //script()//pass
+      script({ name: 'sample' });
+      //[1] variable, PASS
+      //var sample = 'sample'
+      //console.log(sample)
+      //[2] late, PASS
+      //var sample = function() {
+        //console.log('sample');
+      //}
+      //sample()
+      //[3] function, PASS
+      //function sample() {
+        //console.log('SAMPLE')
+      //}
+      //[4] function with args
+      function sample(arg) {
+        //console.log(arg) // pending, FAIL
+        return arg // Good
+      }
+      //sample(123) // return console.log // fail
+      console.log( sample(123) ); // PASS
+    } catch(e) {
+      console.log(e.message);
+    }
+  </script>
+</body>
+</html>

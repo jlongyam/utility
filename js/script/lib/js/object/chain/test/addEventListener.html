@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta id="meta_ie" http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>addEventListener</title>
+  <script src="../../../../../script.js"></script>
+  <script src="../../config.js"></script>
+</head>
+<body>
+  <script>
+    script({ name: 'test' })
+
+    function test() {
+      var o_simple = { one: 'ONE', two: 'TWO' };
+      console.log(JSON.stringify(o_simple));
+      //[1]
+      object.createEvents(o_simple);
+      //[add]
+      object(o_simple).addEventListener('add', function(s_key, s_val){
+        console.info('add: "'+s_key+'", value: "'+s_val+'"');
+      });
+      object(o_simple).addProperty('three','THREE');
+      object(o_simple).addProperty('four','FOUR');
+      object(o_simple).addEventListener('add', function(s_key, s_val){
+        console.info('other add: "'+s_key+'", with value: "'+s_val+'"');
+      });
+      object(o_simple).addProperty('five','FIVE');
+      function addListener(s_key, s_val) {
+        console.info('from function, add: "'+s_key+'", value: "'+s_val+'"')
+      }
+      object(o_simple).addEventListener('add', addListener);
+      object(o_simple).addProperty('six','SIX');
+      object(o_simple).addProperty('seven','SEVEN');
+      console.log(JSON.stringify(o_simple,0,2));
+      //[rename]
+      object(o_simple).addEventListener('rename', function(s_from,s_to){
+        console.info('rename from: "'+s_from+'", to: "'+s_to+'"');
+      });
+      object(o_simple).renameProperty('three','eight');
+      object(o_simple).renameProperty('two','nine');
+      object(o_simple).addEventListener('rename', function(s_from,s_to){
+        console.info('other rename from: "'+s_from+'", to: "'+s_to+'"');
+      });
+      object(o_simple).renameProperty('one','ten');
+      object(o_simple).renameProperty('six','zero');
+      function renameListener(s_from,s_to) {
+        console.info('from function, rename from: "'+s_from+'", to: "'+s_to+'"');
+      }
+      object(o_simple).addEventListener('rename', renameListener);
+      object(o_simple).renameProperty('five','eleven');
+      object(o_simple).renameProperty('four','one');
+      console.log(JSON.stringify(o_simple,0,2));
+      //[update]
+      object(o_simple).addEventListener('update', function(s_key,s_value){
+        console.info('update value of: "'+s_key+'", with value: "'+s_value+'"');
+      });
+      object(o_simple).updateProperty('one','ONE');
+      object(o_simple).updateProperty('ten','TEN');
+      object(o_simple).addEventListener('update', function(s_key,s_value){
+        console.info('other update value of: "'+s_key+'", with value: "'+s_value+'"');
+      });
+      object(o_simple).updateProperty('nine','NINE');
+      function updateListener(s_key,s_value) {
+        console.info('from function, update value of: "'+s_key+'", with value: "'+s_value+'"');
+      }
+      object(o_simple).addEventListener('update', updateListener );
+      object(o_simple).updateProperty('zero','ZERO');
+      object(o_simple).updateProperty('eight','EIGHT');
+      console.log(JSON.stringify(o_simple,0,2));
+      //[remove]
+      object(o_simple).addEventListener('remove', function(s_key){
+        console.info('removed key: "'+s_key);
+      });
+      object(o_simple).removeProperty('one');
+      object(o_simple).addEventListener('remove', function(s_key){
+        console.info('other removed key: "'+s_key);
+      });
+      object(o_simple).removeProperty('eleven');
+      function removeListener(s_key) {
+        console.info('from function, removed key: "'+s_key);
+      }
+      object(o_simple).addEventListener('remove', removeListener);
+      object(o_simple).removeProperty('seven');
+      console.log(JSON.stringify(o_simple,0,2));
+      Console.log(o_simple);
+    }
+  </script>
+</body>
+</html>

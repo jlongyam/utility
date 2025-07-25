@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta id="meta_ie" http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>remove</title>
+  <script src="../../../../../script.js"></script>
+  <script src="../../config.js"></script>
+</head>
+<body>
+  <script>
+    script({ name: 'test' })
+    
+    function test() {
+      var arr = [0,'one'];
+      console.info(arr);
+      script.test({
+        name: "array(arr).remove()",
+        call: function() {
+          return array(arr).remove()
+        },
+        should: 'undefined'
+      });
+      arr = [0,1,2,3,'one','two','three',1,'two'];
+      console.info(arr,', length: ',arr.length);
+      
+      script.test({
+        name: "array(arr).remove(2)",
+        call: function() {
+          array(arr).remove(2)
+          return arr
+        },
+        should: "0,1,3,one,two,three,1,two"
+      });
+      console.log(arr,', length: ',arr.length);
+      script.test({
+        name: "array(arr).remove(1)",
+        call: function() {
+          array(arr).remove(1)
+          return arr
+        },
+        should: "0,3,one,two,three,two"
+      });
+      console.log(arr,', length: ',arr.length);
+      script.test({
+        name: "array(arr).remove('two',5)",
+        call: function() {
+          return array(arr).remove('two',5)
+        },
+        should: "0,3,one,two,three"
+      });
+      console.log(arr,', length: ',arr.length);
+    }
+  </script>
+</body>
+</html>

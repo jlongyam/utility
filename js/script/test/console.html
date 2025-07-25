@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta id="meta_ie" http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>console</title>
+  <script src="../script.js"></script>
+</head>
+<body>
+  <script>
+    console.log('Normal text');
+    console.log('<u>HTML text</u>');
+    console.log(navigator.userAgent);
+    var file_type = location.href.split('/').pop().split('.')[1]
+    console.log(file_type)
+    if( file_type !== 'hta' ) {
+      console.dev = true;
+      console.log('log to dev console');
+      console.dev = false
+      console.log('log to dev disabled');
+      Console.log('log with "Console"');
+    }
+    console.html = false;
+    console.log('<b>HTML text</b>');
+    console.error('console.error');
+    console.warn('console.warn');
+    console.info('console.info');
+    console.debug('console.debug');
+    console.log( JSON.stringify(console,0,2) );
+    console.log( Object.keys(console).length );
+  </script>
+</body>
+</html>

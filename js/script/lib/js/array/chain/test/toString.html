@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta id="meta_ie" http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>toString</title>
+  <script src="../../../../../script.js"></script>
+  <script src="../../config.js"></script>
+</head>
+<body>
+  <script>
+    script({ name: 'test' })
+    
+    function test() {
+      script.test({
+        name: "typeof array([0,1,2])",
+        call: function() {
+          return typeof array([0,1,2])
+        },
+        should: 'object'
+      });
+      script.test({
+        name: "typeof array([0,1,2]).toString()",
+        call: function() {
+          return typeof array([0,1,2]).toString()
+        },
+        should: 'string'
+      });
+      script.test({
+        name: "array([0,1,2]).toString()",
+        call: function() {
+          return array([0,1,2]).toString()
+        },
+        should: '0,1,2'
+      });
+      script.test({
+        name: "array([0,1,2]).toString('')",
+        call: function() {
+          return array([0,1,2]).toString('')
+        },
+        should: '012'
+      });
+      script.test({
+        name: "array([0,1,2]).toString('-')",
+        call: function() {
+          return array([0,1,2]).toString('-')
+        },
+        should: '0-1-2'
+      });
+    }
+  </script>
+</body>
+</html>

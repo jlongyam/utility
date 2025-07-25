@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta id="meta_ie" http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>change</title>
+  <script src="../../../../../script.js"></script>
+  <script src="../../config.js"></script>
+</head>
+<body>
+  <script>
+    script({ name: 'test' })
+    
+    function test() {
+      var arr = [0,1,2,3];
+      console.info("arr = [0,1,2,3]");
+      
+      script.test({
+        name: "array(arr).change()",
+        call: function() {
+          return array(arr).change()
+        },
+        should: false
+      });
+      script.test({
+        name: "array(arr).change(2)",
+        call: function() {
+          return array(arr).change(2)
+        },
+        should: false
+      });
+      script.test({
+        name: "array(arr).change(0,4)",
+        call: function() { 
+          array(arr).change(0,4);
+          return arr
+        },
+        should: '4,1,2,3'
+      });
+      script.test({
+        name: "array(arr).change(2,7)",
+        call: function() {
+          array(arr).change(2,7);
+          return arr
+        },
+        should: '4,1,7,3'
+      });
+      array(arr).add(4).add(1);
+      console.info("array(arr).add(4).add(1)");
+      console.log(arr);
+      script.test({
+        name: "array(arr).change(1,5).change(4,9)",
+        call: function() {
+          array(arr).change(1,5).change(4,9)
+          return arr
+        },
+        should: '9,5,7,3,9,5'
+      });
+      array(arr).add(4).add(3)
+      console.info("array(arr).add(4).add(3)")
+      console.log(arr);
+      script.test({
+        name: "array(arr).change(9,0,0)",
+        call: function() {
+          array(arr).change(9,0,0)
+          return arr
+        },
+        should: '0,5,7,3,9,5,4,3'
+      });
+      script.test({
+        name: "array(arr).change(3,8,3).change(3,8,7)",
+        call: function() {
+          array(arr).change(3,8,3).change(3,8,7)
+          return arr
+        },
+        should: '0,5,7,8,9,5,4,8'
+      });
+      arr = ['one','two','three','one'];
+      console.info("arr = ['one','two','three','one']");
+      script.test({
+        name: "array(arr).change('one','six')",
+        call: function() {
+          return array(arr).change('one','six')
+        },
+        should: "six,two,three,six"
+      });
+      script.test({
+        name: "array(arr).change('six','five',0)",
+        call: function() {
+          return array(arr).change('six','five',0)
+        },
+        should: "five,two,three,six"
+      });
+    }
+  </script>
+</body>
+</html>

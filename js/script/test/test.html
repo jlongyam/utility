@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta id="meta_ie" http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>test</title>
+  <script src="../script.js"></script>
+</head>
+<body>
+  <script>
+    script.test({
+      call: function() {
+        return 'test'
+      },
+      should: 'test'
+    });
+    script.test({
+      name: 'should fail',
+      call: function() {
+        return 0
+      },
+      should: 1
+    });
+  </script>
+</body>
+</html>

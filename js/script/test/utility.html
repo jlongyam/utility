@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>utility</title>
+  <script src=../script.js></script>
+</head>
+<body>
+  <dl>
+    <dt><a href="utility.html">Test</a></dt>
+    <dd>
+      <li><a href="#/test_basic">test basic</a></li>
+      <li><a href="#/test_property">test property</a></li>
+    </dd>
+  </dl>
+  <pre id=pre></pre>
+  <script id=script_1>
+    var test = []
+    script.routes(function(url) {
+      if(url ==='test_basic') {
+        test = []
+        pre.innerHTML = ''
+        script(function(){
+          test.push(script.test({
+            call: function() {
+              return 0
+            },
+            should: 0
+          }));
+          test.push(script.test({
+            name: "should false",
+            call: function() {
+              return 1
+            },
+            should: 0
+          }));  
+        }).then(function(){
+          for( i in test ) {
+            pre.innerHTML += JSON.stringify(test[i],0,2)  
+          }  
+        })
+      }
+      if(url ==='test_property') {
+        test = []
+        pre.innerHTML = ''
+        script(function(){
+          test.push(script.test({
+            name: "script().id",
+            call: function() {
+              return script().id
+            },
+            should: 'script_1'
+          }));
+          test.push(script.test({
+            name: "script.self",
+            call: function() {
+              return script.self
+            },
+            should: '../script.js'
+          }));
+          test.push(script.test({
+            name: "script.root",
+            call: function() {
+              return script.root
+            },
+            should: '../'
+          }))
+        }).then(function(){
+          for( var i in test ) {
+            pre.innerHTML += JSON.stringify(test[i],0,2)  
+          }  
+        })
+      }
+    })
+  </script>
+</body>
+</html>

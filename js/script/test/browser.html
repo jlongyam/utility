@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta id="meta_ie" http-equiv="x-ua-compatible" content="ie=edge">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>browser</title>
+  <script src="../script.js"></script>
+</head>
+<body>
+  <script>
+    var str = '';
+    str += 'appCodeName: '+navigator.appCodeName+'\n';
+    str += 'cpuClass: '+navigator.cpuClass+'\n'
+    str += 'browserLanguage: '+navigator.browserLanguage+'\n',
+    str += 'language: '+navigator.language+'\n'
+    str += 'appName: '+navigator.appName+'\n'
+    str += 'appVersion: '+navigator.appVersion+'\n'
+    str += 'platform: '+navigator.platform+'\n'
+    console.log(str)
+    console.log(navigator.userAgent.toLowerCase());
+    console.log( JSON.stringify(browser,0,2) );
+  </script>
+</body>
+</html>

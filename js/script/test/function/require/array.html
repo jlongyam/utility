@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta id="meta_ie" http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>array</title>
+  <script src="../../../script.js"></script>
+</head>
+<body>
+  <script>
+    try {
+      //[1] local executor: PASS
+      //script({
+        //name: 'sample',
+        //require: ['sample/one.js', 'sample/two.js', 'sample/three.js']
+      //});
+      //function sample() {
+        //console.log( [one,two,three].join(', ') )
+      //}
+      //[2] auto exec: PASS
+      script({require: 'sample/calc.js'})
+    } catch(e) {
+      console.log(e.message);
+    }
+  </script>
+</body>
+</html>

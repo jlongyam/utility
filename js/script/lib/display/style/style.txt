@@ -1,0 +1,6 @@
+//window.getComputedStyle(pre).color
+        return pre.currentStyle.color; //IE7
+ function getStyle( el ) {
+          if(window.getComputedStyle) return window.getComputedStyle(el)
+          else return el.currentStyle
+        }

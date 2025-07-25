@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>module</title>
+  <script src=../script.js></script>
+  <script src=sample/config.js></script>
+</head>
+<body>
+  <script>
+    //script.debug = false
+    //[1] recomended
+    //script({
+      //import: [
+        //'mod.js',
+        //'mod.two.js',
+        //'mod.three.js'
+      //]
+    //}, function(package){
+      //script.log(package.mod.one)
+      //script.log(package.mod.two)
+      //script.log(package.mod.three)
+    //})
+    //[2] context
+    //script({
+      //import: [
+        //'mod.mix.js'
+      //],
+      //context: {
+        //scope: script.package, // default
+        //name: 'mod'        
+      //}
+    //}, function(package) {
+      //script.log(package.mod());
+      //script.when('mix', package.mod, function() {
+        //script.log(package.mod.mix)  
+      //});
+    //})
+    //[3] manual
+    script({
+      import: [
+        'mod.mix.js'
+      ]
+    }, function(package) {
+      script.when('mod',script.package,function(){
+        script.log(package.mod());
+        script.when('mix', package.mod, function() {
+          script.log(package.mod.mix)  
+        });
+      });
+    })
+  </script>
+</body>
+</html>

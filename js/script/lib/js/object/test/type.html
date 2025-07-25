@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta id="meta_ie" http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>type</title>
+  <script src="../../../../script.js"></script>
+  <script src="../config.js"></script>
+</head>
+<body>
+  <script>
+    script({ name: 'test' })
+
+    function test() {
+      script.test({
+        name: 'object.type("")',
+        call: function() {
+          return object.type("")
+        },
+        should: 'String'
+      });
+      script.test({
+        name: 'object.type(undefined)',
+        call: function() {
+          return object.type(undefined)
+        },
+        should: 'Undefined'
+      });
+      script.test({
+        name: 'object.type(null)',
+        call: function() {
+          return object.type(null)
+        },
+        should: 'Null'
+      });
+      script.test({
+        name: 'object.type([])',
+        call: function() {
+          return object.type([])
+        },
+        should: 'Array'
+      });
+      script.test({
+        name: 'object.type(document)',
+        call: function() {
+          return object.type(document)
+        },
+        should: 'HTMLDocument'
+      });
+      script.test({
+        name: 'object.type(document.body)',
+        call: function() {
+          return object.type(document.body)
+        },
+        should: 'HTMLBodyElement'
+      });
+      script.test({
+        name: 'object.type(location)',
+        call: function() {
+          return object.type(location)
+        },
+        should: 'Location'
+      });
+      script.test({
+        name: 'object.type(history)',
+        call: function() {
+          return object.type(history)
+        },
+        should: 'History'
+      });
+      script.test({
+        name: 'object.type(navigator)',
+        call: function() {
+          return object.type(navigator)
+        },
+        should: 'Navigator'
+      });
+      script.test({
+        name: 'object.type(window)',
+        call: function() {
+          return object.type(window)
+        },
+        should: 'DOMWindow'
+      });
+    }
+  </script>
+</body>
+</html>

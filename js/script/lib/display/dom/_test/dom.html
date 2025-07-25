@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>dom</title>
+  <script src="../../../script.js" console="true"></script>
+</head>
+<body>
+  <button id="button">Click</button>
+  <script>
+    script.map = {
+      'dom.js': '../dom.js',
+      'eventListener.js': '../eventListener.js',
+      'get.js': '../get.js'
+    };
+    script({ name: 'test', require: 'dom.js' })
+
+    function test() {
+      function buttonClick() {
+        alert('OK');
+      }
+      dom.eventListener.add( dom.get('button'), 'click', buttonClick );
+      
+    };
+  </script>
+</body>
+</html>

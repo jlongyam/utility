@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <title>test: createElement</title>
+  <link rel="stylesheet" href="../../lib/native-style.css">
+  <link rel="stylesheet" href="../../lib/box.css">
+  <script src="../../lib/result-hilight.min.js"></script>
+  <script src="createElement.js"></script>
+</head>
+
+<body>
+  <h1>Test</h1>
+  <section>
+    <h2><code>createElement</code></h2>
+    <script data-source-show>
+      result.html(`<div class="box" id="box"></div>`, () => {
+        box.prepend(createElement(['h3', 'New Element']))
+      })
+      result.js(box.innerHTML)
+    </script>
+  </section>
+  <h2>setAttribute</h2>
+  <script data-source-show>
+    result.html(`<div class="box" id="box2"></div>`, () => {
+      box2.prepend(createElement(['h3', { id: 'h3' }, 'New Element']))
+    })
+    result.js(box2.innerHTML)
+  </script>
+  </section>
+  <h2>cb</h2>
+  <script data-source-show>
+    result.html(`<div class="box" id="box3"></div>`, () => {
+      box3.prepend(
+        createElement(['button', 'click'], (el) => {
+          el.addEventListener('click', () => {
+            console.log('ok')
+          })
+        })
+      )
+    })
+    result.js(box3.innerHTML)
+  </script>
+  </section>
+  <section>
+    <h2>nested</h2>
+    <script data-source-show>
+      result.html(`<div class="box" id="box4"></div>`)
+      box4.prepend(
+        createElement([ 'div', { id:'div'}, 
+          ['h3', 'A heading 3'],
+          ['ul', { style: 'color: blue' },
+            ['li', 'list item 1'],
+            ['li', 'list item 2'],
+            ['li', 'list item 3']
+          ],
+          ['p', { class: 'box' },
+            ['button', 'Click']
+          ]
+        ], (el)=> {
+          el.querySelector('button').addEventListener('click', ()=> {
+            console.log('ok')
+          })
+        })
+      )
+      result.js(box4.innerHTML)
+    </script>
+  </section>
+  <section>
+    <h2>create style</h2>
+    <script data-source-show>
+      document.head.appendChild( createElement(['style', { id: 'style1'}, `
+        button { padding: .5em }
+      `], ( el )=> {
+        el.innerHTML = el.innerHTML.stripInitial().trim()
+      })
+      )
+      result.js( style1.innerHTML )      
+    </script>
+  </section>
+</body>
+
+</html>

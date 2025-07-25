@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta id="meta_ie" http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>deleteProperty</title>
+  <script src="../../../../../script.js"></script>
+  <script src="../../config.js"></script>
+</head>
+<body>
+  <script>
+    script({ name: 'test', require: 'object.js' })
+
+    function test() {
+      var o_simple = { one: 'ONE', two: 'TWO' };
+      console.log( "JSON.stringify(o_simple): "+JSON.stringify(o_simple) );
+      
+      script.test({
+        name: "object(o_simple).deleteProperty('one')",
+        call: function() {
+          object(o_simple).deleteProperty('one');
+          return object.keys(o_simple).length
+        },
+        should: 1
+      });
+      console.log( "JSON.stringify(o_simple): "+JSON.stringify(o_simple) );
+    }
+  </script>
+</body>
+</html>

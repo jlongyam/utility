@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>routes</title>
+  <script src="../../../script.js"></script>
+</head>
+<body>
+  <dl>
+    <dt><a href="routes.html">reset</a></dt>
+    <dd>
+      <li><a href="#/foo">foo</a></li>
+      <li><a href="#/bar">bar</a></li>
+      <li><a href="#/bar/?/home/foo">bar/?/home/foo</a></li>
+      <li><a href="#/baz/bak">baz/bak</a></li>
+      <li><a href="#/baz/#/home/foo">baz/#/home/foo</a></li>
+      <li><a href="#/joker/bat">joker/bat</a></li>
+      <li><a href="#/baz/bak/more">baz/bak/more</a></li>
+      <li><a href="#/baz/bak/more/link">baz/bak/more/link</a></li>
+    </dd>
+  </dl>
+  <script src="routes.js"></script>
+  <script>
+    if('onhashchange' in window) {
+      window.onhashchange = function() {
+        //return router( deep_1 );// PASS
+        //return router( deep_1, deep_2 );// PASS
+        return routes( deep_1, deep_2, deep_3 );
+      }
+    } 
+    function deep_1(arg,res) { console.log('deep_1: '+arg+', rest: ' +res); }
+    function deep_2(arg,res) { console.log('deep_2: '+arg+', rest: ' +res); }
+    function deep_3(arg,res) { console.log('deep_3: '+arg+', rest: ' +res); }
+  </script>
+</body>
+</html>

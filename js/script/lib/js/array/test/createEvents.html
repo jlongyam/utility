@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta id="meta_ie" http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>createEvents</title>
+  <script src="../../../../script.js"></script>
+  <script src="../config.js"></script>
+</head>
+<body>
+  <script>
+    script({ name: 'test' })
+
+    function test() {
+      
+      var arr = [1,2,3]
+      console.info("arr = [1,2,3]");
+      script.test({
+        context: "array.createEvents(arr)",
+        name: "object.keys(arr.events).length",
+        call: function() {
+          array.createEvents(arr);
+          return object.keys(arr.events).length
+        },
+        should: 3
+      })
+      console.info("arr.events:\n"+JSON.stringify(arr.events,0,2))
+      console.info("arr: "+JSON.stringify(arr))
+    }
+  </script>
+</body>
+</html>

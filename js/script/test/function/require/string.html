@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta id="meta_ie" http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>string</title>
+  <script src="../../../script.js"></script>
+</head>
+<body>
+  <script>
+    try {
+      //[1] executor, PASS
+      //script({ require: 'sample/exec.js' })
+      //[2] return type, PASS
+      script({ name: 'sample', require: 'sample/return_type.js' });
+      function sample() {
+        console.log(return_type())
+      }
+    } catch(e) {
+      console.log(e.message);
+    }
+  </script>
+</body>
+</html>

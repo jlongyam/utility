@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta id="meta_ie" http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>forEach</title>
+  <script src="../../../../../script.js"></script>
+  <script src="../../config.js"></script>
+</head>
+<body>
+  <script>
+    script({ name: 'test' })
+
+    function test() {
+      script.test({
+        name: "object([1,2,3]).forEach()",
+        call: function() {
+          var s = ''
+          object([1,2,3]).forEach(function(v,k){ s += v })
+          return s
+        },
+        should: '123'
+      });
+      script.test({
+        name: "object({ one: 'One', two: 'Two'}).forEach()",
+        call: function() {
+          var a = []
+          object({ one: 'One', two: 'Two'}).forEach(function(v,k){ a.push(v) })
+          return String(a)
+        },
+        should: 'One,Two'
+      });
+    }
+  </script>
+</body>
+</html>

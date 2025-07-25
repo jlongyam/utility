@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta id="meta_ie" http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>hasProperty</title>
+  <script src="../../../../../script.js"></script>
+  <script src="../../config.js"></script>
+</head>
+<body>
+  <script>
+    script({ name: 'test' })
+
+    function test() {
+      script.test({
+        name: "object([1,2,3]).hasProperty(1)",
+        call: function() {
+          return object([1,2,3]).hasProperty(1)
+        },
+        should: true
+      });
+      script.test({
+        name: "object([1,2,3]).hasProperty(4)",
+        call: function() {
+          return object([1,2,3]).hasProperty(4)
+        },
+        should: false
+      });
+      script.test({
+        name: "object({ one: 'One', two: 'Two' }).hasProperty('one')",
+        call: function() {
+          return object({ one: 'One', two: 'Two' }).hasProperty('one')
+        },
+        should: true
+      });
+      script.test({
+        name: "object({ one: 'One', two: 'Two' }).hasProperty('any')",
+        call: function() {
+          return object({ one: 'One', two: 'Two' }).hasProperty('any')
+        },
+        should: false
+      });
+    }
+  </script>
+</body>
+</html>

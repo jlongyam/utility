@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta id="meta_ie" http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>addProperty</title>
+  <script src="../../../../../script.js"></script>
+  <script src="../../config.js"></script>
+</head>
+<body>
+  <script>
+    script({ name: 'test' })
+
+    function test() {
+      var o_simple = { one: 'ONE', two: 'TWO' };
+      console.log( "object.keys(o_simple): "+object.keys(o_simple) );
+      script.test({
+        name: "object(o_simple).addProperty('three', 'THREE')",
+        call: function() {
+          object(o_simple).addProperty('three', 'THREE');
+          return o_simple['three']
+        },
+        should: 'THREE'
+      });
+      console.log( "object(o_simple).hasProperty('three'): "+object(o_simple).hasProperty('three') );
+      script.test({
+        name: "object(o_simple).addProperty('one', 'ANY')",
+        call: function() {
+          object(o_simple).addProperty('one', 'ANY');
+          return o_simple.one
+        },
+        should: 'ONE'
+      });
+      console.log( "object.keys(o_simple): "+object.keys(o_simple) );
+      script.test({
+        name: "object(o_simple).addProperty('four', 'FOUR').createProperty('five','FIVE')",
+        call: function() {
+          object(o_simple).addProperty('four', 'FOUR').addProperty('five','FIVE');
+          return o_simple.four + ',' + o_simple.five
+        },
+        should: 'FOUR,FIVE'
+      });
+      console.log(JSON.stringify(o_simple,0,2));
+    }
+  </script>
+</body>
+</html>

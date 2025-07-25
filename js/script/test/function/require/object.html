@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>object</title>
+  <script src="../../../script.js"></script>
+</head>
+<body>
+  <p>
+    <strong>Note</strong>:
+    <code>Object.defineProperties</code> not supporeted in IE-7
+  </p>
+  <script>
+    script({ name: 'main', require: 'sample/object.js' });
+
+    function main() {
+      myApp('Hello');
+      console.log(myApp.val);
+      console.log(myApp.prop);
+      myApp.prop = 'New content';
+      console.log(myApp.prop);
+    }
+  </script>
+</body>
+</html>

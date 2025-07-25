@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>import</title>
+  <base href="../">
+  <script src=script.js></script>
+  <script src=test/sample/config.js></script>
+</head>
+<body>
+  <script>
+    console.log(script.base)
+    script({
+      import: ['global.js']
+    }, function(){
+      script.log(global.string)
+    })
+    script({
+      import: [ 'one.js', 'two.js', 'three.js']
+    }, function(){
+      script.log([one,two,three].join(', '))
+    })
+    script({
+      import: ['simple.js'],
+      context: {
+        scope: script.package, // default
+        name: 'simple'
+      }
+    }, function(package){
+      script.log(package.simple) // or
+      script.log(script.package.simple)
+    })
+    script({
+      import: ['file.css']
+    }, function() {
+      var p = document.createElement('p')
+      p.id = 'sample'
+      p.textContent = 'styled by file.css'
+      document.body.appendChild(p)
+    })
+  </script>
+</body>
+</html>

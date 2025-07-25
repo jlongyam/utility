@@ -1,0 +1,16 @@
+- display (html, require script, dom, style)
+- dom	
+- style
+- browser
+- object ( not depend to browser)
+- path is about location, src, and href
+- router is about url, hash,
+
+class 
+1. js-core alias js-shell
+2. js-browser
+   - dom, document
+   - style, css
+   - 
+
+3. js-app ( like nw, combination)

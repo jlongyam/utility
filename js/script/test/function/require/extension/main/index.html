@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>main</title>
+  <script src="../../../../../script.js" console=true></script>
+</head>
+<body>
+  <script>
+    script({ name: 'main', require: ['../lib/foo.js','../lib/foo.baz.js'] });
+
+    function main() {
+      console.log( JSON.stringify(foo, 0, 2) );
+    }
+  </script>
+</body>
+</html>

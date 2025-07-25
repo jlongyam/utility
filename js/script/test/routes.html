@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta id="meta_ie" http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>routes</title>
+  <script src="../script.js"></script>
+</head>
+<body>
+  <dl>
+    <dt><a href="routes.html">reset</a></dt>
+    <dd>
+      <li><a href="#/path">path</a></li>
+      <li><a href="#/path/to">path/to</a></li>
+      <li><a href="#/other">other</a></li>
+      <li><a href="#/other/path/to">other/path/to</a></li>
+    </dd>
+  </dl>
+  <script>
+    script.routes(function(hash) {
+      console.log(hash);
+    });
+  </script>
+</body>
+</html>

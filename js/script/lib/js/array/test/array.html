@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta id="meta_ie" http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>array</title>
+  <script src="../../../../script.js"></script>
+  <script src="../config.js"></script>
+</head>
+<body>
+  <script>
+    script({ name: 'test' })
+    
+    function test() {
+      script.test({
+        name: "array('text')",
+        call: function() {
+          return array('text');
+        },
+        should: 'text'
+      });
+      script.test({
+        name: "array(0)",
+        call: function() {
+          return array(0);
+        },
+        should: '0'
+      });
+      script.test({
+        name: "array({ one: 'ONE' })",
+        call: function() {
+          return array({ one: 'ONE' })
+        },
+        should: '[object Object]'
+      });
+      script.test({
+        name: "array([1,2,3])",
+        call: function() {
+          return array([1,2,3])
+        },
+        should: '1,2,3'
+      });
+      script.test({
+        name: "array([]).text()",
+        call: function() {
+          array.chain.extend({ text: function() { return 'TEXT'} });
+          return array([]).text()
+        },
+        should: 'TEXT'
+      });
+      script.test({
+        name: "array([1,2,3]).valueOf()",
+        call: function() {
+          return array([1,2,3]).valueOf()
+        },
+        should: '1,2,3'
+      })
+    }
+  </script>
+</body>
+</html>

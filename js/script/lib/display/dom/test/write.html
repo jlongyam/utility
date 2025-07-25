@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>write</title>
+  <script src="../write.js"></script>
+  <script>
+    dom.write('<style>pre{ color: red }</style>');
+  </script>
+</head>
+<body>
+  <script>
+    dom.write(
+      '<pre>CONTENT</pre>'+
+      '<p><code>pre</code> should be "red" </p>'
+    );
+  </script>
+</body>
+</html>

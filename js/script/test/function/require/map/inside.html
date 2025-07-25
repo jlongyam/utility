@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta id="meta_ie" http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>inside</title>
+  <script src="../../../../script.js"></script>
+  <script>
+    script.map = {
+      'other.js': '../sample/other.js',
+      'one.js': '../sample/one.js',
+      'two.js': '../sample/two.js',
+      'three.js': '../sample/three.js',
+      'calc.js': '../sample/calc.js',
+      'sample/one.js': '../sample/one.js',
+      'sample/two.js': '../sample/two.js',
+      'sample/three.js': '../sample/three.js',
+    };
+  </script>
+</head>
+<body>
+  <script>
+    try {
+      //[1] single: PASS
+      //script({ name: 'main', require: 'other.js' })
+      //function main() {
+        //console.log(other)
+      //}
+      //[2] multiple
+      //script({ name: 'main', require: ['one.js', 'two.js', 'three.js']})
+      //function main() {
+        //console.log(one,two,three);
+      //}
+      //[3] calc
+      script({ require: 'calc.js' })
+    } catch(e) {
+      console.log(e.message);
+    }
+  </script>
+</body>
+</html>

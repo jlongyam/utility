@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta id="meta_ie" http-equiv="x-ua-compatible" content="ie=9">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>keys</title>
+  <script src="../../../../script.js"></script>
+  <script src="../config.js"></script>
+</head>
+<body>
+  <script>
+    script({ name: 'test' })
+
+    function test() {
+      
+      script.test({
+        name: "array.keys([1,2,3])",
+        call: function() {
+          return array.keys([1,2,3])
+        },
+        should: '0,1,2'
+      });
+      script.test({
+        name: "array.keys({one: 'ONE', two: 'TWO'})",
+        call: function() {
+          return array.keys({one: 'ONE', two: 'TWO'})
+        },
+        should: false
+      });
+      
+    }
+  </script>
+</body>
+</html>
