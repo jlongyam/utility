@@ -12,7 +12,7 @@ body {
   overflow: hidden;
   position: relative;
 }
-#output {
+#console {
   background: #181c20;
   min-height: 0;
   height: calc(100vh - 2.5em);
@@ -24,7 +24,25 @@ body {
   z-index: 1;
   font-family: inherit;
   font-size: 1em;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
+#console > div {
+  margin-bottom: 0.5em;
+  line-height: 1.5;
+}
+
+/* JS type coloring */
+.js-string { color: #efece8; }
+.js-number { color: #85cddd; }
+.js-boolean { color: #676cff; }
+.js-null { color: #bd93f9; font-style: italic; }
+.js-undefined { color: #6272a4; font-style: italic; }
+.js-object { color: #ffc53e; }
+.js-array { color: #19d477; }
+.js-function { color: #f8f8f2; font-style: italic; }
+.js-symbol { color: #ff5555; }
+.js-bigint { color: #ff79c6; font-weight: bold; }
 #console-input {
   position: fixed;
   bottom: 0;
