@@ -4,37 +4,44 @@
   document.addEventListener('DOMContentLoaded', function () {
     // String substitution and style support
     function formatArgs(args) {
-      if (!args.length) return '';
+      if (!args.length) return { formatted: [], styles: [] };
       var first = args[0];
       var rest = Array.prototype.slice.call(args, 1);
       var styles = [];
       if (typeof first === 'string' && /%[sdifoOc]/.test(first)) {
         var i = 0;
-        var formatted = first.replace(/%([sdifoOc%])/g, function (match, type) {
-          if (type === '%') return '%';
-          var val = rest[i++];
-          switch (type) {
-            case 's': return String(val);
-            case 'd':
-            case 'i': return parseInt(val);
-            case 'f': return parseFloat(val);
-            case 'o':
-            case 'O': return (typeof val === 'object' && val !== null) ? JSON.stringify(val) : String(val);
-            case 'c':
-              styles.push(val || '');
-              return '';
-            default: return match;
+        var nodes = [];
+        var lastIndex = 0;
+        var pattern = /%([sdifoOc%])/g;
+        var match, str = first;
+        while ((match = pattern.exec(str)) !== null) {
+          if (match.index > lastIndex) {
+            nodes.push(document.createTextNode(str.slice(lastIndex, match.index)));
           }
-        });
+          var type = match[1];
+          if (type === '%') {
+            nodes.push(document.createTextNode('%'));
+          } else if (type === 'c') {
+            styles.push(rest[i++] || '');
+          } else {
+            var val = rest[i++];
+            nodes.push(formatSingleArg(val));
+          }
+          lastIndex = match.index + match[0].length;
+        }
+        if (lastIndex < str.length) {
+          nodes.push(document.createTextNode(str.slice(lastIndex)));
+        }
         // Add any remaining arguments
         for (; i < rest.length; i++) {
-          formatted += ' ' + formatSingleArg(rest[i]);
+          nodes.push(document.createTextNode(' '));
+          nodes.push(formatSingleArg(rest[i]));
         }
-        return { formatted, styles };
+        return { formatted: nodes, styles };
       } else {
-        // No substitution, just join
-        var formatted = Array.prototype.map.call(args, formatSingleArg).join(' ');
-        return { formatted, styles: [] };
+        // No substitution, return array of spans
+        var spans = Array.prototype.map.call(args, formatSingleArg);
+        return { formatted: spans, styles: [] };
       }
     }
     function getTypeClass(arg) {
@@ -57,7 +64,7 @@
       var typeClass = getTypeClass(arg);
       span.className = typeClass;
       if (typeClass === 'js-string') {
-        span.textContent = '"' + arg + '"';
+        span.textContent = arg;
       } else if (typeClass === 'js-null') {
         span.textContent = 'null';
       } else if (typeClass === 'js-undefined') {
@@ -182,19 +189,26 @@
         var { formatted, styles } = formatArgs(args);
         // Handle %c for inline styles
         if (styles.length > 0) {
-          var parts = formatted.split('%c');
-          for (var i = 0; i < parts.length; i++) {
+          // Handle %c for inline styles
+          var spanIdx = 0;
+          var styleIdx = 0;
+          while (spanIdx < formatted.length) {
             var span = document.createElement('span');
-            span.textContent = parts[i];
-            if (styles[i]) span.setAttribute('style', styles[i]);
+            // Collect nodes until next style or end
+            while (spanIdx < formatted.length && !(formatted[spanIdx].nodeType === 3 && formatted[spanIdx].textContent === '')) {
+              span.appendChild(formatted[spanIdx]);
+              spanIdx++;
+            }
+            if (styles[styleIdx]) span.setAttribute('style', styles[styleIdx]);
             div.appendChild(span);
+            styleIdx++;
+            spanIdx++;
           }
         } else {
-          // Append each argument as a span for type coloring
           div.appendChild(document.createTextNode(indent));
-          for (var i = 0; i < args.length; i++) {
+          for (var i = 0; i < formatted.length; i++) {
             if (i > 0) div.appendChild(document.createTextNode(' '));
-            div.appendChild(formatSingleArg(args[i]));
+            div.appendChild(formatted[i]);
           }
         }
       } else if (type === 'dir' && rawObj !== undefined) {
@@ -233,7 +247,12 @@
         div.appendChild(collapsedRoot);
         div.appendChild(tree);
       } else {
-        div.textContent = indent + Array.prototype.map.call(args, formatSingleArg).join(' ');
+        // For all other types (assert, count, etc.), use formatArgs and append nodes
+        var { formatted } = formatArgs(args);
+        div.appendChild(document.createTextNode(indent));
+        for (var i = 0; i < formatted.length; i++) {
+          div.appendChild(formatted[i]);
+        }
       }
       out.appendChild(div);
     }
@@ -315,8 +334,103 @@
         consolePrint('dir', [''], obj);
       },
       dirxml: function (obj) {
+        function renderDomTree(node, depth) {
+          depth = depth || 0;
+          var container = document.createElement('div');
+          container.className = 'dir-tree dir-indent-' + Math.min(depth, 9);
+          if (node.nodeType === 1) { // Element
+            var entry = document.createElement('div');
+            entry.className = 'dir-tree-entry dir-indent-' + Math.min(depth, 9);
+            var collapsedLine = document.createElement('div');
+            collapsedLine.className = 'dir-collapsed-line';
+            var toggle = document.createElement('span');
+            toggle.className = 'dir-toggle';
+            toggle.textContent = node.children.length > 0 ? '▶' : '';
+            var tagSpan = document.createElement('span');
+            tagSpan.className = 'dir-key';
+            tagSpan.textContent = '<' + node.nodeName.toLowerCase();
+            // Add attributes
+            for (var i = 0; i < node.attributes.length; i++) {
+              var attr = node.attributes[i];
+              tagSpan.textContent += ' ' + attr.name + '="' + attr.value + '"';
+            }
+            tagSpan.textContent += '>';
+            collapsedLine.appendChild(tagSpan);
+            if (toggle.textContent) collapsedLine.appendChild(toggle);
+            var expanded = document.createElement('div');
+            expanded.className = 'dir-hidden';
+            // Children
+            for (var j = 0; j < node.childNodes.length; j++) {
+              expanded.appendChild(renderDomTree(node.childNodes[j], depth + 1));
+            }
+            // Closing tag
+            if (node.childNodes.length > 0) {
+              var closeTag = document.createElement('div');
+              closeTag.className = 'dir-tree-entry dir-indent-' + Math.min(depth + 1, 9);
+              var closeSpan = document.createElement('span');
+              closeSpan.className = 'dir-key';
+              closeSpan.textContent = '</' + node.nodeName.toLowerCase() + '>';
+              closeTag.appendChild(closeSpan);
+              expanded.appendChild(closeTag);
+            }
+            function doToggle(e) {
+              e.stopPropagation();
+              if (expanded.classList.contains('dir-hidden')) {
+                expanded.classList.remove('dir-hidden');
+                expanded.classList.add('dir-expanded');
+                toggle.textContent = '▼';
+              } else {
+                expanded.classList.add('dir-hidden');
+                expanded.classList.remove('dir-expanded');
+                toggle.textContent = '▶';
+              }
+            }
+            if (toggle.textContent) {
+              toggle.addEventListener('click', doToggle);
+              toggle.addEventListener('touchstart', function (e) { e.preventDefault(); doToggle(e); });
+            }
+            entry.appendChild(collapsedLine);
+            if (node.children.length > 0) entry.appendChild(expanded);
+            container.appendChild(entry);
+          } else if (node.nodeType === 3) { // Text
+            var textEntry = document.createElement('div');
+            textEntry.className = 'dir-tree-entry dir-indent-' + Math.min(depth, 9);
+            var textSpan = document.createElement('span');
+            textSpan.className = 'dir-value';
+            textSpan.textContent = '"' + node.textContent.trim() + '"';
+            textEntry.appendChild(textSpan);
+            container.appendChild(textEntry);
+          } else if (node.nodeType === 8) { // Comment
+            var commentEntry = document.createElement('div');
+            commentEntry.className = 'dir-tree-entry dir-indent-' + Math.min(depth, 9);
+            var commentSpan = document.createElement('span');
+            commentSpan.className = 'dir-value';
+            commentSpan.textContent = '<!-- ' + node.textContent + ' -->';
+            commentEntry.appendChild(commentSpan);
+            container.appendChild(commentEntry);
+          } else if (node.nodeType === 9) { // Document
+            for (var k = 0; k < node.childNodes.length; k++) {
+              container.appendChild(renderDomTree(node.childNodes[k], depth));
+            }
+          } else {
+            // Other node types
+            var otherEntry = document.createElement('div');
+            otherEntry.className = 'dir-tree-entry dir-indent-' + Math.min(depth, 9);
+            var otherSpan = document.createElement('span');
+            otherSpan.className = 'dir-value';
+            otherSpan.textContent = node.nodeName;
+            otherEntry.appendChild(otherSpan);
+            container.appendChild(otherEntry);
+          }
+          return container;
+        }
         if (typeof obj === 'object' && obj && obj.nodeType) {
-          consolePrint('dirxml', [obj.outerHTML || obj.nodeName]);
+          var out = document.getElementById('console');
+          if (!out) return;
+          var div = document.createElement('div');
+          div.className = 'dirxml';
+          div.appendChild(renderDomTree(obj, 0));
+          out.appendChild(div);
         } else {
           consolePrint('dirxml', [''], obj);
         }
