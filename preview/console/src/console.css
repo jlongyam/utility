@@ -1,8 +1,10 @@
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
 }
+
 body {
   font-family: 'Fira Mono', 'Consolas', 'Menlo', 'Monaco', 'Liberation Mono', 'Courier New', monospace;
   background: #222;
@@ -12,6 +14,7 @@ body {
   overflow: hidden;
   position: relative;
 }
+
 #console {
   background: #181c20;
   min-height: 0;
@@ -27,22 +30,57 @@ body {
   white-space: pre-wrap;
   word-break: break-word;
 }
-#console > div {
+
+#console>div {
   margin-bottom: 0.5em;
   line-height: 1.5;
 }
 
 /* JS type coloring */
-.js-string { color: #efece8; }
-.js-number { color: #85cddd; }
-.js-boolean { color: #676cff; }
-.js-null { color: #bd93f9; font-style: italic; }
-.js-undefined { color: #6272a4; font-style: italic; }
-.js-object { color: #ffc53e; }
-.js-array { color: #19d477; }
-.js-function { color: #f8f8f2; font-style: italic; }
-.js-symbol { color: #ff5555; }
-.js-bigint { color: #ff79c6; font-weight: bold; }
+.js-string {
+  color: #efece8;
+}
+
+.js-number {
+  color: #85cddd;
+}
+
+.js-boolean {
+  color: #676cff;
+}
+
+.js-null {
+  color: #bd93f9;
+  font-style: italic;
+}
+
+.js-undefined {
+  color: #6272a4;
+  font-style: italic;
+}
+
+.js-object {
+  color: #ffc53e;
+}
+
+.js-array {
+  color: #19d477;
+}
+
+.js-function {
+  color: #f8f8f2;
+  font-style: italic;
+}
+
+.js-symbol {
+  color: #ff5555;
+}
+
+.js-bigint {
+  color: #ff79c6;
+  font-weight: bold;
+}
+
 #console-input {
   position: fixed;
   bottom: 0;
@@ -61,17 +99,45 @@ body {
   display: block;
   font-family: inherit;
 }
-.log { color: #eee; }
-.info { color: #8ecae6; }
-.warn { color: #ffd166; }
-.error { color: #ef476f; }
-.debug { color: #06d6a0; }
-.assert { color: #ffb703; }
-.trace { color: #adb5bd; }
-.count, .time, .timeLog { color: #bdb2ff; }
+
+.log {
+  color: #eee;
+}
+
+.info {
+  color: #8ecae6;
+}
+
+.warn {
+  color: #ffd166;
+}
+
+.error {
+  color: #ef476f;
+}
+
+.debug {
+  color: #06d6a0;
+}
+
+.assert {
+  color: #ffb703;
+}
+
+.trace {
+  color: #adb5bd;
+}
+
+.count,
+.time,
+.timeLog {
+  color: #bdb2ff;
+}
 
 /* Tree view for console.dir */
-.dir-tree, .dir-tree-entry, .dir-collapsed-line {
+.dir-tree,
+.dir-tree-entry,
+.dir-collapsed-line {
   font-family: inherit;
   font-size: 1em;
   background: #23272e;
@@ -80,20 +146,26 @@ body {
   padding: 2px 8px 2px 4px;
   transition: background 0.2s;
 }
-.dir-tree-entry:hover, .dir-collapsed-line:hover {
+
+.dir-tree-entry:hover,
+.dir-collapsed-line:hover {
   background: #2c313a;
 }
+
 .dir-key {
   color: #8ecae6;
   font-weight: bold;
 }
+
 .dir-value {
   color: #ffd166;
 }
+
 .dir-type {
   color: #adb5bd;
   font-style: italic;
 }
+
 .dir-toggle {
   margin-left: 6px;
   color: #bdb2ff;
@@ -102,21 +174,58 @@ body {
   user-select: none;
   transition: color 0.2s;
 }
+
 .dir-toggle:hover {
   color: #fff;
 }
-.dir-indent-0 { margin-left: 0; }
-.dir-indent-1 { margin-left: 8px; }
-.dir-indent-2 { margin-left: 16px; }
-.dir-indent-3 { margin-left: 24px; }
-.dir-indent-4 { margin-left: 32px; }
-.dir-indent-5 { margin-left: 40px; }
-.dir-indent-6 { margin-left: 48px; }
-.dir-indent-7 { margin-left: 56px; }
-.dir-indent-8 { margin-left: 64px; }
-.dir-indent-9 { margin-left: 72px; }
-.dir-hidden { display: none !important; }
-.dir-expanded { display: block !important; }
+
+.dir-indent-0 {
+  margin-left: 0;
+}
+
+.dir-indent-1 {
+  margin-left: 8px;
+}
+
+.dir-indent-2 {
+  margin-left: 16px;
+}
+
+.dir-indent-3 {
+  margin-left: 24px;
+}
+
+.dir-indent-4 {
+  margin-left: 32px;
+}
+
+.dir-indent-5 {
+  margin-left: 40px;
+}
+
+.dir-indent-6 {
+  margin-left: 48px;
+}
+
+.dir-indent-7 {
+  margin-left: 56px;
+}
+
+.dir-indent-8 {
+  margin-left: 64px;
+}
+
+.dir-indent-9 {
+  margin-left: 72px;
+}
+
+.dir-hidden {
+  display: none !important;
+}
+
+.dir-expanded {
+  display: block !important;
+}
 
 /* Table for console.table */
 .console-table {
@@ -130,19 +239,24 @@ body {
   border-radius: 4px;
   overflow: hidden;
 }
-.console-table th, .console-table td {
+
+.console-table th,
+.console-table td {
   border: 1px solid #333;
   padding: 4px 12px;
   text-align: left;
 }
+
 .console-table th {
   background: #2c313a;
   color: #8ecae6;
   font-weight: bold;
 }
+
 .console-table tr:nth-child(even) td {
   background: #20242a;
 }
+
 .console-table tr:nth-child(odd) td {
   background: #23272e;
 }

@@ -327,137 +327,99 @@
       consolePrint('trace', ['Trace:', stack.join('\n')]);
     },
     table: function (data, columns) {
-      const out = document.getElementById('console');
+      var out = document.getElementById('console');
       if (!out) return;
-      
-      const div = document.createElement('div');
-      div.className = 'console-table';
+      var div = document.createElement('div');
+      div.className = 'table';
 
-      const formatValue = (value) => {
-        if (value === undefined) return 'undefined';
-        if (value === null) return 'null';
-        if (typeof value === 'string') return `'${value}'`;
-        if (typeof value === 'object') {
-          if (value.nodeType) return value.outerHTML || value.toString();
-          try {
-            const json = JSON.stringify(value);
-            return json === '{}' ? value.toString() : json;
-          } catch {
-            return value.toString();
-          }
-        }
-        return String(value);
-      };
-
-      const table = document.createElement('table');
-      table.className = 'console-table';
-
+      // Determine if data is array or object
+      var rows = [];
+      var headers = [];
       if (Array.isArray(data)) {
-        // Array handling
-        let headers = ['(index)', 'Value'];
-        const isArrayOfObjects = data.some(item => item && typeof item === 'object');
-        
-        if (isArrayOfObjects) {
-          const allKeys = new Set();
-          data.forEach(item => {
-            if (item && typeof item === 'object') {
-              Object.keys(item).forEach(k => allKeys.add(k));
+        // If columns are specified, use them; otherwise, get all keys
+        if (columns && Array.isArray(columns)) {
+          headers = columns;
+        } else {
+          // Collect all unique keys from all objects
+          var keySet = new Set();
+          data.forEach(function (row) {
+            if (row && typeof row === 'object') {
+              Object.keys(row).forEach(function (k) { keySet.add(k); });
             }
           });
-          if (allKeys.size > 0) {
-            headers = ['(index)', 'Value', ...Array.from(allKeys)];
-          }
+          headers = Array.from(keySet);
         }
-
-        // Create headers
-        const thead = document.createElement('thead');
-        const headerRow = document.createElement('tr');
-        headers.forEach(h => {
-          const th = document.createElement('th');
-          th.textContent = h;
-          headerRow.appendChild(th);
+        rows = data.map(function (row, idx) {
+          var obj = {};
+          headers.forEach(function (h) {
+            obj[h] = row && typeof row === 'object' ? row[h] : undefined;
+          });
+          obj['(index)'] = idx;
+          return obj;
         });
-        thead.appendChild(headerRow);
-        table.appendChild(thead);
-
-        // Create rows
-        const tbody = document.createElement('tbody');
-        data.forEach((item, index) => {
-          const row = document.createElement('tr');
-          
-          // Index cell
-          const indexCell = document.createElement('td');
-          indexCell.textContent = index;
-          row.appendChild(indexCell);
-          
-          // Value cell (for primitives)
-          const valueCell = document.createElement('td');
-          valueCell.textContent = item && typeof item === 'object' ? '' : formatValue(item);
-          row.appendChild(valueCell);
-          
-          // Additional property cells
-          if (headers.length > 2) {
-            headers.slice(2).forEach(h => {
-              const propCell = document.createElement('td');
-              propCell.textContent = item && typeof item === 'object' ? formatValue(item[h]) : '';
-              row.appendChild(propCell);
-            });
+        headers = ['(index)'].concat(headers);
+      } else if (typeof data === 'object' && data !== null) {
+        // Object: keys are row labels, values are rows
+        var keySet = new Set();
+        Object.values(data).forEach(function (row) {
+          if (row && typeof row === 'object') {
+            Object.keys(row).forEach(function (k) { keySet.add(k); });
           }
-          
-          tbody.appendChild(row);
         });
-        table.appendChild(tbody);
-      } 
-      else if (typeof data === 'object' && data !== null) {
-        // Object handling - properties as rows
-        const props = new Set();
-        
-        // Get all properties including inherited
-        for (const key in data) props.add(key);
-        Object.getOwnPropertyNames(data).forEach(prop => props.add(prop));
-        
-        // Create table
-        const thead = document.createElement('thead');
-        const headerRow = document.createElement('tr');
-        ['(index)', 'Value'].forEach(h => {
-          const th = document.createElement('th');
-          th.textContent = h;
-          headerRow.appendChild(th);
+        headers = ['(key)'].concat(Array.from(keySet));
+        rows = Object.keys(data).map(function (key) {
+          var obj = {};
+          obj['(key)'] = key;
+          headers.slice(1).forEach(function (h) {
+            obj[h] = data[key] && typeof data[key] === 'object' ? data[key][h] : undefined;
+          });
+          return obj;
         });
-        thead.appendChild(headerRow);
-        table.appendChild(thead);
-
-        // Create rows
-        const tbody = document.createElement('tbody');
-        [...props].sort().forEach(prop => {
-          if (prop === 'constructor') return;
-          
-          const row = document.createElement('tr');
-          
-          // Property name
-          const propCell = document.createElement('td');
-          propCell.textContent = prop;
-          row.appendChild(propCell);
-          
-          // Property value
-          const valueCell = document.createElement('td');
-          try {
-            valueCell.textContent = formatValue(data[prop]);
-          } catch {
-            valueCell.textContent = '<access denied>';
-          }
-          row.appendChild(valueCell);
-          
-          tbody.appendChild(row);
-        });
-        table.appendChild(tbody);
-      } 
-      else {
-        // Primitive value
-        div.textContent = formatValue(data);
+      } else {
+        // Not array or object, just print as is
+        div.textContent = String(data);
         out.appendChild(div);
         return;
       }
+
+      // Create table
+      var table = document.createElement('table');
+      table.className = 'console-table';
+
+      // Header row
+      var thead = document.createElement('thead');
+      var tr = document.createElement('tr');
+      headers.forEach(function (h) {
+        var th = document.createElement('th');
+        th.textContent = h;
+        tr.appendChild(th);
+      });
+      thead.appendChild(tr);
+      table.appendChild(thead);
+
+      // Body rows
+      var tbody = document.createElement('tbody');
+      rows.forEach(function (row) {
+        var tr = document.createElement('tr');
+        headers.forEach(function (h) {
+          var td = document.createElement('td');
+          var val = row[h];
+          if (val === undefined) {
+            td.textContent = '';
+          } else if (typeof val === 'object' && val !== null) {
+            try {
+              td.textContent = JSON.stringify(val);
+            } catch (e) {
+              td.textContent = '[object]';
+            }
+          } else {
+            td.textContent = String(val);
+          }
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      });
+      table.appendChild(tbody);
 
       div.appendChild(table);
       out.appendChild(div);
