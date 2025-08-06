@@ -1,8 +1,8 @@
-# Changelog 
+#### 0.1.0 (2025-08-06)
 
-### [0.1.0] - 2025-08-06
-#### Added
 ##### New Features
 
-*  add env detection and tests
-*  initial project setup
+*  add changelog generation ([a29ac61e](https://github.com/jlongyam/utility/commit/a29ac61e38a5af607a3b40d332c86bf6be23880a))
+*  add env detection and tests ([4eba9387](https://github.com/jlongyam/utility/commit/4eba938726082e6a202c5a582c882938808d8d51))
+*  initial project setup ([75ae8de2](https://github.com/jlongyam/utility/commit/75ae8de243f3924c58808d6b74c696eda386e5d7))
+
