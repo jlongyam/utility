@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "NO_DESCRIPTION",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo NO_TEST"
   },

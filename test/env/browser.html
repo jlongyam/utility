@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta http-equiv="X-UA-Compatible" content="IE=9">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test: env</title>
+  <style>
+    pre {
+      font: 24px/1.5 monospace;
+    }
+  </style>
+</head>
+
+<body>
+  <pre id="pre"></pre>
+  <script type="module">
+    import env from '../../src/env/env.js';
+
+    let envs = Object.getOwnPropertyNames(env);
+
+    envs.forEach((key) => {
+      pre.textContent += 'HTML    : env.' + key + ': ' + '{' + typeof env[key] + '} ' + env[key] + '\n';
+    });
+
+    const worker = new Worker('./worker.js', {
+      type: 'module'
+    });
+
+    worker.onmessage = function (msg) {
+      pre.textContent += msg.data;
+    };
+  </script>
+</body>
+
+</html>
