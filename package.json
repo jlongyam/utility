@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo NO_TEST"
+    "test": "echo NO_TEST",
+    "changelog": "generate-changelog"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/jlongyam/utility/issues"
   },
-  "homepage": "https://github.com/jlongyam/utility#readme"
+  "homepage": "https://github.com/jlongyam/utility#readme",
+  "devDependencies": {
+    "generate-changelog": "^1.8.0"
+  }
 }
