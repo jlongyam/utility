@@ -9,7 +9,10 @@
   ],
   "scripts": {
     "test": "echo NO_TEST",
-    "changelog": "generate-changelog"
+    "push-tag": "",
+    "changelog": "generate-changelog",
+    "version:test": "npm version prerelease --preid 'rc' --git-tag-version false",
+    "version:prerelease": "npm version from-git"
   },
   "repository": {
     "type": "git",
