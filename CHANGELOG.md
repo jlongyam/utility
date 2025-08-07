@@ -1,5 +1,3 @@
-### 0.2.0 (2025-08-07)
-
 ##### New Features
 
 *  add display and color utils and update docs ([5906ac8d](https://github.com/jlongyam/utility/commit/5906ac8d02c95c9195ebc9bf081e33ca32f0af1c))
