@@ -1,3 +1,14 @@
+#### 1.0.1 (2025-08-07)
+
+##### Documentation Changes
+
+*  Remove redundant docs link from README ([c22bb589](https://github.com/jlongyam/utility/commit/c22bb589a0e775a1d9aa7ca68bc930512ec9d2cb))
+*  Remove redundant changelog entries ([c13a6173](https://github.com/jlongyam/utility/commit/c13a61731d201b61620aa894f4c1c74e0a22522d))
+
+##### New Features
+
+*  Add module list to README and link to documentation ([00b14fbf](https://github.com/jlongyam/utility/commit/00b14fbf95a257cc8e888660686fd412dda9837c))
+
 ## 1.0.0 (2025-08-07)
 
 ##### New Features
