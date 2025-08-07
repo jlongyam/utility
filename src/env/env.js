@@ -1,3 +1,8 @@
+/**
+ * @namespace env 
+ * @returns {Object} 
+ *
+ */
 let env = (function () {
   const isBrowser =
     typeof window === "object" && typeof document !== "undefined";
@@ -23,5 +28,6 @@ env.global = (typeof window !== "undefined") ? window
     : (typeof self !== "undefined") ? self
       : (typeof globalThis !== "undefined") ? globalThis
         : this
+
 
 export default env;

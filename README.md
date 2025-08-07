@@ -1,5 +1,5 @@
-# [utility](https://github.com/jlongyam/utility)
+# utility
 
 - `env`
 
-[changelog](CHANGELOG.md)
+See [changelog](CHANGELOG.md)
