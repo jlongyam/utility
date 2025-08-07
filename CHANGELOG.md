@@ -1,4 +1,8 @@
+### 0.4.0 (2025-08-07)
+
 ##### New Features
+
+*  update CHANGELOG.md for version 0.4.0 ([49573eae](https://github.com/jlongyam/utility/commit/49573eae21992added09916a37db6b1eb4d2376f))
 
 *  add display and color utils and update docs ([5906ac8d](https://github.com/jlongyam/utility/commit/5906ac8d02c95c9195ebc9bf081e33ca32f0af1c))
 
@@ -17,12 +21,6 @@
 ##### Other Changes
 
 * patch script ([016aadc7](https://github.com/jlongyam/utility/commit/016aadc7d62cd4962b8f04111caab46bd3407966))
-
-#### 0.1.2.0 (2025-08-07)
-
-##### Chores
-
-*  update dependencies and README ([324821bf](https://github.com/jlongyam/utility/commit/324821bfa92d342fc45fcc89dc24e4edbd675924))
 
 #### 0.1.2.0 (2025-08-07)
 
