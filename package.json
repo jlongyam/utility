@@ -9,13 +9,11 @@
   ],
   "scripts": {
     "test": "echo NO_TEST",
-    "doc": "jsdoc --template ./src/* -d ./docs",
-    "doc:pretty": "jsdoc -c ./jsdoc.json",
-    "doc:clean": "rm -rf ./docs/*",
-    "push:tag": "git push origin --tags",
+    "docs": "jsdoc -c ./jsdoc.json",
     "changelog": "generate-changelog",
     "version:test": "npm version prerelease --preid 'rc' --git-tag-version false",
-    "version:prerelease": "npm version prerelease --preid 'rc' && git push origin --tags"
+    "version:prerelease": "npm version prerelease --preid 'rc' && git push origin --tags",
+    "version:release": "npm version '0.1.1-alpha.0' && git push origin --tags"
   },
   "repository": {
     "type": "git",
@@ -38,6 +36,7 @@
     "access": "public"
   },
   "dependencies": {
+    "clean-jsdoc-theme": "^4.3.0",
     "jsdoc": "^3.6.3"
   }
 }
