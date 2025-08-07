@@ -9,16 +9,14 @@
   ],
   "scripts": {
     "test": "echo NO_TEST",
-    "docs": "jsdoc -c ./jsdoc.json",
-    "changelog": "generate-changelog",
-    "version:test": "npm version prerelease --preid 'rc' --git-tag-version false",
-    "version:prerelease": "npm version prerelease --preid 'rc' && git push origin --tags",
-    "version:manual": "npm version '0.1.1-alpha.0' && git push origin --tags",
-    "push:tags": "git push origin --tags",
+    "docs:update": "jsdoc -c ./jsdoc.json",
+    "docs:clean": "rm -rf ./docs",
     "change:patch": "changelog -p && git add CHANGELOG.md",
+    "change:majorr": "changelog -M && git add CHANGELOG.md",
+    "change:minor": "changelog -m && git add CHANGELOG.md",
     "release:patch": "npm version patch && git push origin && git push origin --tags",
-    "release:major": "changelog -M && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major && git push origin && git push origin --tags",
-    "release:minor": "changelog -m && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version minor && git push origin && git push origin --tags"
+    "release:major": "npm version major && git push origin && git push origin --tags",
+    "release:minor": "npm version minor && git push origin && git push origin --tags"
   },
   "repository": {
     "type": "git",
@@ -33,7 +31,7 @@
   "bugs": {
     "url": "https://github.com/jlongyam/utility/issues"
   },
-  "homepage": "https://github.com/jlongyam/utility#readme",
+  "homepage": "https://jlongyam.github.io/utility",
   "devDependencies": {
     "clean-jsdoc-theme": "^4.3.0",
     "generate-changelog": "^1.8.0",

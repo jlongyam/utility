@@ -1,3 +1,9 @@
+#### 0.1.3 (2025-08-07)
+
+##### Documentation Changes
+
+*  Update NPM package link in README ([40903945](https://github.com/jlongyam/utility/commit/409039453432eaf0a7c4131728b79e0631de00ce))
+
 #### 0.1.2 (2025-08-07)
 
 ##### Chores
