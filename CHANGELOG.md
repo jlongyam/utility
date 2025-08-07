@@ -1,9 +1,5 @@
 ## 1.0.0 (2025-08-07)
 
-##### Documentation Changes
-
-*  update CHANGELOG.md with new features for v0.4.0 ([556a1cd1](https://github.com/jlongyam/utility/commit/556a1cd1fd57ff5784a3056789445e79779c78ec))
-
 ##### New Features
 
 *  add `type` module to detect variable type ([fbb159ad](https://github.com/jlongyam/utility/commit/fbb159ad1b19dac50447dff070766e1ab9eeeb1f))
@@ -12,8 +8,6 @@
 ### 0.4.0 (2025-08-07)
 
 ##### New Features
-
-*  update CHANGELOG.md for version 0.4.0 ([49573eae](https://github.com/jlongyam/utility/commit/49573eae21992added09916a37db6b1eb4d2376f))
 
 *  add display and color utils and update docs ([5906ac8d](https://github.com/jlongyam/utility/commit/5906ac8d02c95c9195ebc9bf081e33ca32f0af1c))
 
@@ -43,7 +37,6 @@
 
 ##### New Features
 
-*  add changelog generation ([a29ac61e](https://github.com/jlongyam/utility/commit/a29ac61e38a5af607a3b40d332c86bf6be23880a))
 *  add env detection and tests ([4eba9387](https://github.com/jlongyam/utility/commit/4eba938726082e6a202c5a582c882938808d8d51))
 *  initial project setup ([75ae8de2](https://github.com/jlongyam/utility/commit/75ae8de243f3924c58808d6b74c696eda386e5d7))
 
