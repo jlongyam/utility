@@ -2,4 +2,9 @@
 
 # utility
 
-- `env`
+- `env`,
+- `display`,
+- `color`,
+- `type`
+
+See [docs](https://github.com/jlongyam/utility/) 
