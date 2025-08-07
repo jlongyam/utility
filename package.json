@@ -42,13 +42,14 @@
     "clean-jsdoc-theme": "^4.3.0",
     "generate-changelog": "^1.8.0",
     "jsdoc": "^4.0.4",
-    "rollup": "^4.46.2"
+    "rollup": "^4.46.2",
+    "@rollup/plugin-terser": "^0.4.4",
+    "prettier": "^3.6.2"
   },
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@rollup/plugin-terser": "^0.4.4",
-    "prettier": "^3.6.2"
+    
   }
 }
