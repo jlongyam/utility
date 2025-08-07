@@ -19,8 +19,7 @@
     "change:minor": "changelog -m && git add CHANGELOG.md",
     "release:patch": "npm version patch && git push origin && git push origin --tags",
     "release:major": "npm version major && git push origin && git push origin --tags",
-    "release:minor": "npm version minor && git push origin && git push origin --tags",
-    "publish": "npm publish"
+    "release:minor": "npm version minor && git push origin && git push origin --tags"
   },
   "repository": {
     "type": "git",
