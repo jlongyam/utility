@@ -33,8 +33,7 @@
         }
       ],
       "footer": "<p style='text-align: center'>Theme by <strong><a href='https://ankdev.me/clean-jsdoc-theme/v4/'>Clean-JSDoc</a></strong></p>"
-    },
-    "sections": ["Namespace", "Modules", "Global"]
+    }
   },
   "markdown": {
     "hardwrap": false,

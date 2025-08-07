@@ -49,7 +49,7 @@ const display = (function() {
       target.innerHTML = `<${tag}>${text}</${tag}>`;
     }
   };
-
+  
   if(env.browser) return htmlOutput;
   else return consoleOutput;
 })();

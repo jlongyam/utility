@@ -12,12 +12,8 @@
 <body>
   <script type="module">
     import display from '../../src/display.js';
-    const worker = new Worker('./worker.js');
     
-    display('Text from HTML');
-    worker.onmessage = (event) => {
-      display(event.data)
-    };
+    display('Text from html');
   </script>
 </body>
 
