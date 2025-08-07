@@ -1,3 +1,11 @@
+#### 1.0.2 (2025-08-07)
+
+##### New Features
+
+*  Build library with Rollup ([5da6f04f](https://github.com/jlongyam/utility/commit/5da6f04f8b93faded7dcbdfbe035279ec06a486d))
+*  Update modules in index.js and remove static workflow ([33874ad8](https://github.com/jlongyam/utility/commit/33874ad84b184b23bb807c4e7ec0c8d0faa9a3bf))
+*  add display, color, and type to utility modules in index.html ([fdcea5b6](https://github.com/jlongyam/utility/commit/fdcea5b67e844f96fc3798993b91b2e7c5744f4e))
+
 #### 1.0.1 (2025-08-07)
 
 ##### Documentation Changes
