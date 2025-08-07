@@ -4,6 +4,12 @@
 
 *  update dependencies and README ([324821bf](https://github.com/jlongyam/utility/commit/324821bfa92d342fc45fcc89dc24e4edbd675924))
 
+#### 0.1.2.0 (2025-08-07)
+
+##### Chores
+
+*  update dependencies and README ([324821bf](https://github.com/jlongyam/utility/commit/324821bfa92d342fc45fcc89dc24e4edbd675924))
+
 #### 0.1.0 (2025-08-06)
 
 ##### New Features
