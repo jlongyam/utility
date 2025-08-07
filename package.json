@@ -1,6 +1,6 @@
 {
   "name": "@jlongyam/utility",
-  "version": "0.1.1",
+  "version": "0.1.1-rc.0",
   "description": "NO_DESCRIPTION",
   "main": "index.js",
   "type": "module",
@@ -9,10 +9,10 @@
   ],
   "scripts": {
     "test": "echo NO_TEST",
-    "push-tag": "",
+    "push:tag": "git push origin --tags",
     "changelog": "generate-changelog",
     "version:test": "npm version prerelease --preid 'rc' --git-tag-version false",
-    "version:prerelease": "npm version from-git"
+    "version:prerelease": "npm version prerelease --preid 'rc' && git push origin --tags"
   },
   "repository": {
     "type": "git",
@@ -30,5 +30,8 @@
   "homepage": "https://github.com/jlongyam/utility#readme",
   "devDependencies": {
     "generate-changelog": "^1.8.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
