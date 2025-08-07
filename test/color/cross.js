@@ -1,5 +1,6 @@
-import color from "../../src/color.js";
-import display from "../../src/display.js";
+// import color from "../../src/color.js";
+// import display from "../../src/display.js";
+import { color, display } from '../../dist/utility.js'
 
 display(`single: ${color.blue('blue')}`);
 display(`brighter: ${color.brightBlue('brightBlue')}`);

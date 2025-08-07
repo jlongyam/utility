@@ -51,7 +51,7 @@ env.global = (typeof window !== "undefined") ? window
   : (typeof global !== "undefined") ? global
     : (typeof self !== "undefined") ? self
       : (typeof globalThis !== "undefined") ? globalThis
-        : this
+        : undefined
 
 
 export default env;

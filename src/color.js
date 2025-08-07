@@ -1,5 +1,58 @@
 import env from './env.js';
+/*
 
+## Info
+
+- https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797
+
+- `reset` - Reset the current style.
+- `bold` - Make the text bold.
+- `dim` - Make the text have lower opacity.
+- `italic` - Make the text italic. *(Not widely supported)*
+- `underline` - Put a horizontal line above the text. *(Not widely supported)*
+- `overline` - Put a horizontal line below the text. *(Not widely supported)*
+- `inverse`- Invert background and foreground colors.
+- `hidden` - Print the text but make it invisible.
+- `strikethrough` - Put a horizontal line through the center of the text. *(Not widely supported)*
+
+### Colors
+
+- `black`
+- `red`
+- `green`
+- `yellow`
+- `blue`
+- `magenta`
+- `cyan`
+- `white`
+- `gray`
+- `redBright`
+- `greenBright`
+- `yellowBright`
+- `blueBright`
+- `magentaBright`
+- `cyanBright`
+- `whiteBright`
+
+### Background colors
+
+- `bgBlack`
+- `bgRed`
+- `bgGreen`
+- `bgYellow`
+- `bgBlue`
+- `bgMagenta`
+- `bgCyan`
+- `bgWhite`
+- `bgGray`
+- `bgRedBright`
+- `bgGreenBright`
+- `bgYellowBright`
+- `bgBlueBright`
+- `bgMagentaBright`
+- `bgCyanBright`
+- `bgWhiteBright`
+*/
 const node = env.node
 const styleMappings = {
   // Colors

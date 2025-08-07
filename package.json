@@ -2,13 +2,16 @@
   "name": "@jlongyam/utility",
   "version": "1.0.1",
   "description": "NO_DESCRIPTION",
-  "main": "./src/index.js",
+  "main": "./dist/utility.js",
   "type": "module",
   "files": [
-    "src"
+    "src",
+    "dist"
   ],
   "scripts": {
     "test": "echo NO_TEST",
+    "build": "rollup --config",
+    "pretty": "prettier -w ./dist/utility.js",
     "docs:update": "jsdoc -c ./jsdoc.json",
     "docs:clean": "rm -rf ./docs",
     "change:patch": "changelog -p && git add CHANGELOG.md",
@@ -33,11 +36,19 @@
   },
   "homepage": "https://jlongyam.github.io/utility",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.6",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.1",
     "clean-jsdoc-theme": "^4.3.0",
     "generate-changelog": "^1.8.0",
-    "jsdoc": "^4.0.4"
+    "jsdoc": "^4.0.4",
+    "rollup": "^4.46.2"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
+    "prettier": "^3.6.2"
   }
 }
