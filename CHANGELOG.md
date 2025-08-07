@@ -1,3 +1,14 @@
+## 1.0.0 (2025-08-07)
+
+##### Documentation Changes
+
+*  update CHANGELOG.md with new features for v0.4.0 ([556a1cd1](https://github.com/jlongyam/utility/commit/556a1cd1fd57ff5784a3056789445e79779c78ec))
+
+##### New Features
+
+*  add `type` module to detect variable type ([fbb159ad](https://github.com/jlongyam/utility/commit/fbb159ad1b19dac50447dff070766e1ab9eeeb1f))
+*  update CHANGELOG.md for version 0.4.0 ([49573eae](https://github.com/jlongyam/utility/commit/49573eae21992added09916a37db6b1eb4d2376f))
+
 ### 0.4.0 (2025-08-07)
 
 ##### New Features
