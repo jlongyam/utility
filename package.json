@@ -13,7 +13,8 @@
     "changelog": "generate-changelog",
     "version:test": "npm version prerelease --preid 'rc' --git-tag-version false",
     "version:prerelease": "npm version prerelease --preid 'rc' && git push origin --tags",
-    "version:release": "npm version '0.1.1-alpha.0' && git push origin --tags"
+    "version:manual": "npm version '0.1.1-alpha.0' && git push origin --tags",
+    "push:tags": "git push origin --tags"
   },
   "repository": {
     "type": "git",
@@ -30,13 +31,11 @@
   },
   "homepage": "https://github.com/jlongyam/utility#readme",
   "devDependencies": {
-    "generate-changelog": "^1.8.0"
+    "clean-jsdoc-theme": "^4.3.0",
+    "generate-changelog": "^1.8.0",
+    "jsdoc": "^4.0.4"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "clean-jsdoc-theme": "^4.3.0",
-    "jsdoc": "^3.6.3"
   }
 }

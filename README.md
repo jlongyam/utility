@@ -1,6 +1,6 @@
-# utility
-
 [![NPM](https://nodei.co/npm/@jlongyam/utility.svg?style=flat-square&data=n&color=orange)](https://nodei.co/npm/@jlongyam/utility/)
+
+# utility
 
 - `env`
 
