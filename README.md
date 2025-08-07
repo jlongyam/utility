@@ -1,4 +1,4 @@
-[![NPM](https://nodei.co/npm/@jlongyam/utility.svg?style=flat-square&data=n&color=orange)](https://nodei.co/npm/@jlongyam/utility/)
+[![NPM](https://nodei.co/npm/@jlongyam/utility.svg?style=flat-square&data=n&color=orange)](https://www.npmjs.com/package/@jlongyam/utility)
 
 # utility
 
@@ -6,6 +6,5 @@
 
 ## Links
 
-- [Badge](https://nodei.co/#@jlongyam/utility)
 - [Change](CHANGELOG.md)
 - [License](LICENSE)
