@@ -1,3 +1,13 @@
+#### 0.1.2 (2025-08-07)
+
+##### Chores
+
+*  update dependencies and README ([324821bf](https://github.com/jlongyam/utility/commit/324821bfa92d342fc45fcc89dc24e4edbd675924))
+
+##### Other Changes
+
+* patch script ([016aadc7](https://github.com/jlongyam/utility/commit/016aadc7d62cd4962b8f04111caab46bd3407966))
+
 #### 0.1.2.0 (2025-08-07)
 
 ##### Chores
