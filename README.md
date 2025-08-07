@@ -3,8 +3,3 @@
 # utility
 
 - `env`
-
-## Links
-
-- [Change](CHANGELOG.md)
-- [License](LICENSE)

@@ -1,10 +1,10 @@
 
 /**
- * Description
- * 
+ * # utility
+ * Javascript basic utilty
  * @module utility
- * @exports utility/env
+ * @returns {Object} `env`
  */
-export { default as env } from './env/env.js';
+export { default as env } from './env.js';
 
 //import {env} from './index.js'

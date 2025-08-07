@@ -1,4 +1,4 @@
-import env from '../../src/env/env.js';
+import env from '../../src/env.js';
 
 let envs = Object.getOwnPropertyNames(env);
 
