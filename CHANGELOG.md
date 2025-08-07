@@ -1,5 +1,16 @@
 ### 2.1.0 (2025-08-07)
 
+##### New Features
+
+*  Add tester module with assertions and browser tests ([a27d663d](https://github.com/jlongyam/utility/commit/a27d663dbe8b80667fdf38b0ce69d0ae5a04c7a5))
+*  update dependencies and devDependencies ([ec7e7d85](https://github.com/jlongyam/utility/commit/ec7e7d85c9de4c8de84fff0d2acf6320ba70e39c))
+
+##### Bug Fixes
+
+*  update ([13df139d](https://github.com/jlongyam/utility/commit/13df139db4749f67ab32d4553af61d702024c6cb))
+
+### 2.1.0 (2025-08-07)
+
 #### 1.0.2 (2025-08-07)
 
 ##### New Features
