@@ -1,6 +1,6 @@
 {
   "name": "@jlongyam/utility",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "NO_DESCRIPTION",
   "main": "./dist/utility.js",
   "type": "module",
