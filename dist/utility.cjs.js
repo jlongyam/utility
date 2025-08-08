@@ -149,7 +149,7 @@ class Tester {
     this.options = {
       target: options.target || (env.browser ? document.body : null),
       append: options.append !== false,
-      tag: options.tag || "div",
+      tag: options.tag || "pre",
       verbose: options.verbose || false,
     };
   }
@@ -169,7 +169,7 @@ class Tester {
       if (test.skip) {
         this.results.skipped++;
         const statusMsg = test.reason ? `SKIPPED (${test.reason})` : "SKIPPED";
-        this.printResult(test.name, statusMsg, color.yellow);
+        this.printResult(test.name, statusMsg, color.gray);
         continue;
       }
       try {
@@ -199,10 +199,16 @@ class Tester {
   }
   printSummary() {
     const duration = (this.endTime - this.startTime) / 1e3;
-    const summary = color.bold(
-      `\nTest Summary:\n  Passed:  ${color.green(this.results.passed)}\n  Failed:  ${this.results.failed ? color.red(this.results.failed) : "0"}\n  Skipped: ${color.yellow(this.results.skipped)}\n  Total:   ${this.tests.length}\n  Duration: ${duration.toFixed(2)}s\n    `.trim(),
-    );
-    this.output(summary);
+    const summary = [
+      "Test Summary:",
+      "  Passed   : " + color.green(this.results.passed),
+      "  Failed   : " +
+        (this.results.failed ? color.red(this.results.failed) : "0"),
+      "  Skipped  : " + color.gray(this.results.skipped),
+      "  Total    : " + this.tests.length,
+      "  Duration : " + duration.toFixed(2) + "s",
+    ];
+    this.output(summary.join("\n"));
   }
   output(content) {
     if (env.browser) {
