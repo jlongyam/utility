@@ -32,8 +32,13 @@
     "url": "git+https://github.com/jlongyam/utility.git"
   },
   "keywords": [
-    "NO",
-    "KEYWORD"
+    "utility",
+    "js-utility",
+    "color",
+    "display",
+    "env",
+    "tester",
+    "type"
   ],
   "author": "jlongyam",
   "license": "MIT",
