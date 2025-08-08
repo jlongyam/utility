@@ -15,7 +15,7 @@
     }
   },
   "scripts": {
-    "test": "echo NO_TEST",
+    "test": "node ./test/tester/cross.js",
     "build": "rollup --config",
     "pretty:es": "prettier -w ./dist/utility.js",
     "pretty:cjs": "prettier -w ./dist/utility.cjs.js",
