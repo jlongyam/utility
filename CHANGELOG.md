@@ -1,3 +1,14 @@
+#### 2.2.1 (2025-08-08)
+
+##### Documentation Changes
+
+*  Update package description ([f54a1bb1](https://github.com/jlongyam/utility/commit/f54a1bb1ed53f6d73183500d6a8ff4bc404a1eb3))
+*  Add keywords to package.json ([60d0b936](https://github.com/jlongyam/utility/commit/60d0b936bc1ea7b32cea55b980e1b3c00681efa7))
+
+##### New Features
+
+*  Enable testing with cross-platform compatibility ([efc6efd0](https://github.com/jlongyam/utility/commit/efc6efd00efa2e618db38524f31057ac619b60ca))
+
 ### 2.2.0 (2025-08-08)
 
 ##### New Features
