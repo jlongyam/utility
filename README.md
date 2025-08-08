@@ -6,3 +6,4 @@
 - `display`,
 - `color`,
 - `type`
+- `tester`
