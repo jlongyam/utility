@@ -1,5 +1,16 @@
 #### 2.2.2 (2025-08-08)
 
+##### Documentation Changes
+
+*  Update CHANGELOG.md for readability improvement ([3cc7a36b](https://github.com/jlongyam/utility/commit/3cc7a36b3309dac7efb995126d3e17deaac0ebbb))
+
+##### Refactors
+
+* **tester:**  Improve test result display in browser ([ad2ab547](https://github.com/jlongyam/utility/commit/ad2ab547601a930ae705eeaf27b39e6649add5ed))
+*  Improve readability of test results in Tester class ([78c29841](https://github.com/jlongyam/utility/commit/78c298419a60afafdc857429be108926a1b57275))
+
+#### 2.2.2 (2025-08-08)
+
 ##### Refactors
 
 *  Improve readability of test results in Tester class ([78c29841](https://github.com/jlongyam/utility/commit/78c298419a60afafdc857429be108926a1b57275))
