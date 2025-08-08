@@ -6,4 +6,4 @@
 - `type`
 - `tester`
 
-[![NPM](https://nodei.co/npm/@jlongyam/utility.svg?style=mini&color=blue)](https://nodei.co/npm/@jlongyam/utility/)
+[![NPM](https://nodei.co/npm/@jlongyam/utility.svg?style=mini&color=blue)](https://www.npmjs.com/package/@jlongyam/utility)
