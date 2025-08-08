@@ -1,29 +1,34 @@
 import json from '@rollup/plugin-json';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-// import nodePolyfills from 'rollup-plugin-polyfill-node';
 import terser from '@rollup/plugin-terser';
-// import pkg from './package.json' with { type: 'json' };
+import pkg from './package.json' with { type: 'json' }
 
+const plugins = [
+	json(),
+	resolve(),
+	commonjs(),
+	terser({
+		compress: false,
+		mangle: false
+	})
+]
 export default [
 	{
-		input: './src/index.js',
+		input: pkg.main,
 		output: {
-			// file: pkg['.']['exports'].['import'],
-      file: './dist/utility.js',
+			file: pkg.exports['.']['import'],
 			format: 'es',
 			inlineDynamicImports: true
 		},
-		plugins: [
-			json(),
-			resolve(),
-			// nodePolyfills(),
-			commonjs(),/*,
-      nodePolyfills()*/
-			terser({
-				compress: false,
-				mangle: false
-			})
-		]
+		plugins: plugins
+	},
+	{
+		input: pkg.main,
+		output: {
+			file: pkg.exports['.']['require'],
+			format: 'cjs'
+		},
+		plugins: plugins
 	}
 ];

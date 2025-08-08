@@ -2,18 +2,24 @@
   "name": "@jlongyam/utility",
   "version": "2.1.0",
   "description": "NO_DESCRIPTION",
-  "main": "./dist/utility.js",
+  "main": "./src/index.js",
   "type": "module",
   "files": [
     "src",
     "dist"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/utility.js",
+      "require": "./dist/utility.cjs.js"
+    }
+  },
   "scripts": {
     "test": "echo NO_TEST",
     "build": "rollup --config",
-    "pretty": "prettier -w ./dist/utility.js",
-    "docs:update": "jsdoc -c ./jsdoc.json",
-    "docs:clean": "rm -rf ./docs",
+    "pretty:es": "prettier -w ./dist/utility.js",
+    "pretty:cjs": "prettier -w ./dist/utility.cjs.js",
+    "pretty": "npm run pretty:es && npm run pretty:cjs",
     "change:patch": "changelog -p && git add CHANGELOG.md",
     "change:majorr": "changelog -M && git add CHANGELOG.md",
     "change:minor": "changelog -m && git add CHANGELOG.md",
@@ -39,15 +45,12 @@
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.1",
-    "clean-jsdoc-theme": "^4.3.0",
-    "generate-changelog": "^1.8.0",
-    "jsdoc": "^4.0.4",
-    "rollup": "^4.46.2",
     "@rollup/plugin-terser": "^0.4.4",
-    "prettier": "^3.6.2"
+    "generate-changelog": "^1.8.0",
+    "prettier": "^3.6.2",
+    "rollup": "^4.46.2"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {}
+  }
 }

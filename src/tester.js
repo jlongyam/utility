@@ -19,27 +19,15 @@ export default class Tester {
       verbose: options.verbose || false
     };
   }
-
-  /**
-   * Add a test with skip capability
-   * @param {string} name - Test name
-   * @param {function} fn - Test function
-   * @param {boolean|object} [options] - Options object or skip boolean
-   */
   test(name, fn, options = {}) {
     const skip = typeof options === 'boolean' ? options : (options.skip || false);
     const reason = options.reason || '';
     this.tests.push({ name, fn, skip, reason });
     return this; // for chaining
   }
-
-  /**
-   * Alias for test()
-   */
   it(name, fn, options = {}) {
     return this.test(name, fn, options);
   }
-
   async run() {
     this.startTime = new Date();
     this.output(color.bold(`Running ${this.tests.length} tests...\n`));
@@ -69,30 +57,26 @@ export default class Tester {
     this.endTime = new Date();
     this.printSummary();
   }
-
   printResult(name, status, colorFn) {
     this.output(colorFn(`${name}: ${status}`));
   }
-
   printError(err) {
     this.output(color.red(`  ${err.message}`));
     if (this.options.verbose) {
       this.output(color.gray(`  ${err.stack}`));
     }
   }
-
   printSummary() {
     const duration = (this.endTime - this.startTime) / 1000;
-    const summary = color.bold(`
-Test Summary:
-  Passed:  ${color.green(this.results.passed)}
-  Failed:  ${this.results.failed ? color.red(this.results.failed) : '0'}
-  Skipped: ${color.yellow(this.results.skipped)}
-  Total:   ${this.tests.length}
-  Duration: ${duration.toFixed(2)}s
-    `.trim());
-
-    this.output(summary);
+    const summary = [
+      'Test Summary:',
+      '  Passed   : '+color.green(this.results.passed),
+      '  Failed   : '+(this.results.failed ? color.red(this.results.failed) : '0'),
+      '  Skipped  : '+color.yellow(this.results.skipped),
+      '  Total    : '+this.tests.length,
+      '  Duration : '+duration.toFixed(2)+'s'
+    ];
+    this.output(summary.join('\n'));
   }
 
   output(content) {

@@ -1,3 +1,4 @@
+"use strict";
 let env = (function () {
   const isBrowser =
     typeof window === "object" && typeof document !== "undefined";
@@ -237,4 +238,8 @@ class Tester {
     if (!threw) throw new Error(message || "Expected function to throw");
   }
 }
-export { Tester, color, display, env, type };
+exports.Tester = Tester;
+exports.color = color;
+exports.display = display;
+exports.env = env;
+exports.type = type;
