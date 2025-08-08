@@ -1,3 +1,11 @@
+### 2.2.0 (2025-08-08)
+
+##### New Features
+
+*  Add tester to README ([9d38c181](https://github.com/jlongyam/utility/commit/9d38c181fa82987f06ddbd04861611bdb695d029))
+*  Improve test page layout ([e787477f](https://github.com/jlongyam/utility/commit/e787477fcf6fefb17e1121141a51b0c17b095a84))
+*  Add tester utility with color output and assertions ([181339ae](https://github.com/jlongyam/utility/commit/181339aef40777cb3fbc195377dcc16e691ccfa7))
+
 ### 2.1.0 (2025-08-07)
 
 ##### New Features
