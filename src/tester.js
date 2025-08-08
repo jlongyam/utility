@@ -15,7 +15,7 @@ export default class Tester {
     this.options = {
       target: options.target || (env.browser ? document.body : null),
       append: options.append !== false,
-      tag: options.tag || 'div',
+      tag: options.tag || 'pre',
       verbose: options.verbose || false
     };
   }
@@ -36,7 +36,7 @@ export default class Tester {
       if (test.skip) {
         this.results.skipped++;
         const statusMsg = test.reason ? `SKIPPED (${test.reason})` : 'SKIPPED';
-        this.printResult(test.name, statusMsg, color.yellow);
+        this.printResult(test.name, statusMsg, color.gray);
         continue;
       }
 
@@ -72,7 +72,7 @@ export default class Tester {
       'Test Summary:',
       '  Passed   : '+color.green(this.results.passed),
       '  Failed   : '+(this.results.failed ? color.red(this.results.failed) : '0'),
-      '  Skipped  : '+color.yellow(this.results.skipped),
+      '  Skipped  : '+color.gray(this.results.skipped),
       '  Total    : '+this.tests.length,
       '  Duration : '+duration.toFixed(2)+'s'
     ];
