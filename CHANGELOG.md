@@ -1,3 +1,9 @@
+#### 2.2.2 (2025-08-08)
+
+##### Refactors
+
+*  Improve readability of test results in Tester class ([78c29841](https://github.com/jlongyam/utility/commit/78c298419a60afafdc857429be108926a1b57275))
+
 #### 2.2.1 (2025-08-08)
 
 ##### Documentation Changes
