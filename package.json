@@ -1,6 +1,6 @@
 {
   "name": "@jlongyam/utility",
-  "version": "2.2.2",
+  "version": "2.3.0",
   "description": "js basic utility that works on node and browser",
   "main": "./src/index.js",
   "type": "module",
