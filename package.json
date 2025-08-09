@@ -42,9 +42,6 @@
   ],
   "author": "jlongyam",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jlongyam/utility/issues"
-  },
   "homepage": "https://jlongyam.github.io/utility",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.6",
