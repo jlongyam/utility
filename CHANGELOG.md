@@ -1,3 +1,9 @@
+### 2.3.0 (2025-08-09)
+
+##### New Features
+
+*  add icon utility with unicode symbols ([c083b23c](https://github.com/jlongyam/utility/commit/c083b23cde671b4c5027e5db8c37c3dc934f2e1d))
+
 #### 2.2.2 (2025-08-08)
 
 ##### Documentation Changes
