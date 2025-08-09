@@ -1,3 +1,9 @@
+#### 2.3.1 (2025-08-09)
+
+##### Documentation Changes
+
+*  Update README, add github link to index.html, and update test script ([94aefd92](https://github.com/jlongyam/utility/commit/94aefd92ee127280671eda3978ea4347a2f4ae59))
+
 ### 2.3.0 (2025-08-09)
 
 ##### New Features
