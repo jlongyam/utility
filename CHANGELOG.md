@@ -1,3 +1,9 @@
+#### 2.3.2 (2025-08-09)
+
+##### Refactors
+
+*  Move and inline icons data to icon.js ([a57221bc](https://github.com/jlongyam/utility/commit/a57221bc36c03b758a1077342d2a5477a6b22bd3))
+
 #### 2.3.1 (2025-08-09)
 
 ##### Documentation Changes
